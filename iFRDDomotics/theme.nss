@@ -5,8 +5,6 @@
 @primaryBackgroundColor: #F0F0F0;
 
 TableCell {
-    font-name: @FontName;
-    font-color-highlighted: @secondaryFontColor;
     background-color-selected: #f8f8f8;
 }
 
@@ -60,5 +58,17 @@ Label:unitSubtitleLabel {
     font-color: @secondaryFontColor;
     font-size: 16;
     text-align: center;
+    font-name: @FontName;
+}
+
+Label:sensorCellLocation {
+    font-color: @primaryFontColor;
+    font-size: 16;
+    font-name: @FontName;
+}
+
+Label:sensorCellName {
+    font-color: @secondaryFontColor;
+    font-size: 12;
     font-name: @FontName;
 }

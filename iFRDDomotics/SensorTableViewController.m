@@ -13,7 +13,7 @@
 #import "UIButton+NUI.h"
 #import "NSString+FontAwesome.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "SensorTableViewCell.h"
 
 @interface SensorTableViewController ()
 
@@ -146,13 +146,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TemperatureCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    SensorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     Sensor *sensor = [self.sensors objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = sensor.name;
-    cell.detailTextLabel.text = sensor.location;
-    
+    cell.sensorNameLabel.text = sensor.name;
+    cell.sensorLocationLabel.text = sensor.location;
+    cell.sensorLocationLabel.nuiClass = @"sensorCellLocation";
+    cell.sensorNameLabel.nuiClass = @"sensorCellName";
     return cell;
 }
 

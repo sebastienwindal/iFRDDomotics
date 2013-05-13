@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB5A1740A61D008E851E /* AboutViewController.m */; };
 		BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE28CB5B1740A61D008E851E /* AboutViewController.xib */; };
+		BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB621740B29A008E851E /* SensorTableViewCell.m */; };
 		BE2C3584174036780037FCB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C3583174036780037FCB4 /* SystemConfiguration.framework */; };
 		BE2C35861740368D0037FCB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */; };
 		BE2C3588174040690037FCB4 /* TemperatureStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */; };
@@ -56,6 +57,8 @@
 		BE28CB591740A61D008E851E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		BE28CB5A1740A61D008E851E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		BE28CB5B1740A61D008E851E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		BE28CB611740B29A008E851E /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
+		BE28CB621740B29A008E851E /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
 		BE2C3583174036780037FCB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TemperatureStoryboard.storyboard; sourceTree = "<group>"; };
@@ -125,6 +128,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE28CB5E1740B17F008E851E /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */,
+				BE2C35891740409D0037FCB4 /* SensorTableViewController.h */,
+				BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */,
+				BE2C358C174044080037FCB4 /* TemperatureDetailViewController.h */,
+				BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */,
+				BE28CB611740B29A008E851E /* SensorTableViewCell.h */,
+				BE28CB621740B29A008E851E /* SensorTableViewCell.m */,
+			);
+			name = Temperature;
+			sourceTree = "<group>";
+		};
+		BE28CB5F1740B195008E851E /* About */ = {
+			isa = PBXGroup;
+			children = (
+				BE28CB591740A61D008E851E /* AboutViewController.h */,
+				BE28CB5A1740A61D008E851E /* AboutViewController.m */,
+				BE28CB5B1740A61D008E851E /* AboutViewController.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		BE28CB601740B1A4008E851E /* Left Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7DB173F1DC10043D770 /* LeftMenuViewController.h */,
+				BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */,
+				BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */,
+			);
+			name = "Left Menu";
+			sourceTree = "<group>";
+		};
 		BEFFB795173DEFF50043D770 = {
 			isa = PBXGroup;
 			children = (
@@ -162,23 +199,15 @@
 		BEFFB7A7173DEFF50043D770 /* iFRDDomotics */ = {
 			isa = PBXGroup;
 			children = (
-				BEFFB7EE173F48860043D770 /* Model */,
 				BEFFB7B0173DEFF50043D770 /* AppDelegate.h */,
 				BEFFB7B1173DEFF50043D770 /* AppDelegate.m */,
-				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
-				BEFFB7DB173F1DC10043D770 /* LeftMenuViewController.h */,
-				BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */,
-				BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */,
 				BEFFB7E0173F1E480043D770 /* MainViewController.h */,
 				BEFFB7E1173F1E480043D770 /* MainViewController.m */,
-				BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */,
-				BE2C35891740409D0037FCB4 /* SensorTableViewController.h */,
-				BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */,
-				BE2C358C174044080037FCB4 /* TemperatureDetailViewController.h */,
-				BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */,
-				BE28CB591740A61D008E851E /* AboutViewController.h */,
-				BE28CB5A1740A61D008E851E /* AboutViewController.m */,
-				BE28CB5B1740A61D008E851E /* AboutViewController.xib */,
+				BE28CB5F1740B195008E851E /* About */,
+				BE28CB601740B1A4008E851E /* Left Menu */,
+				BE28CB5E1740B17F008E851E /* Temperature */,
+				BEFFB7EE173F48860043D770 /* Models */,
+				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
 			);
 			path = iFRDDomotics;
 			sourceTree = "<group>";
@@ -219,7 +248,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BEFFB7EE173F48860043D770 /* Model */ = {
+		BEFFB7EE173F48860043D770 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				BEFFB7EF173F49460043D770 /* Sensor.h */,
@@ -229,7 +258,7 @@
 				BE2C358F174079F20037FCB4 /* Temperature.h */,
 				BE2C3590174079F20037FCB4 /* Temperature.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +416,7 @@
 				BE2C358E174044090037FCB4 /* TemperatureDetailViewController.m in Sources */,
 				BE2C3591174079F20037FCB4 /* Temperature.m in Sources */,
 				BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */,
+				BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
