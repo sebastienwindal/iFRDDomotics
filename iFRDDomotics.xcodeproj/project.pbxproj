@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB5A1740A61D008E851E /* AboutViewController.m */; };
+		BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE28CB5B1740A61D008E851E /* AboutViewController.xib */; };
+		BE2C3584174036780037FCB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C3583174036780037FCB4 /* SystemConfiguration.framework */; };
+		BE2C35861740368D0037FCB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */; };
+		BE2C3588174040690037FCB4 /* TemperatureStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */; };
+		BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */; };
+		BE2C358E174044090037FCB4 /* TemperatureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */; };
+		BE2C3591174079F20037FCB4 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* Temperature.m */; };
+		BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
+		BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
+		BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */; };
+		BEFFB7AC173DEFF50043D770 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7AA173DEFF50043D770 /* InfoPlist.strings */; };
+		BEFFB7AE173DEFF50043D770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7AD173DEFF50043D770 /* main.m */; };
+		BEFFB7B2173DEFF50043D770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7B1173DEFF50043D770 /* AppDelegate.m */; };
+		BEFFB7B4173DEFF50043D770 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7B3173DEFF50043D770 /* Default.png */; };
+		BEFFB7B6173DEFF50043D770 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7B5173DEFF50043D770 /* Default@2x.png */; };
+		BEFFB7B8173DEFF50043D770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7B7173DEFF50043D770 /* Default-568h@2x.png */; };
+		BEFFB7C0173DEFF50043D770 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7BF173DEFF50043D770 /* SenTestingKit.framework */; };
+		BEFFB7C1173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
+		BEFFB7C2173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
+		BEFFB7CA173DEFF50043D770 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7C8173DEFF50043D770 /* InfoPlist.strings */; };
+		BEFFB7CD173DEFF50043D770 /* iFRDDomoticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7CC173DEFF50043D770 /* iFRDDomoticsTests.m */; };
+		BEFFB7DE173F1DC10043D770 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */; };
+		BEFFB7DF173F1DC10043D770 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */; };
+		BEFFB7E3173F1E480043D770 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7E1173F1E480043D770 /* MainViewController.m */; };
+		BEFFB7E6173F25090043D770 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */; };
+		BEFFB7E8173F27890043D770 /* theme.nss in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E7173F27890043D770 /* theme.nss */; };
+		BEFFB7EA173F37D80043D770 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */; };
+		BEFFB7F1173F49460043D770 /* Sensor.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7F0173F49460043D770 /* Sensor.m */; };
+		BEFFB7F4173F4B570043D770 /* FRDDomoticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7F3173F4B570043D770 /* FRDDomoticsClient.m */; };
+		E7373118BA0D470BA262CDE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CC1BE36B104D9DA82450B2 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BEFFB7C3173DEFF50043D770 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEFFB796173DEFF50043D770 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEFFB79D173DEFF50043D770;
+			remoteInfo = iFRDDomotics;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		72CC1BE36B104D9DA82450B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C3CCDD6069403B8F6DD742 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BE28CB591740A61D008E851E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		BE28CB5A1740A61D008E851E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		BE28CB5B1740A61D008E851E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		BE2C3583174036780037FCB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TemperatureStoryboard.storyboard; sourceTree = "<group>"; };
+		BE2C35891740409D0037FCB4 /* SensorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewController.h; sourceTree = "<group>"; };
+		BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewController.m; sourceTree = "<group>"; };
+		BE2C358C174044080037FCB4 /* TemperatureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDetailViewController.h; sourceTree = "<group>"; };
+		BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDetailViewController.m; sourceTree = "<group>"; };
+		BE2C358F174079F20037FCB4 /* Temperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temperature.h; sourceTree = "<group>"; };
+		BE2C3590174079F20037FCB4 /* Temperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temperature.m; sourceTree = "<group>"; };
+		BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFRDDomotics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEFFB7A1173DEFF50043D770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BEFFB7A3173DEFF50043D770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BEFFB7A9173DEFF50043D770 /* iFRDDomotics-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iFRDDomotics-Info.plist"; sourceTree = "<group>"; };
+		BEFFB7AB173DEFF50043D770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEFFB7AD173DEFF50043D770 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEFFB7AF173DEFF50043D770 /* iFRDDomotics-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iFRDDomotics-Prefix.pch"; sourceTree = "<group>"; };
+		BEFFB7B0173DEFF50043D770 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BEFFB7B1173DEFF50043D770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BEFFB7B3173DEFF50043D770 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BEFFB7B5173DEFF50043D770 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BEFFB7B7173DEFF50043D770 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BEFFB7BE173DEFF50043D770 /* iFRDDomoticsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFRDDomoticsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEFFB7BF173DEFF50043D770 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		BEFFB7C7173DEFF50043D770 /* iFRDDomoticsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iFRDDomoticsTests-Info.plist"; sourceTree = "<group>"; };
+		BEFFB7C9173DEFF50043D770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEFFB7CB173DEFF50043D770 /* iFRDDomoticsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iFRDDomoticsTests.h; sourceTree = "<group>"; };
+		BEFFB7CC173DEFF50043D770 /* iFRDDomoticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iFRDDomoticsTests.m; sourceTree = "<group>"; };
+		BEFFB7DB173F1DC10043D770 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewController.xib; sourceTree = "<group>"; };
+		BEFFB7E0173F1E480043D770 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BEFFB7E1173F1E480043D770 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		BEFFB7E7173F27890043D770 /* theme.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = theme.nss; sourceTree = "<group>"; };
+		BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		BEFFB7EF173F49460043D770 /* Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sensor.h; sourceTree = "<group>"; };
+		BEFFB7F0173F49460043D770 /* Sensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sensor.m; sourceTree = "<group>"; };
+		BEFFB7F2173F4B570043D770 /* FRDDomoticsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDDomoticsClient.h; sourceTree = "<group>"; };
+		BEFFB7F3173F4B570043D770 /* FRDDomoticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDDomoticsClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEFFB79B173DEFF50043D770 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE2C35861740368D0037FCB4 /* MobileCoreServices.framework in Frameworks */,
+				BE2C3584174036780037FCB4 /* SystemConfiguration.framework in Frameworks */,
+				BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */,
+				BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */,
+				BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */,
+				E7373118BA0D470BA262CDE7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFFB7BA173DEFF50043D770 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFFB7C0173DEFF50043D770 /* SenTestingKit.framework in Frameworks */,
+				BEFFB7C1173DEFF50043D770 /* UIKit.framework in Frameworks */,
+				BEFFB7C2173DEFF50043D770 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BEFFB795173DEFF50043D770 = {
+			isa = PBXGroup;
+			children = (
+				BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */,
+				BE2C3583174036780037FCB4 /* SystemConfiguration.framework */,
+				BEFFB7A7173DEFF50043D770 /* iFRDDomotics */,
+				BEFFB7C5173DEFF50043D770 /* iFRDDomoticsTests */,
+				BEFFB7A0173DEFF50043D770 /* Frameworks */,
+				BEFFB79F173DEFF50043D770 /* Products */,
+				73C3CCDD6069403B8F6DD742 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		BEFFB79F173DEFF50043D770 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */,
+				BEFFB7BE173DEFF50043D770 /* iFRDDomoticsTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEFFB7A0173DEFF50043D770 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7A1173DEFF50043D770 /* UIKit.framework */,
+				BEFFB7A3173DEFF50043D770 /* Foundation.framework */,
+				BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */,
+				BEFFB7BF173DEFF50043D770 /* SenTestingKit.framework */,
+				72CC1BE36B104D9DA82450B2 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEFFB7A7173DEFF50043D770 /* iFRDDomotics */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7EE173F48860043D770 /* Model */,
+				BEFFB7B0173DEFF50043D770 /* AppDelegate.h */,
+				BEFFB7B1173DEFF50043D770 /* AppDelegate.m */,
+				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
+				BEFFB7DB173F1DC10043D770 /* LeftMenuViewController.h */,
+				BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */,
+				BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */,
+				BEFFB7E0173F1E480043D770 /* MainViewController.h */,
+				BEFFB7E1173F1E480043D770 /* MainViewController.m */,
+				BE2C3587174040690037FCB4 /* TemperatureStoryboard.storyboard */,
+				BE2C35891740409D0037FCB4 /* SensorTableViewController.h */,
+				BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */,
+				BE2C358C174044080037FCB4 /* TemperatureDetailViewController.h */,
+				BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */,
+				BE28CB591740A61D008E851E /* AboutViewController.h */,
+				BE28CB5A1740A61D008E851E /* AboutViewController.m */,
+				BE28CB5B1740A61D008E851E /* AboutViewController.xib */,
+			);
+			path = iFRDDomotics;
+			sourceTree = "<group>";
+		};
+		BEFFB7A8173DEFF50043D770 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */,
+				BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */,
+				BEFFB7A9173DEFF50043D770 /* iFRDDomotics-Info.plist */,
+				BEFFB7AA173DEFF50043D770 /* InfoPlist.strings */,
+				BEFFB7AD173DEFF50043D770 /* main.m */,
+				BEFFB7AF173DEFF50043D770 /* iFRDDomotics-Prefix.pch */,
+				BEFFB7B3173DEFF50043D770 /* Default.png */,
+				BEFFB7B5173DEFF50043D770 /* Default@2x.png */,
+				BEFFB7B7173DEFF50043D770 /* Default-568h@2x.png */,
+				BEFFB7E7173F27890043D770 /* theme.nss */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEFFB7C5173DEFF50043D770 /* iFRDDomoticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7CB173DEFF50043D770 /* iFRDDomoticsTests.h */,
+				BEFFB7CC173DEFF50043D770 /* iFRDDomoticsTests.m */,
+				BEFFB7C6173DEFF50043D770 /* Supporting Files */,
+			);
+			path = iFRDDomoticsTests;
+			sourceTree = "<group>";
+		};
+		BEFFB7C6173DEFF50043D770 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7C7173DEFF50043D770 /* iFRDDomoticsTests-Info.plist */,
+				BEFFB7C8173DEFF50043D770 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEFFB7EE173F48860043D770 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BEFFB7EF173F49460043D770 /* Sensor.h */,
+				BEFFB7F0173F49460043D770 /* Sensor.m */,
+				BEFFB7F2173F4B570043D770 /* FRDDomoticsClient.h */,
+				BEFFB7F3173F4B570043D770 /* FRDDomoticsClient.m */,
+				BE2C358F174079F20037FCB4 /* Temperature.h */,
+				BE2C3590174079F20037FCB4 /* Temperature.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEFFB79D173DEFF50043D770 /* iFRDDomotics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEFFB7D0173DEFF50043D770 /* Build configuration list for PBXNativeTarget "iFRDDomotics" */;
+			buildPhases = (
+				06B14D27ED1C4147A2E4E666 /* Check Pods Manifest.lock */,
+				BEFFB79A173DEFF50043D770 /* Sources */,
+				BEFFB79B173DEFF50043D770 /* Frameworks */,
+				BEFFB79C173DEFF50043D770 /* Resources */,
+				72BD90DF2340407F87435166 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iFRDDomotics;
+			productName = iFRDDomotics;
+			productReference = BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BEFFB7BD173DEFF50043D770 /* iFRDDomoticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEFFB7D3173DEFF50043D770 /* Build configuration list for PBXNativeTarget "iFRDDomoticsTests" */;
+			buildPhases = (
+				BEFFB7B9173DEFF50043D770 /* Sources */,
+				BEFFB7BA173DEFF50043D770 /* Frameworks */,
+				BEFFB7BB173DEFF50043D770 /* Resources */,
+				BEFFB7BC173DEFF50043D770 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEFFB7C4173DEFF50043D770 /* PBXTargetDependency */,
+			);
+			name = iFRDDomoticsTests;
+			productName = iFRDDomoticsTests;
+			productReference = BEFFB7BE173DEFF50043D770 /* iFRDDomoticsTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEFFB796173DEFF50043D770 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Sebastien;
+			};
+			buildConfigurationList = BEFFB799173DEFF50043D770 /* Build configuration list for PBXProject "iFRDDomotics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BEFFB795173DEFF50043D770;
+			productRefGroup = BEFFB79F173DEFF50043D770 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEFFB79D173DEFF50043D770 /* iFRDDomotics */,
+				BEFFB7BD173DEFF50043D770 /* iFRDDomoticsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEFFB79C173DEFF50043D770 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFFB7AC173DEFF50043D770 /* InfoPlist.strings in Resources */,
+				BEFFB7B4173DEFF50043D770 /* Default.png in Resources */,
+				BEFFB7B6173DEFF50043D770 /* Default@2x.png in Resources */,
+				BEFFB7B8173DEFF50043D770 /* Default-568h@2x.png in Resources */,
+				BEFFB7DF173F1DC10043D770 /* LeftMenuViewController.xib in Resources */,
+				BEFFB7E6173F25090043D770 /* Lato-Regular.ttf in Resources */,
+				BEFFB7E8173F27890043D770 /* theme.nss in Resources */,
+				BEFFB7EA173F37D80043D770 /* fontawesome-webfont.ttf in Resources */,
+				BE2C3588174040690037FCB4 /* TemperatureStoryboard.storyboard in Resources */,
+				BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFFB7BB173DEFF50043D770 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFFB7CA173DEFF50043D770 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06B14D27ED1C4147A2E4E666 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		72BD90DF2340407F87435166 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		BEFFB7BC173DEFF50043D770 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEFFB79A173DEFF50043D770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFFB7AE173DEFF50043D770 /* main.m in Sources */,
+				BEFFB7B2173DEFF50043D770 /* AppDelegate.m in Sources */,
+				BEFFB7DE173F1DC10043D770 /* LeftMenuViewController.m in Sources */,
+				BEFFB7E3173F1E480043D770 /* MainViewController.m in Sources */,
+				BEFFB7F1173F49460043D770 /* Sensor.m in Sources */,
+				BEFFB7F4173F4B570043D770 /* FRDDomoticsClient.m in Sources */,
+				BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */,
+				BE2C358E174044090037FCB4 /* TemperatureDetailViewController.m in Sources */,
+				BE2C3591174079F20037FCB4 /* Temperature.m in Sources */,
+				BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFFB7B9173DEFF50043D770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFFB7CD173DEFF50043D770 /* iFRDDomoticsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BEFFB7C4173DEFF50043D770 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEFFB79D173DEFF50043D770 /* iFRDDomotics */;
+			targetProxy = BEFFB7C3173DEFF50043D770 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BEFFB7AA173DEFF50043D770 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEFFB7AB173DEFF50043D770 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BEFFB7C8173DEFF50043D770 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEFFB7C9173DEFF50043D770 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEFFB7CE173DEFF50043D770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BEFFB7CF173DEFF50043D770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEFFB7D1173DEFF50043D770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C3CCDD6069403B8F6DD742 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iFRDDomotics/iFRDDomotics-Prefix.pch";
+				INFOPLIST_FILE = "iFRDDomotics/iFRDDomotics-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BEFFB7D2173DEFF50043D770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C3CCDD6069403B8F6DD742 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iFRDDomotics/iFRDDomotics-Prefix.pch";
+				INFOPLIST_FILE = "iFRDDomotics/iFRDDomotics-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BEFFB7D4173DEFF50043D770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iFRDDomotics.app/iFRDDomotics";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iFRDDomotics/iFRDDomotics-Prefix.pch";
+				INFOPLIST_FILE = "iFRDDomoticsTests/iFRDDomoticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BEFFB7D5173DEFF50043D770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iFRDDomotics.app/iFRDDomotics";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iFRDDomotics/iFRDDomotics-Prefix.pch";
+				INFOPLIST_FILE = "iFRDDomoticsTests/iFRDDomoticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEFFB799173DEFF50043D770 /* Build configuration list for PBXProject "iFRDDomotics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFFB7CE173DEFF50043D770 /* Debug */,
+				BEFFB7CF173DEFF50043D770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEFFB7D0173DEFF50043D770 /* Build configuration list for PBXNativeTarget "iFRDDomotics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFFB7D1173DEFF50043D770 /* Debug */,
+				BEFFB7D2173DEFF50043D770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEFFB7D3173DEFF50043D770 /* Build configuration list for PBXNativeTarget "iFRDDomoticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFFB7D4173DEFF50043D770 /* Debug */,
+				BEFFB7D5173DEFF50043D770 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEFFB796173DEFF50043D770 /* Project object */;
+}

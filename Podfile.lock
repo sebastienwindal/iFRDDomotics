@@ -1,0 +1,55 @@
+PODS:
+  - AFNetworking (1.2.1)
+  - FontAwesome-iOS (0.0.1)
+  - FormatterKit (1.1.1):
+    - FormatterKit/AddressFormatter
+    - FormatterKit/ArrayFormatter
+    - FormatterKit/LocationFormatter
+    - FormatterKit/OrdinalNumberFormatter
+    - FormatterKit/TimeIntervalFormatter
+    - FormatterKit/UnitOfInformationFormatter
+    - FormatterKit/URLRequestFormatter
+  - FormatterKit/AddressFormatter (1.1.1)
+  - FormatterKit/ArrayFormatter (1.1.1)
+  - FormatterKit/LocationFormatter (1.1.1)
+  - FormatterKit/OrdinalNumberFormatter (1.1.1)
+  - FormatterKit/TimeIntervalFormatter (1.1.1)
+  - FormatterKit/UnitOfInformationFormatter (1.1.1)
+  - FormatterKit/URLRequestFormatter (1.1.1)
+  - libextobjc/EXTKeyPathCoding (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.2.5)
+  - Mantle (1.0):
+    - libextobjc/EXTKeyPathCoding
+    - libextobjc/EXTScope
+  - MMDrawerController (0.0.2):
+    - MMDrawerController/Core
+    - MMDrawerController/MMDrawerBarButtonItem
+    - MMDrawerController/MMDrawerVisualStates
+  - MMDrawerController/Core (0.0.2)
+  - MMDrawerController/MMDrawerBarButtonItem (0.0.2):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.0.2):
+    - MMDrawerController/Core
+  - NUI (0.2.8)
+
+DEPENDENCIES:
+  - AFNetworking
+  - FontAwesome-iOS
+  - FormatterKit
+  - Mantle
+  - MMDrawerController (~> 0.0.2)
+  - NUI
+
+SPEC CHECKSUMS:
+  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  FontAwesome-iOS: d16e03666086da02c0c8993dc7317d816775f072
+  FormatterKit: b644b98d4495bdf11fc70f8f80867df5864eaf70
+  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
+  MMDrawerController: d4dd9a78d3a19600e005578e53f9b227ebc0d128
+  NUI: 748ac23ca27419135df1466a8a034e837feca170
+
+COCOAPODS: 0.19.1
