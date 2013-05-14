@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionValueLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *anHourAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *aDayAgoLabel;
 
 @property (nonatomic, strong) UIButton *reloadButton;
 @property (nonatomic, strong) CABasicAnimation *reloadRotationAnimation;
@@ -63,10 +65,18 @@
 
     self.unitLabel.nuiClass = @"unitSubtitleLabel";
     self.temperatureLabel.nuiClass = @"sensorValueLabel";
+
+    self.anHourAgoLabel.text = @"";
+    self.aDayAgoLabel.text = @"";
     
     [self updateUIFromSensor];
     
     [self fetchLastTemperature];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -82,6 +92,7 @@
     if (self.isLoading) return;
     
     self.isLoading = YES;
+    
     [[FRDDomoticsClient sharedClient] getLastTemperatureForSensor:self.sensor.sensorID
                                                           success:^(FRDDomoticsClient *domoClient, Temperature *temperature) {
                                                               self.temperature = temperature;
@@ -94,8 +105,8 @@
                                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                                   self.isLoading = NO;
                                                               });
-    
                                                           }];
+    
 }
 
 
@@ -168,6 +179,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)applicationDidBecomeActive:(UIApplication *)application
+{
+    if (-[self.temperature.mostRecentDate timeIntervalSinceNow] > 240) {
+        // if the data we are showing is older than 4 minutes old, trigger automatically a rest call.
+        [self fetchLastTemperature];
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end
