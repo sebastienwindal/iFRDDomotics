@@ -18,8 +18,6 @@
 @interface SensorTableViewController ()
 
 @property (nonatomic, strong) NSArray *sensors;
-@property (nonatomic, strong) UIButton *reloadButton;
-@property (nonatomic, strong) CABasicAnimation *reloadRotationAnimation;
 @property (nonatomic) BOOL isLoading;
 
 @end
@@ -45,44 +43,9 @@
     
     self.refreshControl = refreshControl;
     
-    self.reloadButton = [UIButton buttonWithType: UIButtonTypeCustom];
-    self.reloadButton.nuiClass = @"NavIconButton";
-    
-    self.reloadButton.frame = CGRectMake(0,0,30,20);
-    [self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
-    [self.reloadButton addTarget:self action:@selector(fetchSensorList:) forControlEvents:UIControlEventTouchUpInside];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
-
     [self fetchSensorList:self];
 }
 
--(CABasicAnimation *) reloadRotationAnimation
-{
-    if (!_reloadRotationAnimation) {
-        int repeat = 99999999;
-        NSTimeInterval duration = 1.0;
-
-        _reloadRotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-
-        _reloadRotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * duration ];
-        _reloadRotationAnimation.duration = duration;
-        _reloadRotationAnimation.cumulative = YES;
-        _reloadRotationAnimation.repeatCount = repeat;
-    }
-    return _reloadRotationAnimation;
-}
-
--(void) startRotateReloadButton
-{
-    [self.reloadButton.layer addAnimation:self.reloadRotationAnimation forKey:@"rotationAnimation"];
-}
-
--(void) endRotateReloadButton
-{
-    [self.reloadButton.layer removeAllAnimations];
-    self.reloadRotationAnimation = nil;
-}
 
 -(void) setIsLoading:(BOOL)isLoading
 {
@@ -92,12 +55,9 @@
     
     if (isLoading) {
         [self.refreshControl beginRefreshing];
-        [self startRotateReloadButton];
     } else {
         [self.refreshControl endRefreshing];
-        [self endRotateReloadButton];
     }
-
 }
 
 -(void) fetchSensorList:(id)sender
@@ -161,13 +121,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

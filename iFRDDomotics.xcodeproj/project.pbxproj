@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE018D001741CE7300571CDA /* UILabel+FadeInTextTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BE018CFF1741CE7300571CDA /* UILabel+FadeInTextTransition.m */; };
 		BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB5A1740A61D008E851E /* AboutViewController.m */; };
 		BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE28CB5B1740A61D008E851E /* AboutViewController.xib */; };
 		BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB621740B29A008E851E /* SensorTableViewCell.m */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		72CC1BE36B104D9DA82450B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C3CCDD6069403B8F6DD742 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BE018CFE1741CE7300571CDA /* UILabel+FadeInTextTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FadeInTextTransition.h"; sourceTree = "<group>"; };
+		BE018CFF1741CE7300571CDA /* UILabel+FadeInTextTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FadeInTextTransition.m"; sourceTree = "<group>"; };
 		BE28CB591740A61D008E851E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		BE28CB5A1740A61D008E851E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		BE28CB5B1740A61D008E851E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				BE28CB5E1740B17F008E851E /* Temperature */,
 				BEFFB7EE173F48860043D770 /* Models */,
 				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
+				BE018CFE1741CE7300571CDA /* UILabel+FadeInTextTransition.h */,
+				BE018CFF1741CE7300571CDA /* UILabel+FadeInTextTransition.m */,
 			);
 			path = iFRDDomotics;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				BE2C3591174079F20037FCB4 /* Temperature.m in Sources */,
 				BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */,
 				BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */,
+				BE018D001741CE7300571CDA /* UILabel+FadeInTextTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

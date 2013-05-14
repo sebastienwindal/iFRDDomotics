@@ -10,7 +10,8 @@
 #import "UILabel+NUI.h"
 #import "FRDDomoticsClient.h"
 #import "TTTTimeIntervalFormatter.h"
-
+#import "UILabel+FadeInTextTransition.h"
+#import "NSString+FontAwesome.h"
 
 @interface TemperatureDetailViewController ()
 
@@ -25,6 +26,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionValueLabel;
 
+
+@property (nonatomic, strong) UIButton *reloadButton;
+@property (nonatomic, strong) CABasicAnimation *reloadRotationAnimation;
+@property (nonatomic) BOOL isLoading;
 
 @end
 
@@ -42,6 +47,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.reloadButton = [UIButton buttonWithType: UIButtonTypeCustom];
+    self.reloadButton.nuiClass = @"NavIconButton";
+    
+    self.reloadButton.frame = CGRectMake(0,0,30,20);
+    [self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
+    [self.reloadButton addTarget:self action:@selector(fetchLastTemperature) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
     
     self.locationLabel.nuiClass = @"sensorLegendLabel";
     self.lastUpdateLabel.nuiClass = @"sensorLegendLabel";
@@ -55,17 +69,77 @@
     [self fetchLastTemperature];
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.temperatureLabel enableFadeInTransitionWithDuration:1.0];
+    [self.lastUpdatedValueLabel enableFadeInTransitionWithDuration:1.0];
+}
+
 -(void) fetchLastTemperature
 {
+    if (self.isLoading) return;
+    
+    self.isLoading = YES;
     [[FRDDomoticsClient sharedClient] getLastTemperatureForSensor:self.sensor.sensorID
                                                           success:^(FRDDomoticsClient *domoClient, Temperature *temperature) {
                                                               self.temperature = temperature;
-                                                              [self updateUIFromTemperature];
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  self.isLoading = NO;
+                                                                  [self updateUIFromTemperature];
+                                                              });
                                                           }
                                                           failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  self.isLoading = NO;
+                                                              });
     
                                                           }];
 }
+
+
+-(void) setIsLoading:(BOOL)isLoading
+{
+    if (isLoading == _isLoading) return;
+    
+    _isLoading = isLoading;
+    
+    if (isLoading) {
+        [self startRotateReloadButton];
+    } else {
+        [self endRotateReloadButton];
+    }
+}
+
+
+-(CABasicAnimation *) reloadRotationAnimation
+{
+    if (!_reloadRotationAnimation) {
+        int repeat = 99999999;
+        NSTimeInterval duration = 1.0;
+        
+        _reloadRotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        
+        _reloadRotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * duration ];
+        _reloadRotationAnimation.duration = duration;
+        _reloadRotationAnimation.cumulative = YES;
+        _reloadRotationAnimation.repeatCount = repeat;
+    }
+    return _reloadRotationAnimation;
+}
+
+-(void) startRotateReloadButton
+{
+    [self.reloadButton.layer addAnimation:self.reloadRotationAnimation forKey:@"rotationAnimation"];
+}
+
+-(void) endRotateReloadButton
+{
+    [self.reloadButton.layer removeAllAnimations];
+    self.reloadRotationAnimation = nil;
+}
+
 
 
 -(void) updateUIFromSensor
