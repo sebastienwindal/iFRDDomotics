@@ -1,3 +1,10 @@
 Pods/*
 *.xcuserstate
 *.xcbkptlist
+*.xcbkptlist
+
+iFRDDomotics.xcworkspace/xcuserdata/sebastien.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+iFRDDomotics.xcworkspace/xcuserdata/sebastien.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.xcuserstate
