@@ -83,8 +83,8 @@
 {
     [super viewDidAppear:animated];
     
-    [self.temperatureLabel enableFadeInTransitionWithDuration:1.0];
-    [self.lastUpdatedValueLabel enableFadeInTransitionWithDuration:1.0];
+    [self.temperatureLabel enableFadeInTransitionWithDuration:1.5];
+    [self.lastUpdatedValueLabel enableFadeInTransitionWithDuration:1.5];
 }
 
 -(void) fetchLastTemperature
@@ -183,8 +183,8 @@
 
 -(void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if (-[self.temperature.mostRecentDate timeIntervalSinceNow] > 240) {
-        // if the data we are showing is older than 4 minutes old, trigger automatically a rest call.
+    if (-[self.temperature.mostRecentDate timeIntervalSinceNow] > 120) {
+        // if the data we are showing is older than 2 minutes old, trigger automatically a rest call.
         [self fetchLastTemperature];
     }
 }
