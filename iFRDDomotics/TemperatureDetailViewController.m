@@ -85,6 +85,8 @@
     
     [self.temperatureLabel enableFadeInTransitionWithDuration:1.5];
     [self.lastUpdatedValueLabel enableFadeInTransitionWithDuration:1.5];
+    [self.aDayAgoLabel enableFadeInTransitionWithDuration:1.5];
+    [self.anHourAgoLabel enableFadeInTransitionWithDuration:1.5];
 }
 
 -(void) fetchLastTemperature
@@ -165,12 +167,52 @@
     if ([self.temperature.values count] == 0) {
         self.temperatureLabel.text = @"-";
     } else {
-        self.temperatureLabel.text = [NSString stringWithFormat:@"%1.1f", [self.temperature.values[0] floatValue]];
+        
+        float curTemp = [self.temperature.values[2] floatValue];
+        float anHourAgoTemp = [self.temperature.values[1] floatValue];
+        float aDayAgoTemp = [self.temperature.values[0] floatValue];
+        
+        self.temperatureLabel.text = [NSString stringWithFormat:@"%1.1f", curTemp];
         TTTTimeIntervalFormatter *timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         timeIntervalFormatter.futureDeicticExpression = @"ago";
         NSString *timeString = [timeIntervalFormatter stringForTimeIntervalFromDate:self.temperature.mostRecentDate
                                                                              toDate:[NSDate date]];
         self.lastUpdatedValueLabel.text = timeString;
+        
+        {
+            float delta = curTemp-anHourAgoTemp;
+            if (fabs(delta) < 0.1) {
+                self.anHourAgoLabel.text = @"Same as an hour ago";
+            } else {
+                NSString *str;
+                if (delta > 0) {
+                    str = [NSString stringWithFormat:@"%.1f C warmer that an hour ago", fabs(delta)];
+                } else {
+                    str = [NSString stringWithFormat:@"%.1f C colder that an hour ago", fabs(delta)];
+                }
+                NSMutableAttributedString *agoString = [[NSMutableAttributedString alloc] initWithString:str];
+                UIColor *color = (delta < 0) ? [UIColor blueColor] : [UIColor redColor];
+                [agoString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0,5)];
+                self.anHourAgoLabel.attributedText = agoString;
+            }
+        }
+        {
+            float delta = curTemp-aDayAgoTemp;
+            if (fabs(delta) < 0.1) {
+                self.aDayAgoLabel.text = @"Same as 24 hours ago";
+            } else {
+                NSString *str;
+                if (delta > 0) {
+                    str = [NSString stringWithFormat:@"%.1f C warmer that 24 hours ago", fabs(delta)];
+                } else {
+                    str = [NSString stringWithFormat:@"%.1f C colder that 24 hours ago", fabs(delta)];
+                }
+                NSMutableAttributedString *agoString = [[NSMutableAttributedString alloc] initWithString:str];
+                UIColor *color = (delta < 0) ? [UIColor blueColor] : [UIColor redColor];
+                [agoString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0,5)];
+                self.aDayAgoLabel.attributedText = agoString;
+            }
+        }
     }
 }
 

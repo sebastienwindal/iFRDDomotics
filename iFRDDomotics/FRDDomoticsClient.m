@@ -83,6 +83,35 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
                             success:(void(^)(FRDDomoticsClient *domoClient, Temperature *temperature))onSuccess
                             failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 {
+    [self getPath:[NSString stringWithFormat:@"temperature/last/%d", sensorID]
+       parameters:nil
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if (![responseObject isKindOfClass:[NSDictionary class]]) {
+                  if (onFailure)
+                      onFailure(self, @"Failed to get temperature. Unexpected response.");
+                  return;
+              }
+              
+              NSError *error;
+              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[Temperature class] error:&error];
+              if (error) {
+                  NSLog(@"Failed to parse temperature value. Error: %@", [error localizedDescription]);
+                  onFailure(self, [error localizedDescription]);
+              }
+              onSuccess(self, (Temperature *)jsonAdapter.model);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              if (onFailure) {
+                  onFailure(self, @"Failed to get sensor");
+              }
+          }];
+}
+
+
+-(void) getTemperatureHistoryForSensor:(int)sensorID
+                            success:(void(^)(FRDDomoticsClient *domoClient, Temperature *temperature))onSuccess
+                            failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+{
     [self getPath:[NSString stringWithFormat:@"temperature/raw/%d?numberPoints=1", sensorID]
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
