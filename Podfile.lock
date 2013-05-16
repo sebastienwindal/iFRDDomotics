@@ -1,6 +1,5 @@
 PODS:
   - AFNetworking (1.2.1)
-  - FontAwesome-iOS (0.0.1)
   - FormatterKit (1.1.1):
     - FormatterKit/AddressFormatter
     - FormatterKit/ArrayFormatter
@@ -37,15 +36,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - FontAwesome-iOS
   - FormatterKit
   - Mantle
   - MMDrawerController (~> 0.0.2)
   - NUI
 
 SPEC CHECKSUMS:
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
-  FontAwesome-iOS: d16e03666086da02c0c8993dc7317d816775f072
+  AFNetworking: d1ba5908b233189e424e101721acef7905b58efb
   FormatterKit: b644b98d4495bdf11fc70f8f80867df5864eaf70
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7

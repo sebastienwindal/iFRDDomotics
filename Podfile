@@ -1,6 +1,5 @@
 pod 'MMDrawerController', '~> 0.0.2'
 pod 'NUI'
-pod 'FontAwesome-iOS'
 pod 'Mantle'
 pod 'AFNetworking'
 pod 'FormatterKit'

@@ -139,6 +139,7 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
 
 + (FRDDomoticsClient *)sharedClient {
     static FRDDomoticsClient *_sharedClient = nil;
+    _sharedClient.allowsInvalidSSLCertificate = YES;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[FRDDomoticsClient alloc] initWithBaseURL:[NSURL URLWithString:kFRDDomoticsAPIBaseURLString]];
