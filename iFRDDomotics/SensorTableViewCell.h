@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FRDDomoticsClient.h"
 
 @interface SensorTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *sensorLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sensorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sensorTypeIconLabel;
+@property (nonatomic) kSensorCapabilities type;
 
 @end

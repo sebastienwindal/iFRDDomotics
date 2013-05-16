@@ -21,6 +21,8 @@
 		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
 		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
 		BEC866A5174480AF00730259 /* UnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A4174480AF00730259 /* UnitConverter.m */; };
+		BED7904017448705005DB9E5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED7903F17448705005DB9E5 /* icomoon.ttf */; };
+		BED79043174487BF005DB9E5 /* FontIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* FontIcon.m */; };
 		BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
 		BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
 		BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */; };
@@ -38,7 +40,6 @@
 		BEFFB7DE173F1DC10043D770 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7DC173F1DC10043D770 /* LeftMenuViewController.m */; };
 		BEFFB7DF173F1DC10043D770 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */; };
 		BEFFB7E3173F1E480043D770 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7E1173F1E480043D770 /* MainViewController.m */; };
-		BEFFB7E6173F25090043D770 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */; };
 		BEFFB7E8173F27890043D770 /* theme.nss in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E7173F27890043D770 /* theme.nss */; };
 		BEFFB7EA173F37D80043D770 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */; };
 		BEFFB7F1173F49460043D770 /* Sensor.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFB7F0173F49460043D770 /* Sensor.m */; };
@@ -82,6 +83,9 @@
 		BEC866A11744761400730259 /* PersistentStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStorage.m; sourceTree = "<group>"; };
 		BEC866A3174480AF00730259 /* UnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitConverter.h; sourceTree = "<group>"; };
 		BEC866A4174480AF00730259 /* UnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitConverter.m; sourceTree = "<group>"; };
+		BED7903F17448705005DB9E5 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
+		BED79041174487BF005DB9E5 /* FontIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontIcon.h; sourceTree = "<group>"; };
+		BED79042174487BF005DB9E5 /* FontIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontIcon.m; sourceTree = "<group>"; };
 		BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFRDDomotics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFFB7A1173DEFF50043D770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEFFB7A3173DEFF50043D770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,7 +110,6 @@
 		BEFFB7DD173F1DC10043D770 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewController.xib; sourceTree = "<group>"; };
 		BEFFB7E0173F1E480043D770 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BEFFB7E1173F1E480043D770 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		BEFFB7E7173F27890043D770 /* theme.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = theme.nss; sourceTree = "<group>"; };
 		BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		BEFFB7EF173F49460043D770 /* Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sensor.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
 				BE018CFE1741CE7300571CDA /* UILabel+FadeInTextTransition.h */,
 				BE018CFF1741CE7300571CDA /* UILabel+FadeInTextTransition.m */,
+				BED79041174487BF005DB9E5 /* FontIcon.h */,
+				BED79042174487BF005DB9E5 /* FontIcon.m */,
 			);
 			path = iFRDDomotics;
 			sourceTree = "<group>";
@@ -242,7 +247,7 @@
 		BEFFB7A8173DEFF50043D770 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BEFFB7E5173F25090043D770 /* Lato-Regular.ttf */,
+				BED7903F17448705005DB9E5 /* icomoon.ttf */,
 				BEFFB7E9173F37D80043D770 /* fontawesome-webfont.ttf */,
 				BEFFB7A9173DEFF50043D770 /* iFRDDomotics-Info.plist */,
 				BEFFB7AA173DEFF50043D770 /* InfoPlist.strings */,
@@ -370,12 +375,12 @@
 				BEFFB7B6173DEFF50043D770 /* Default@2x.png in Resources */,
 				BEFFB7B8173DEFF50043D770 /* Default-568h@2x.png in Resources */,
 				BEFFB7DF173F1DC10043D770 /* LeftMenuViewController.xib in Resources */,
-				BEFFB7E6173F25090043D770 /* Lato-Regular.ttf in Resources */,
 				BEFFB7E8173F27890043D770 /* theme.nss in Resources */,
 				BEFFB7EA173F37D80043D770 /* fontawesome-webfont.ttf in Resources */,
 				BE2C3588174040690037FCB4 /* TemperatureStoryboard.storyboard in Resources */,
 				BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */,
 				BEC8669C17446F6600730259 /* Settings.storyboard in Resources */,
+				BED7904017448705005DB9E5 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +458,7 @@
 				BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */,
 				BEC866A21744761400730259 /* PersistentStorage.m in Sources */,
 				BEC866A5174480AF00730259 /* UnitConverter.m in Sources */,
+				BED79043174487BF005DB9E5 /* FontIcon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

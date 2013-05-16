@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "NSString+FontAwesome.h"
 #import "UIButton+NUI.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerController.h"

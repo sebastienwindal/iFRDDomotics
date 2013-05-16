@@ -26,7 +26,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lato-Regular.ttf</string>
+		<string>icomoon.ttf</string>
 		<string>fontawesome-webfont.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>

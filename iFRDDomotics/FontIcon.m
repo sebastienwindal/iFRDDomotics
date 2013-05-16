@@ -8,6 +8,16 @@
 
 #import "FontIcon.h"
 
+
+
+
 @implementation FontIcon
+
++(NSString *)iconString:(char *)icon
+{
+    //char value[4] = "\ue000";
+    NSString *string = [NSString stringWithUTF8String:icon];
+    return string;
+}
 
 @end

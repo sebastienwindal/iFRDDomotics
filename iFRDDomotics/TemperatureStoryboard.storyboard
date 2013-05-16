@@ -21,17 +21,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I8C-bC-5J7">
-                                            <rect key="frame" x="29" y="0.0" width="251" height="31"/>
+                                            <rect key="frame" x="46" y="0.0" width="234" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmC-vg-0uY">
-                                            <rect key="frame" x="29" y="28" width="251" height="21"/>
+                                            <rect key="frame" x="46" y="28" width="234" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jg0-H3-s30">
+                                            <rect key="frame" x="0.0" y="0.0" width="42" height="51"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
@@ -40,6 +47,7 @@
                                 <connections>
                                     <outlet property="sensorLocationLabel" destination="ZmC-vg-0uY" id="tWF-ZI-Cad"/>
                                     <outlet property="sensorNameLabel" destination="I8C-bC-5J7" id="MSL-BJ-foZ"/>
+                                    <outlet property="sensorTypeIconLabel" destination="jg0-H3-s30" id="jDX-S6-UKJ"/>
                                     <segue destination="ERT-7T-u52" kind="push" identifier="TemperatureDetailSegue" id="aqz-Ea-Utw"/>
                                 </connections>
                             </tableViewCell>
@@ -179,6 +187,7 @@
             <relationships>
                 <relationship kind="outlet" name="sensorLocationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sensorNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sensorTypeIconLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SensorTableViewController" superclassName="UITableViewController">

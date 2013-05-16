@@ -11,9 +11,8 @@
 #import "FRDDomoticsClient.h"
 #import "TTTTimeIntervalFormatter.h"
 #import "UILabel+FadeInTextTransition.h"
-#import "NSString+FontAwesome.h"
 #import "UnitConverter.h"
-
+#import "FontIcon.h"
 
 @interface TemperatureDetailViewController ()
 
@@ -56,7 +55,8 @@
     self.reloadButton.nuiClass = @"NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
-    [self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
+    //[self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
+    [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchLastTemperature) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];

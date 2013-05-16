@@ -34,9 +34,16 @@ BarButton {
 
 Button:NavIconButton {
     font-color: @secondaryFontColor;
-    font-name: fontawesome;
-    font-size: 20;
+    font-name: icomoon;
+    font-size: 22;
     width: 30;
+    text-align: center;
+}
+
+Label:SensorTypeIconLabel {
+    font-color: @secondaryFontColor;
+    font-name: icomoon;
+    font-size: 22;
     text-align: center;
 }
 

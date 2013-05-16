@@ -11,7 +11,6 @@
 #import "Sensor.h"
 #import "TemperatureDetailViewController.h"
 #import "UIButton+NUI.h"
-#import "NSString+FontAwesome.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SensorTableViewCell.h"
 
@@ -114,6 +113,7 @@
     cell.sensorLocationLabel.text = sensor.location;
     cell.sensorLocationLabel.nuiClass = @"sensorCellLocation";
     cell.sensorNameLabel.nuiClass = @"sensorCellName";
+    cell.type = kSensorCapabilities_TEMPERATURE;
     return cell;
 }
 

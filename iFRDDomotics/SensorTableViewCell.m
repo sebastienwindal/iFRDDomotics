@@ -8,6 +8,9 @@
 
 #import "SensorTableViewCell.h"
 #import "UILabel+NUI.h"
+#import "FontIcon.h"
+#import "Sensor.h"
+#import "FRDDomoticsClient.h"
 
 @implementation SensorTableViewCell
 
@@ -34,6 +37,20 @@
     
     self.sensorLocationLabel.nuiClass = @"sensorCellLocation";
     self.sensorNameLabel.nuiClass = @"sensorCellName";
+    self.sensorTypeIconLabel.nuiClass = @"SensorTypeIconLabel";
+    
+    self.sensorTypeIconLabel.font = [UIFont fontWithName:@"icomoon" size:20.0];
+}
+
+-(void) setType:(kSensorCapabilities)type
+{
+    if (type == kSensorCapabilities_TEMPERATURE) {
+        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_TEMPERATURE_2];
+    } else if (type == kSensorCapabilities_HUMIDITY) {
+        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_WATER_4];
+    } else if (type == kSensorCapabilities_LUMMINOSITY) {
+        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_SUN_7];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
