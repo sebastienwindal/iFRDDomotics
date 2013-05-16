@@ -12,7 +12,8 @@ typedef enum {
     kLeftMenuItem_LOGIN,
     kLeftMenuItem_SENSORS,
     kLeftMenuItem_TEMPERATURE,
-    kLeftMenuItem_ABOUT
+    kLeftMenuItem_ABOUT,
+    kLeftMenuItem_SETTINGS
 } kLeftMenuItem;
 
 @class LeftMenuViewController;

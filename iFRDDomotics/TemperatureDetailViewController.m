@@ -12,6 +12,8 @@
 #import "TTTTimeIntervalFormatter.h"
 #import "UILabel+FadeInTextTransition.h"
 #import "NSString+FontAwesome.h"
+#import "UnitConverter.h"
+
 
 @interface TemperatureDetailViewController ()
 
@@ -69,6 +71,7 @@
     self.anHourAgoLabel.text = @"";
     self.aDayAgoLabel.text = @"";
     
+    self.unitLabel.text = [UnitConverter temperatureUnitName];
     [self updateUIFromSensor];
     
     [self fetchLastTemperature];
@@ -168,9 +171,9 @@
         self.temperatureLabel.text = @"-";
     } else {
         
-        float curTemp = [self.temperature.values[2] floatValue];
-        float anHourAgoTemp = [self.temperature.values[1] floatValue];
-        float aDayAgoTemp = [self.temperature.values[0] floatValue];
+        float curTemp = [UnitConverter toLocaleTemperature:[self.temperature.values[2] floatValue]];
+        float anHourAgoTemp = [UnitConverter toLocaleTemperature:[self.temperature.values[1] floatValue]];
+        float aDayAgoTemp = [UnitConverter toLocaleTemperature:[self.temperature.values[0] floatValue] ];
         
         self.temperatureLabel.text = [NSString stringWithFormat:@"%1.1f", curTemp];
         TTTTimeIntervalFormatter *timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
@@ -186,9 +189,9 @@
             } else {
                 NSString *str;
                 if (delta > 0) {
-                    str = [NSString stringWithFormat:@"%.1f C warmer that an hour ago", fabs(delta)];
+                    str = [NSString stringWithFormat:@"%.1f %@ warmer that an hour ago", fabs(delta), [UnitConverter temperatureUnitLetter]];
                 } else {
-                    str = [NSString stringWithFormat:@"%.1f C colder that an hour ago", fabs(delta)];
+                    str = [NSString stringWithFormat:@"%.1f %@ colder that an hour ago", fabs(delta), [UnitConverter temperatureUnitLetter]];
                 }
                 NSMutableAttributedString *agoString = [[NSMutableAttributedString alloc] initWithString:str];
                 UIColor *color = (delta < 0) ? [UIColor blueColor] : [UIColor redColor];
@@ -203,9 +206,9 @@
             } else {
                 NSString *str;
                 if (delta > 0) {
-                    str = [NSString stringWithFormat:@"%.1f C warmer that 24 hours ago", fabs(delta)];
+                    str = [NSString stringWithFormat:@"%.1f %@ warmer that 24 hours ago", fabs(delta), [UnitConverter temperatureUnitLetter]];
                 } else {
-                    str = [NSString stringWithFormat:@"%.1f C colder that 24 hours ago", fabs(delta)];
+                    str = [NSString stringWithFormat:@"%.1f %@ colder that 24 hours ago", fabs(delta), [UnitConverter temperatureUnitLetter]];
                 }
                 NSMutableAttributedString *agoString = [[NSMutableAttributedString alloc] initWithString:str];
                 UIColor *color = (delta < 0) ? [UIColor blueColor] : [UIColor redColor];

@@ -17,6 +17,10 @@
 		BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */; };
 		BE2C358E174044090037FCB4 /* TemperatureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */; };
 		BE2C3591174079F20037FCB4 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* Temperature.m */; };
+		BEC8669C17446F6600730259 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC8669B17446F6600730259 /* Settings.storyboard */; };
+		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
+		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
+		BEC866A5174480AF00730259 /* UnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A4174480AF00730259 /* UnitConverter.m */; };
 		BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
 		BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
 		BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */; };
@@ -71,6 +75,13 @@
 		BE2C358D174044080037FCB4 /* TemperatureDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDetailViewController.m; sourceTree = "<group>"; };
 		BE2C358F174079F20037FCB4 /* Temperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temperature.h; sourceTree = "<group>"; };
 		BE2C3590174079F20037FCB4 /* Temperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temperature.m; sourceTree = "<group>"; };
+		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		BEC8669D1744715A00730259 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		BEC8669E1744715A00730259 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		BEC866A01744761400730259 /* PersistentStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStorage.h; sourceTree = "<group>"; };
+		BEC866A11744761400730259 /* PersistentStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStorage.m; sourceTree = "<group>"; };
+		BEC866A3174480AF00730259 /* UnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitConverter.h; sourceTree = "<group>"; };
+		BEC866A4174480AF00730259 /* UnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitConverter.m; sourceTree = "<group>"; };
 		BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFRDDomotics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFFB7A1173DEFF50043D770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEFFB7A3173DEFF50043D770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +176,16 @@
 			name = "Left Menu";
 			sourceTree = "<group>";
 		};
+		BEC8669A17446F4200730259 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BEC8669B17446F6600730259 /* Settings.storyboard */,
+				BEC8669D1744715A00730259 /* SettingsTableViewController.h */,
+				BEC8669E1744715A00730259 /* SettingsTableViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		BEFFB795173DEFF50043D770 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +223,7 @@
 		BEFFB7A7173DEFF50043D770 /* iFRDDomotics */ = {
 			isa = PBXGroup;
 			children = (
+				BEC8669A17446F4200730259 /* Settings */,
 				BEFFB7B0173DEFF50043D770 /* AppDelegate.h */,
 				BEFFB7B1173DEFF50043D770 /* AppDelegate.m */,
 				BEFFB7E0173F1E480043D770 /* MainViewController.h */,
@@ -262,6 +284,10 @@
 				BEFFB7F3173F4B570043D770 /* FRDDomoticsClient.m */,
 				BE2C358F174079F20037FCB4 /* Temperature.h */,
 				BE2C3590174079F20037FCB4 /* Temperature.m */,
+				BEC866A01744761400730259 /* PersistentStorage.h */,
+				BEC866A11744761400730259 /* PersistentStorage.m */,
+				BEC866A3174480AF00730259 /* UnitConverter.h */,
+				BEC866A4174480AF00730259 /* UnitConverter.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -349,6 +375,7 @@
 				BEFFB7EA173F37D80043D770 /* fontawesome-webfont.ttf in Resources */,
 				BE2C3588174040690037FCB4 /* TemperatureStoryboard.storyboard in Resources */,
 				BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */,
+				BEC8669C17446F6600730259 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +450,9 @@
 				BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */,
 				BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */,
 				BE018D001741CE7300571CDA /* UILabel+FadeInTextTransition.m in Sources */,
+				BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */,
+				BEC866A21744761400730259 /* PersistentStorage.m in Sources */,
+				BEC866A5174480AF00730259 /* UnitConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

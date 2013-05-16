@@ -65,15 +65,23 @@
         [self.drawerController closeDrawerAnimated:YES completion:nil];
         return;
     }
+    
     _currentItem = currentItem;
+    
     if (currentItem == kLeftMenuItem_TEMPERATURE) {
         UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"TemperatureStoryboard"
                                                                         bundle:nil];
         [self.drawerController setCenterViewController:[temperatureStoryboard instantiateInitialViewController] withCloseAnimation:YES completion:nil];
-        
     } else if (currentItem == kLeftMenuItem_ABOUT) {
         AboutViewController *aboutViewController = [[AboutViewController alloc] init];
-        [self.drawerController setCenterViewController:aboutViewController withCloseAnimation:YES completion:nil];
+        [self.drawerController setCenterViewController:aboutViewController
+                                    withCloseAnimation:YES
+                                            completion:nil];
+    } else if (currentItem == kLeftMenuItem_SETTINGS) {
+        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"Settings" bundle:nil];
+        [self.drawerController setCenterViewController:[settingsStoryboard instantiateInitialViewController]
+                                    withCloseAnimation:YES
+                                            completion:nil];
     }
     
     self.drawerController.centerHiddenInteractionMode = MMDrawerOpenCenterInteractionModeFull;

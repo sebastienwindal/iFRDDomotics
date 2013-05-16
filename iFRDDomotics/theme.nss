@@ -8,6 +8,14 @@ TableCell {
     background-color-selected: #f8f8f8;
 }
 
+TableCell:SettingsCell {
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+    font-color-highlighted: @primaryFontColor;
+}
+
+
+
 NavigationBar {
     background-tint-color: @primaryBackgroundColor;
     font-name: @FontName;

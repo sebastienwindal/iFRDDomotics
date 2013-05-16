@@ -35,6 +35,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)settingsAction:(id)sender {
+    [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_SETTINGS];
+}
+
 - (IBAction)sensorsAction:(id)sender {
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_SENSORS];
 }
