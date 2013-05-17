@@ -9,15 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 #import "Temperature.h"
+#import "Sensor.h"
+
 
 @interface FRDDomoticsClient : AFHTTPClient
-
-typedef enum {
-    kSensorCapabilities_TEMPERATURE     = 0x00000001,
-    kSensorCapabilities_HUMIDITY        = 0x00000002,
-    kSensorCapabilities_LUMMINOSITY     = 0x00000004,
-    kSensorCapabilities_ALL             = 0xFFFFFFFF
-} kSensorCapabilities;
 
 -(void) getSensors:(kSensorCapabilities)capabilities
            success:(void(^)(FRDDomoticsClient *domoClient, NSArray *sensors))onSuccess

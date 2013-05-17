@@ -10,7 +10,7 @@
 #import "Sensor.h"
 #import "Temperature.h"
 
-@interface TemperatureDetailViewController : UIViewController
+@interface SensorCurrentValueDetailViewController : UIViewController
 
 @property (nonatomic, strong) Sensor *sensor;
 @property (nonatomic, strong) Temperature *temperature;

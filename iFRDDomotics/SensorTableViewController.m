@@ -9,7 +9,7 @@
 #import "SensorTableViewController.h"
 #import "FRDDomoticsClient.h"
 #import "Sensor.h"
-#import "TemperatureDetailViewController.h"
+#import "SensorCurrentValueDetailViewController.h"
 #import "UIButton+NUI.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SensorTableViewCell.h"
@@ -73,7 +73,28 @@
                                          success:^(FRDDomoticsClient *domoClient, NSArray *sensors) {
                                              // perform on ui thread.
                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                 self.sensors = sensors;
+                                                 // in case we have a multi-sensor, separate multi-sensor in
+                                                 // individual ones.
+                                                 NSMutableArray *individualSensors = [[NSMutableArray alloc] init];
+                                                 for (Sensor *sensor in sensors) {
+                                                     
+                                                     if (sensor.capabilities & kSensorCapabilities_HUMIDITY) {
+                                                         Sensor *newSensor = [sensor copy];
+                                                         newSensor.capabilities = kSensorCapabilities_HUMIDITY;
+                                                         [individualSensors addObject:newSensor];
+                                                     }
+                                                     if (sensor.capabilities & kSensorCapabilities_TEMPERATURE) {
+                                                         Sensor *newSensor = [sensor copy];
+                                                         newSensor.capabilities = kSensorCapabilities_TEMPERATURE;
+                                                         [individualSensors addObject:newSensor];
+                                                     }
+                                                     if (sensor.capabilities & kSensorCapabilities_LUMMINOSITY) {
+                                                         Sensor *newSensor = [sensor copy];
+                                                         newSensor.capabilities = kSensorCapabilities_LUMMINOSITY;
+                                                         [individualSensors addObject:newSensor];
+                                                     }
+                                                 }
+                                                 self.sensors = [individualSensors copy];
                                                  [self.tableView reloadData];
                                                  self.isLoading = NO;
                                              });
@@ -113,7 +134,7 @@
     cell.sensorLocationLabel.text = sensor.location;
     cell.sensorLocationLabel.nuiClass = @"sensorCellLocation";
     cell.sensorNameLabel.nuiClass = @"sensorCellName";
-    cell.type = kSensorCapabilities_TEMPERATURE;
+    cell.type = sensor.capabilities;
     return cell;
 }
 
@@ -121,13 +142,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"TemperatureDetailSegue"]) {
-        TemperatureDetailViewController *vc = (TemperatureDetailViewController *) segue.destinationViewController;
-        vc.sensor = self.sensors[0];
+        SensorCurrentValueDetailViewController *vc = (SensorCurrentValueDetailViewController *) segue.destinationViewController;
+        
+        NSIndexPath* pathOfTheCell = [self.tableView indexPathForCell:sender];
+        NSInteger rowOfTheCell = [pathOfTheCell row];
+        
+        vc.sensor = self.sensors[rowOfTheCell];
     }
 }
 @end

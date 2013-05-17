@@ -54,7 +54,7 @@
     [self.drawerController.view setFrame:self.view.bounds];
     [self.view addSubview:self.drawerController.view];
     
-    self.currentItem = kLeftMenuItem_TEMPERATURE;
+    self.currentItem = kLeftMenuItem_SENSORS;
 }
 
 
@@ -67,8 +67,14 @@
     
     _currentItem = currentItem;
     
-    if (currentItem == kLeftMenuItem_TEMPERATURE) {
-        UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"TemperatureStoryboard"
+    if (currentItem == kLeftMenuItem_SENSORS) {
+        UIStoryboard *sensorsStoryboard = [UIStoryboard storyboardWithName:@"Sensors"
+                                                                        bundle:nil];
+        [self.drawerController setCenterViewController:[sensorsStoryboard instantiateInitialViewController]
+                                    withCloseAnimation:YES
+                                            completion:nil];
+    } else if (currentItem == kLeftMenuItem_TEMPERATURE) {
+        UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"Temperature"
                                                                         bundle:nil];
         [self.drawerController setCenterViewController:[temperatureStoryboard instantiateInitialViewController] withCloseAnimation:YES completion:nil];
     } else if (currentItem == kLeftMenuItem_ABOUT) {

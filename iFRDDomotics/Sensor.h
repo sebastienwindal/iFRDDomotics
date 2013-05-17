@@ -11,13 +11,22 @@
 #import "MTLJSONAdapter.h"
 
 
+typedef enum {
+    kSensorCapabilities_TEMPERATURE     = 0x00000001,
+    kSensorCapabilities_HUMIDITY        = 0x00000002,
+    kSensorCapabilities_LUMMINOSITY     = 0x00000004,
+    kSensorCapabilities_ALL             = 0xFFFFFFFF
+} kSensorCapabilities;
+
+
+
 @interface Sensor : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic) NSString *sensorDescription;
 @property (nonatomic) NSString *location;
 @property (nonatomic) NSString *name;
 @property (nonatomic) int sensorID;
-@property (nonatomic) NSArray * capabilities;
+@property (nonatomic) kSensorCapabilities capabilities;
 
 
 @end

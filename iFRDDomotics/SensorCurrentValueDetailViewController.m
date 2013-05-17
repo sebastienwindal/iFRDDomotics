@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Sebastien. All rights reserved.
 //
 
-#import "TemperatureDetailViewController.h"
+#import "SensorCurrentValueDetailViewController.h"
 #import "UILabel+NUI.h"
 #import "FRDDomoticsClient.h"
 #import "TTTTimeIntervalFormatter.h"
@@ -14,7 +14,7 @@
 #import "UnitConverter.h"
 #import "FontIcon.h"
 
-@interface TemperatureDetailViewController ()
+@interface SensorCurrentValueDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *unitLabel;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation TemperatureDetailViewController
+@implementation SensorCurrentValueDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +50,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.sensor.capabilities & kSensorCapabilities_TEMPERATURE) {
+        self.navigationItem.title = @"Temperature";
+        self.unitLabel.text = [UnitConverter temperatureUnitName];
+    }
+    else if (self.sensor.capabilities & kSensorCapabilities_HUMIDITY) {
+        self.navigationItem.title = @"Humidity";
+        self.unitLabel.text = @"%";
+    }
+    else if (self.sensor.capabilities & kSensorCapabilities_LUMMINOSITY) {
+        self.navigationItem.title = @"Luminosity";
+        self.unitLabel.text = @"lux";
+    }
 
     self.reloadButton = [UIButton buttonWithType: UIButtonTypeCustom];
     self.reloadButton.nuiClass = @"NavIconButton";
@@ -71,7 +84,7 @@
     self.anHourAgoLabel.text = @"";
     self.aDayAgoLabel.text = @"";
     
-    self.unitLabel.text = [UnitConverter temperatureUnitName];
+    
     [self updateUIFromSensor];
     
     [self fetchLastTemperature];
