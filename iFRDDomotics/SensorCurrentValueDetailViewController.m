@@ -70,7 +70,7 @@
     self.reloadButton.frame = CGRectMake(0,0,30,20);
     //[self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
     [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
-    [self.reloadButton addTarget:self action:@selector(fetchLastTemperature) forControlEvents:UIControlEventTouchUpInside];
+    [self.reloadButton addTarget:self action:@selector(fetchLastValue) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
     
@@ -87,7 +87,7 @@
     
     [self updateUIFromSensor];
     
-    [self fetchLastTemperature];
+    [self fetchLastValue];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationDidBecomeActive:)
@@ -105,7 +105,7 @@
     [self.anHourAgoLabel enableFadeInTransitionWithDuration:1.5];
 }
 
--(void) fetchLastTemperature
+-(void) fetchLastValue
 {
     if (self.isLoading) return;
     
@@ -243,7 +243,7 @@
 {
     if (-[self.temperature.mostRecentDate timeIntervalSinceNow] > 120) {
         // if the data we are showing is older than 2 minutes old, trigger automatically a rest call.
-        [self fetchLastTemperature];
+        [self fetchLastValue];
     }
 }
 
