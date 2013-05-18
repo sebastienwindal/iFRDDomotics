@@ -79,37 +79,47 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
           }];
 }
 
--(void) getLastTemperatureForSensor:(int)sensorID
-                            success:(void(^)(FRDDomoticsClient *domoClient, Temperature *temperature))onSuccess
-                            failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+-(void) getLastValueForSensor:(int)sensorID
+              measurementType:(kSensorCapabilities)measurementType
+                      success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess
+                      failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure
 {
-    [self getPath:[NSString stringWithFormat:@"temperature/last/%d", sensorID]
+    
+    NSString *url;
+    if (measurementType == kSensorCapabilities_TEMPERATURE)
+        url = [NSString stringWithFormat:@"temperature/last/%d", sensorID];
+    else if (measurementType == kSensorCapabilities_HUMIDITY)
+        url = [NSString stringWithFormat:@"humidity/last/%d", sensorID];
+    else if (measurementType == kSensorCapabilities_LUMMINOSITY)
+        url = [NSString stringWithFormat:@"luminosity/last/%d", sensorID];
+    
+    [self getPath:url
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if (![responseObject isKindOfClass:[NSDictionary class]]) {
                   if (onFailure)
-                      onFailure(self, @"Failed to get temperature. Unexpected response.");
+                      onFailure(self, @"Failed to get measurement value. Unexpected response.");
                   return;
               }
               
               NSError *error;
-              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[Temperature class] error:&error];
+              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[SensorMeasurement class] error:&error];
               if (error) {
-                  NSLog(@"Failed to parse temperature value. Error: %@", [error localizedDescription]);
+                  NSLog(@"Failed to parse measurement value. Error: %@", [error localizedDescription]);
                   onFailure(self, [error localizedDescription]);
               }
-              onSuccess(self, (Temperature *)jsonAdapter.model);
+              onSuccess(self, (SensorMeasurement *)jsonAdapter.model);
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               if (onFailure) {
-                  onFailure(self, @"Failed to get sensor");
+                  onFailure(self, @"Failed to get measurement sensor");
               }
           }];
 }
 
 
 -(void) getTemperatureHistoryForSensor:(int)sensorID
-                            success:(void(^)(FRDDomoticsClient *domoClient, Temperature *temperature))onSuccess
+                            success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess
                             failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 {
     [self getPath:[NSString stringWithFormat:@"temperature/raw/%d?numberPoints=1", sensorID]
@@ -122,12 +132,12 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
               }
               
               NSError *error;
-              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[Temperature class] error:&error];
+              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[SensorMeasurement class] error:&error];
               if (error) {
                   NSLog(@"Failed to parse temperature value. Error: %@", [error localizedDescription]);
                   onFailure(self, [error localizedDescription]);
               }
-              onSuccess(self, (Temperature *)jsonAdapter.model);
+              onSuccess(self, (SensorMeasurement *)jsonAdapter.model);
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               if (onFailure) {

@@ -16,7 +16,7 @@
 		BE2C3588174040690037FCB4 /* Sensors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2C3587174040690037FCB4 /* Sensors.storyboard */; };
 		BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */; };
 		BE2C358E174044090037FCB4 /* SensorCurrentValueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */; };
-		BE2C3591174079F20037FCB4 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* Temperature.m */; };
+		BE2C3591174079F20037FCB4 /* SensorMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* SensorMeasurement.m */; };
 		BEC8669C17446F6600730259 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC8669B17446F6600730259 /* Settings.storyboard */; };
 		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
 		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
@@ -74,8 +74,8 @@
 		BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewController.m; sourceTree = "<group>"; };
 		BE2C358C174044080037FCB4 /* SensorCurrentValueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorCurrentValueDetailViewController.h; sourceTree = "<group>"; };
 		BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorCurrentValueDetailViewController.m; sourceTree = "<group>"; };
-		BE2C358F174079F20037FCB4 /* Temperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Temperature.h; sourceTree = "<group>"; };
-		BE2C3590174079F20037FCB4 /* Temperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Temperature.m; sourceTree = "<group>"; };
+		BE2C358F174079F20037FCB4 /* SensorMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMeasurement.h; sourceTree = "<group>"; };
+		BE2C3590174079F20037FCB4 /* SensorMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMeasurement.m; sourceTree = "<group>"; };
 		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BEC8669D1744715A00730259 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		BEC8669E1744715A00730259 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 				BEFFB7F0173F49460043D770 /* Sensor.m */,
 				BEFFB7F2173F4B570043D770 /* FRDDomoticsClient.h */,
 				BEFFB7F3173F4B570043D770 /* FRDDomoticsClient.m */,
-				BE2C358F174079F20037FCB4 /* Temperature.h */,
-				BE2C3590174079F20037FCB4 /* Temperature.m */,
+				BE2C358F174079F20037FCB4 /* SensorMeasurement.h */,
+				BE2C3590174079F20037FCB4 /* SensorMeasurement.m */,
 				BEC866A01744761400730259 /* PersistentStorage.h */,
 				BEC866A11744761400730259 /* PersistentStorage.m */,
 				BEC866A3174480AF00730259 /* UnitConverter.h */,
@@ -451,7 +451,7 @@
 				BEFFB7F4173F4B570043D770 /* FRDDomoticsClient.m in Sources */,
 				BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */,
 				BE2C358E174044090037FCB4 /* SensorCurrentValueDetailViewController.m in Sources */,
-				BE2C3591174079F20037FCB4 /* Temperature.m in Sources */,
+				BE2C3591174079F20037FCB4 /* SensorMeasurement.m in Sources */,
 				BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */,
 				BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */,
 				BE018D001741CE7300571CDA /* UILabel+FadeInTextTransition.m in Sources */,

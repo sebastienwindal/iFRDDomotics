@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Sensor.h"
-#import "Temperature.h"
+#import "SensorMeasurement.h"
 
 @interface SensorCurrentValueDetailViewController : UIViewController
 
 @property (nonatomic, strong) Sensor *sensor;
-@property (nonatomic, strong) Temperature *temperature;
+@property (nonatomic, strong) SensorMeasurement *temperature;
 
 @end

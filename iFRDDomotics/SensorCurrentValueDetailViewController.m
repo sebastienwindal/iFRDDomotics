@@ -111,19 +111,20 @@
     
     self.isLoading = YES;
     
-    [[FRDDomoticsClient sharedClient] getLastTemperatureForSensor:self.sensor.sensorID
-                                                          success:^(FRDDomoticsClient *domoClient, Temperature *temperature) {
-                                                              self.temperature = temperature;
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  self.isLoading = NO;
-                                                                  [self updateUIFromTemperature];
-                                                              });
-                                                          }
-                                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  self.isLoading = NO;
-                                                              });
-                                                          }];
+    [[FRDDomoticsClient sharedClient] getLastValueForSensor:self.sensor.sensorID
+                                            measurementType:self.sensor.capabilities
+                                                    success:^(FRDDomoticsClient *domoClient, SensorMeasurement *temperature) {
+                                                        self.temperature = temperature;
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.isLoading = NO;
+                                                            [self updateUIFromValue];
+                                                        });
+                                                    }
+                                                    failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            self.isLoading = NO;
+                                                        });
+                                                    }];
     
 }
 
@@ -178,7 +179,7 @@
 }
 
 
--(void) updateUIFromTemperature
+-(void) updateUIFromValue
 {
     if ([self.temperature.values count] == 0) {
         self.temperatureLabel.text = @"-";

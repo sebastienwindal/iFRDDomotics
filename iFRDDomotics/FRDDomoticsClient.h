@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
-#import "Temperature.h"
+#import "SensorMeasurement.h"
 #import "Sensor.h"
 
 
@@ -18,9 +18,10 @@
            success:(void(^)(FRDDomoticsClient *domoClient, NSArray *sensors))onSuccess
            failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
--(void) getLastTemperatureForSensor:(int) sensorID
-                            success:(void(^)(FRDDomoticsClient *domoClient, Temperature *temperature))onSuccess
-                            failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+-(void) getLastValueForSensor:(int)sensorID
+              measurementType:(kSensorCapabilities)measurementType
+                      success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess
+                      failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
 - (void)setUsername:(NSString *)username andPassword:(NSString *)password;
 

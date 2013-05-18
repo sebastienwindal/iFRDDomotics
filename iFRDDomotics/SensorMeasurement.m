@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Sebastien. All rights reserved.
 //
 
-#import "Temperature.h"
+#import "SensorMeasurement.h"
 #import "MTLValueTransformer.h"
 
-@implementation Temperature
+@implementation SensorMeasurement
 
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

@@ -11,7 +11,7 @@
 #import "MTLJSONAdapter.h"
 
 
-@interface Temperature : MTLModel <MTLJSONSerializing>
+@interface SensorMeasurement : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic) NSArray *dateOffsets;
 @property (nonatomic) NSArray *values;
