@@ -68,10 +68,8 @@
     self.reloadButton.nuiClass = @"NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
-    //[self.reloadButton setTitle:[NSString awesomeIcon:AwesomeIconRefresh] forState:UIControlStateNormal];
     [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchLastValue) forControlEvents:UIControlEventTouchUpInside];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
     
     self.locationLabel.nuiClass = @"sensorLegendLabel";
