@@ -8,6 +8,7 @@
 
 #import "TemperatureCollectionViewController.h"
 #import "TemperatureCollectionViewCell.h"
+#import "SensorCurrentValueDetailViewController.h"
 #import "SensorMeasurement.h"
 #import "FRDDomoticsClient.h"
 #import "UnitConverter.h"
@@ -68,10 +69,24 @@
     
     cell.temperatureLabel.text = [NSString  stringWithFormat:@"%1.1f", [[measurement.values lastObject] floatValue]];
     cell.unitLabel.text = [UnitConverter temperatureUnitName];
-    cell.locationLabel.text = measurement.location;
+    cell.locationLabel.text = measurement.sensor.location;
     
     return cell;
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"TemperatureCollectionToDetails"]) {
+        SensorCurrentValueDetailViewController *vc = (SensorCurrentValueDetailViewController *) segue.destinationViewController;
+        
+        NSIndexPath* pathOfTheCell = [self.collectionView indexPathForCell:sender];
+        NSInteger rowOfTheCell = [pathOfTheCell row];
+        
+        vc.temperature = self.values[rowOfTheCell];
+        vc.sensor = vc.temperature.sensor;
+        // the destination view controller only cares that we support a sepcific measrement type.
+        vc.sensor.capabilities = vc.temperature.measurementType;
+    }
+}
 
 @end

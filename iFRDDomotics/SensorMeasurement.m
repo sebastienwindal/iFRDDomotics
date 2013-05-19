@@ -8,6 +8,8 @@
 
 #import "SensorMeasurement.h"
 #import "MTLValueTransformer.h"
+#import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+
 
 @implementation SensorMeasurement
 
@@ -30,6 +32,30 @@
     return dateFormatter;
 }
 
++(NSValueTransformer *)measurementTypeJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        kSensorCapabilities capa = 0;
+        if ([str isEqualToString:@"temperature"])
+            capa = kSensorCapabilities_TEMPERATURE;
+        else if ([str isEqualToString:@"humidity"])
+            capa = kSensorCapabilities_HUMIDITY;
+        else if ([str isEqualToString:@"luminosity"])
+            capa = kSensorCapabilities_LUMMINOSITY;
+        return @(capa);
+        
+    } reverseBlock:^(NSNumber *capaNumber) {
+        kSensorCapabilities capa = [capaNumber intValue];
+        if (capa == kSensorCapabilities_LUMMINOSITY)
+            return @"luminosity";
+        else if (capa == kSensorCapabilities_HUMIDITY)
+            return @"humidity";
+        else if (capa == kSensorCapabilities_TEMPERATURE)
+            return @"temperature";
+        return @"";
+        
+    }];
+}
+
 
 + (NSValueTransformer *)mostRecentDateJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
@@ -47,6 +73,11 @@
     } reverseBlock:^(NSDate *date) {
         return [self.dateFormatter stringFromDate:date];
     }];
+}
+
++ (NSValueTransformer *)sensorJSONTransformer {
+    return [NSValueTransformer
+            mtl_JSONDictionaryTransformerWithModelClass:Sensor.class];
 }
 
 

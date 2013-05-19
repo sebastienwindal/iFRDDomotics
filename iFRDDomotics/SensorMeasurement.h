@@ -9,16 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "MTLModel.h"
 #import "MTLJSONAdapter.h"
+#import "Sensor.h"
 
 
 @interface SensorMeasurement : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSArray *dateOffsets;
 @property (nonatomic, strong) NSArray *values;
-@property (nonatomic, strong) NSString *measurementType;
+@property (nonatomic) kSensorCapabilities measurementType;
 @property (nonatomic, strong) NSDate *mostRecentDate;
 @property (nonatomic, strong) NSDate *oldestDate;
 @property (nonatomic) int sensorID;
-@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) Sensor *sensor;
+
 @end
 
