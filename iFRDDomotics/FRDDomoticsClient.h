@@ -23,6 +23,10 @@
                       success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess
                       failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
+-(void) getLastValuesForAllSensors:(kSensorCapabilities) measurementType
+                           success:(void(^)(FRDDomoticsClient *domoClient, NSArray *values))onSuccess
+                        failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+
 - (void)setUsername:(NSString *)username andPassword:(NSString *)password;
 
 + (FRDDomoticsClient *)sharedClient;

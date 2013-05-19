@@ -74,9 +74,12 @@
                                     withCloseAnimation:YES
                                             completion:nil];
     } else if (currentItem == kLeftMenuItem_TEMPERATURE) {
-        UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"Temperature"
+        UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"Sensors"
                                                                         bundle:nil];
-        [self.drawerController setCenterViewController:[temperatureStoryboard instantiateInitialViewController] withCloseAnimation:YES completion:nil];
+        id initialTemperatureViewController = [temperatureStoryboard instantiateViewControllerWithIdentifier:@"TemperatureRoot"];
+        [self.drawerController setCenterViewController:initialTemperatureViewController
+                                    withCloseAnimation:YES
+                                            completion:nil];
     } else if (currentItem == kLeftMenuItem_ABOUT) {
         AboutViewController *aboutViewController = [[AboutViewController alloc] init];
         [self.drawerController setCenterViewController:aboutViewController

@@ -117,6 +117,50 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
           }];
 }
 
+-(void) getLastValuesForAllSensors:(kSensorCapabilities) measurementType
+                           success:(void(^)(FRDDomoticsClient *domoClient, NSArray *values))onSuccess
+                           failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure
+{
+    NSString *url;
+    if (measurementType == kSensorCapabilities_TEMPERATURE)
+        url = @"temperature/last";
+    else if (measurementType == kSensorCapabilities_HUMIDITY)
+        url = @"humidity/last";
+    else if (measurementType == kSensorCapabilities_LUMMINOSITY)
+        url = @"luminosity/last";
+    
+    [self getPath:url
+       parameters:nil
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if (![responseObject isKindOfClass:[NSArray class]]) {
+                  if (onFailure)
+                      onFailure(self, @"Failed to get measurement values. Unexpected response.");
+                  return;
+              }
+              
+              NSMutableArray *values = [[NSMutableArray alloc] init];
+              
+              for (NSDictionary *dict in responseObject) {
+                  NSError *error;
+                  MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:dict modelClass:[SensorMeasurement class] error:&error];
+                  if (error) {
+                      NSLog(@"Failed to parse measurement value. Error: %@", [error localizedDescription]);
+                      onFailure(self, [error localizedDescription]);
+                  }
+                  [values addObject:(SensorMeasurement *)jsonAdapter.model];
+              }
+              
+              onSuccess(self, values);
+
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              if (onFailure) {
+                  onFailure(self, @"Failed to get measurement sensor");
+              }
+          }
+     ];
+}
+
 
 -(void) getTemperatureHistoryForSensor:(int)sensorID
                             success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess

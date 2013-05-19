@@ -13,12 +13,12 @@
 
 @interface SensorMeasurement : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic) NSArray *dateOffsets;
-@property (nonatomic) NSArray *values;
-@property (nonatomic) NSString *measurementType;
-@property (nonatomic) NSDate *mostRecentDate;
-@property (nonatomic) NSDate *oldestDate;
+@property (nonatomic, strong) NSArray *dateOffsets;
+@property (nonatomic, strong) NSArray *values;
+@property (nonatomic, strong) NSString *measurementType;
+@property (nonatomic, strong) NSDate *mostRecentDate;
+@property (nonatomic, strong) NSDate *oldestDate;
 @property (nonatomic) int sensorID;
-
+@property (nonatomic, strong) NSString *location;
 @end
 

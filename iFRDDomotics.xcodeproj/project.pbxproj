@@ -23,6 +23,8 @@
 		BEC866A5174480AF00730259 /* UnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A4174480AF00730259 /* UnitConverter.m */; };
 		BED7904017448705005DB9E5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED7903F17448705005DB9E5 /* icomoon.ttf */; };
 		BED79043174487BF005DB9E5 /* FontIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* FontIcon.m */; };
+		BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */; };
+		BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */; };
 		BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
 		BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
 		BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */; };
@@ -86,6 +88,10 @@
 		BED7903F17448705005DB9E5 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		BED79041174487BF005DB9E5 /* FontIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontIcon.h; sourceTree = "<group>"; };
 		BED79042174487BF005DB9E5 /* FontIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontIcon.m; sourceTree = "<group>"; };
+		BEECE23017481601006F6488 /* TemperatureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureCollectionViewController.h; sourceTree = "<group>"; };
+		BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureCollectionViewController.m; sourceTree = "<group>"; };
+		BEECE233174817E8006F6488 /* TemperatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureCollectionViewCell.h; sourceTree = "<group>"; };
+		BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureCollectionViewCell.m; sourceTree = "<group>"; };
 		BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFRDDomotics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFFB7A1173DEFF50043D770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEFFB7A3173DEFF50043D770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +161,10 @@
 				BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */,
 				BE28CB611740B29A008E851E /* SensorTableViewCell.h */,
 				BE28CB621740B29A008E851E /* SensorTableViewCell.m */,
+				BEECE23017481601006F6488 /* TemperatureCollectionViewController.h */,
+				BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */,
+				BEECE233174817E8006F6488 /* TemperatureCollectionViewCell.h */,
+				BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */,
 			);
 			name = Sensors;
 			sourceTree = "<group>";
@@ -459,6 +469,8 @@
 				BEC866A21744761400730259 /* PersistentStorage.m in Sources */,
 				BEC866A5174480AF00730259 /* UnitConverter.m in Sources */,
 				BED79043174487BF005DB9E5 /* FontIcon.m in Sources */,
+				BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */,
+				BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
