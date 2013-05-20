@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 #import "SensorMeasurement.h"
+#import "HourlyMeasurement.h"
 #import "Sensor.h"
 
 
@@ -27,7 +28,22 @@
                            success:(void(^)(FRDDomoticsClient *domoClient, NSArray *values))onSuccess
                         failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
-- (void)setUsername:(NSString *)username andPassword:(NSString *)password;
+-(void) getRawValuesForSensor:(int) sensorID
+              measurementtype:(kSensorCapabilities)measurementType
+                    startDate:(NSDate *)startDate
+                      endDate:(NSDate *)endDate
+                      success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *values))onSuccess
+                      failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+
+-(void) getHourlyValuesForSensor:(int) sensorID
+              measurementtype:(kSensorCapabilities)measurementType
+                    startDate:(NSDate *)startDate
+                      endDate:(NSDate *)endDate
+                      success:(void(^)(FRDDomoticsClient *domoClient, HourlyMeasurement *values))onSuccess
+                      failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+
+
+-(void)setUsername:(NSString *)username andPassword:(NSString *)password;
 
 + (FRDDomoticsClient *)sharedClient;
 

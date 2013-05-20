@@ -162,11 +162,26 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
 }
 
 
--(void) getTemperatureHistoryForSensor:(int)sensorID
-                            success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *temperature))onSuccess
-                            failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
+
+-(void) getRawValuesForSensor:(int) sensorID
+              measurementtype:(kSensorCapabilities)measurementType
+                    startDate:(NSDate *)startDate
+                      endDate:(NSDate *)endDate
+                      success:(void(^)(FRDDomoticsClient *domoClient, SensorMeasurement *values))onSuccess
+                      failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure
 {
-    [self getPath:[NSString stringWithFormat:@"temperature/raw/%d?numberPoints=1", sensorID]
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = @"yyyy-MM-dd'T'HH:mm:ss";
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:formatString];
+    
+    NSString *url = [NSString stringWithFormat:@"temperature/raw/%d?startDate=%@&endDate=%@",
+                        sensorID,
+                        [dateFormatter stringFromDate:startDate],
+                        [dateFormatter stringFromDate:endDate ]];
+    
+    [self getPath:url
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if (![responseObject isKindOfClass:[NSDictionary class]]) {
@@ -188,8 +203,52 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
                   onFailure(self, @"Failed to get sensor");
               }
           }];
+
 }
 
+
+-(void) getHourlyValuesForSensor:(int) sensorID
+                 measurementtype:(kSensorCapabilities)measurementType
+                       startDate:(NSDate *)startDate
+                         endDate:(NSDate *)endDate
+                         success:(void(^)(FRDDomoticsClient *domoClient, HourlyMeasurement *values))onSuccess
+                         failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = @"yyyy-MM-dd'T'HH:mm:ss";
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:formatString];
+    
+    NSString *url = [NSString stringWithFormat:@"temperature/hourly/%d?startDate=%@&endDate=%@",
+                     sensorID,
+                     [dateFormatter stringFromDate:startDate],
+                     [dateFormatter stringFromDate:endDate ]];
+    
+    [self getPath:url
+       parameters:nil
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if (![responseObject isKindOfClass:[NSDictionary class]]) {
+                  if (onFailure)
+                      onFailure(self, @"Failed to get temperature. Unexpected response.");
+                  return;
+              }
+              
+              NSError *error;
+              MTLJSONAdapter *jsonAdapter = [[MTLJSONAdapter alloc] initWithJSONDictionary:responseObject modelClass:[HourlyMeasurement class] error:&error];
+              if (error) {
+                  NSLog(@"Failed to parse temperature value. Error: %@", [error localizedDescription]);
+                  onFailure(self, [error localizedDescription]);
+              }
+              onSuccess(self, (HourlyMeasurement *)jsonAdapter.model);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              if (onFailure) {
+                  onFailure(self, @"Failed to get sensor");
+              }
+          }];
+    
+}
 
 + (FRDDomoticsClient *)sharedClient {
     static FRDDomoticsClient *_sharedClient = nil;

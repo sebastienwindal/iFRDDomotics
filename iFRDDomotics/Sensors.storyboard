@@ -205,6 +205,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9N8-zX-yK7">
+                                <rect key="frame" x="192" y="421" width="108" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="IconButton:BigIconButton"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="rr4-dA-PcH" kind="push" id="IAP-Ep-7il"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -212,6 +230,7 @@
                     <connections>
                         <outlet property="aDayAgoLabel" destination="2Rh-ds-OHK" id="0X5-24-5ZA"/>
                         <outlet property="anHourAgoLabel" destination="RHx-GW-y1S" id="hnK-fE-JRX"/>
+                        <outlet property="chartButton" destination="9N8-zX-yK7" id="WhZ-YH-mSo"/>
                         <outlet property="descriptionLabel" destination="Xuz-0P-IGu" id="2ll-m2-mIh"/>
                         <outlet property="descriptionValueLabel" destination="AOg-01-ki8" id="FFB-5H-Drj"/>
                         <outlet property="lastUpdateLabel" destination="zhC-Fg-hud" id="QoK-EP-WE5"/>
@@ -225,6 +244,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z56-NM-Kg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1178" y="-247"/>
+        </scene>
+        <!--Value Over Time View Controller - History-->
+        <scene sceneID="U6g-kg-ALK">
+            <objects>
+                <viewController id="rr4-dA-PcH" customClass="ValueOverTimeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Zc-s1-aQx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="MIq-nt-bwK" customClass="TimeChart">
+                                <rect key="frame" x="20" y="65" width="280" height="208"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hRJ-MO-Nl2">
+                                <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <segments>
+                                    <segment title="4hrs"/>
+                                    <segment title="24hrs"/>
+                                    <segment title="1wk"/>
+                                    <segment title="4wks"/>
+                                </segments>
+                                <connections>
+                                    <action selector="timeIntervalChanged:" destination="rr4-dA-PcH" eventType="valueChanged" id="otw-PS-bIY"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="cXo-DW-C4e"/>
+                    <connections>
+                        <outlet property="historicalChart" destination="MIq-nt-bwK" id="Drb-q1-xF4"/>
+                        <outlet property="timeSegmentControl" destination="hRJ-MO-Nl2" id="h22-v6-Gbf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wl4-oJ-DSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644" y="-247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SRR-yR-3xA">
@@ -269,6 +327,7 @@
             <relationships>
                 <relationship kind="outlet" name="aDayAgoLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="anHourAgoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="chartButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="descriptionValueLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lastUpdateLabel" candidateClass="UILabel"/>
@@ -301,6 +360,9 @@
         <class className="TemperatureCollectionViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TemperatureCollectionViewController.h"/>
         </class>
+        <class className="TimeChart" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeChart.h"/>
+        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -313,8 +375,12 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        <class className="ValueOverTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ValueOverTimeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="historicalChart" candidateClass="TimeChart"/>
+                <relationship kind="outlet" name="timeSegmentControl" candidateClass="UISegmentedControl"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

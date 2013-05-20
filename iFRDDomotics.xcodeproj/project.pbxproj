@@ -25,6 +25,10 @@
 		BED79043174487BF005DB9E5 /* FontIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* FontIcon.m */; };
 		BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */; };
 		BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */; };
+		BEECE23917495F25006F6488 /* TimeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23817495F25006F6488 /* TimeChart.m */; };
+		BEECE23F1749635B006F6488 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEECE23E1749635B006F6488 /* QuartzCore.framework */; };
+		BEECE243174964A4006F6488 /* ValueOverTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE242174964A4006F6488 /* ValueOverTimeViewController.m */; };
+		BEECE2491749B18E006F6488 /* HourlyMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE2481749B18E006F6488 /* HourlyMeasurement.m */; };
 		BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A1173DEFF50043D770 /* UIKit.framework */; };
 		BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A3173DEFF50043D770 /* Foundation.framework */; };
 		BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFB7A5173DEFF50043D770 /* CoreGraphics.framework */; };
@@ -92,6 +96,13 @@
 		BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureCollectionViewController.m; sourceTree = "<group>"; };
 		BEECE233174817E8006F6488 /* TemperatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureCollectionViewCell.h; sourceTree = "<group>"; };
 		BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureCollectionViewCell.m; sourceTree = "<group>"; };
+		BEECE23717495F25006F6488 /* TimeChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeChart.h; sourceTree = "<group>"; };
+		BEECE23817495F25006F6488 /* TimeChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeChart.m; sourceTree = "<group>"; };
+		BEECE23E1749635B006F6488 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BEECE241174964A4006F6488 /* ValueOverTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueOverTimeViewController.h; sourceTree = "<group>"; };
+		BEECE242174964A4006F6488 /* ValueOverTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueOverTimeViewController.m; sourceTree = "<group>"; };
+		BEECE2471749B18E006F6488 /* HourlyMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourlyMeasurement.h; sourceTree = "<group>"; };
+		BEECE2481749B18E006F6488 /* HourlyMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourlyMeasurement.m; sourceTree = "<group>"; };
 		BEFFB79E173DEFF50043D770 /* iFRDDomotics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFRDDomotics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFFB7A1173DEFF50043D770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BEFFB7A3173DEFF50043D770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,11 +140,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */,
+				BEECE23F1749635B006F6488 /* QuartzCore.framework in Frameworks */,
 				BE2C35861740368D0037FCB4 /* MobileCoreServices.framework in Frameworks */,
 				BE2C3584174036780037FCB4 /* SystemConfiguration.framework in Frameworks */,
 				BEFFB7A2173DEFF50043D770 /* UIKit.framework in Frameworks */,
 				BEFFB7A4173DEFF50043D770 /* Foundation.framework in Frameworks */,
-				BEFFB7A6173DEFF50043D770 /* CoreGraphics.framework in Frameworks */,
 				E7373118BA0D470BA262CDE7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,9 +211,28 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		BEECE23617495F0C006F6488 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				BEECE23717495F25006F6488 /* TimeChart.h */,
+				BEECE23817495F25006F6488 /* TimeChart.m */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
+		BEECE24017496478006F6488 /* HistoryViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEECE241174964A4006F6488 /* ValueOverTimeViewController.h */,
+				BEECE242174964A4006F6488 /* ValueOverTimeViewController.m */,
+			);
+			name = HistoryViewControllers;
+			sourceTree = "<group>";
+		};
 		BEFFB795173DEFF50043D770 = {
 			isa = PBXGroup;
 			children = (
+				BEECE23E1749635B006F6488 /* QuartzCore.framework */,
 				BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */,
 				BE2C3583174036780037FCB4 /* SystemConfiguration.framework */,
 				BEFFB7A7173DEFF50043D770 /* iFRDDomotics */,
@@ -236,6 +267,8 @@
 		BEFFB7A7173DEFF50043D770 /* iFRDDomotics */ = {
 			isa = PBXGroup;
 			children = (
+				BEECE24017496478006F6488 /* HistoryViewControllers */,
+				BEECE23617495F0C006F6488 /* Chart */,
 				BEC8669A17446F4200730259 /* Settings */,
 				BEFFB7B0173DEFF50043D770 /* AppDelegate.h */,
 				BEFFB7B1173DEFF50043D770 /* AppDelegate.m */,
@@ -303,6 +336,8 @@
 				BEC866A11744761400730259 /* PersistentStorage.m */,
 				BEC866A3174480AF00730259 /* UnitConverter.h */,
 				BEC866A4174480AF00730259 /* UnitConverter.m */,
+				BEECE2471749B18E006F6488 /* HourlyMeasurement.h */,
+				BEECE2481749B18E006F6488 /* HourlyMeasurement.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -471,6 +506,9 @@
 				BED79043174487BF005DB9E5 /* FontIcon.m in Sources */,
 				BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */,
 				BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */,
+				BEECE23917495F25006F6488 /* TimeChart.m in Sources */,
+				BEECE243174964A4006F6488 /* ValueOverTimeViewController.m in Sources */,
+				BEECE2491749B18E006F6488 /* HourlyMeasurement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

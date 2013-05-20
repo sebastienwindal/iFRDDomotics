@@ -42,7 +42,7 @@
     [super viewDidLoad];
     
     self.reloadButton = [UIButton buttonWithType: UIButtonTypeCustom];
-    self.reloadButton.nuiClass = @"NavIconButton";
+    self.reloadButton.nuiClass = @"IconButton:NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
     [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];

@@ -2,6 +2,7 @@
 @primaryFontColor: #000000;
 @reversePrimaryFontColor: #ffffff;
 @secondaryFontColor: #555555;
+@tertiaryFontColor: #888888;
 @primaryBackgroundColor: #F0F0F0;
 
 TableCell {
@@ -32,12 +33,22 @@ BarButton {
     font-color: @secondaryFontColor;
 }
 
-Button:NavIconButton {
+Button:IconButton {
     font-color: @secondaryFontColor;
     font-name: icomoon;
+    font-color-selected: @tertiaryFontColor;
+    font-color-highlighted: @tertiaryFontColor;
+}
+
+Button:NavIconButton {
     font-size: 22;
     width: 30;
     text-align: center;
+}
+
+Button:BigIconButton {
+    font-size: 36;
+    text-align: right;
 }
 
 Label:SensorTypeIconLabel {

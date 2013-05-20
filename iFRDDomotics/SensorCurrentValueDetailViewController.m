@@ -29,6 +29,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *anHourAgoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aDayAgoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *chartButton;
 
 @property (nonatomic, strong) UIButton *reloadButton;
 @property (nonatomic, strong) CABasicAnimation *reloadRotationAnimation;
@@ -65,7 +66,7 @@
     }
 
     self.reloadButton = [UIButton buttonWithType: UIButtonTypeCustom];
-    self.reloadButton.nuiClass = @"NavIconButton";
+    self.reloadButton.nuiClass = @"IconButton:NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
     [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
@@ -82,7 +83,8 @@
     self.anHourAgoLabel.text = @"";
     self.aDayAgoLabel.text = @"";
     
-    
+    NSString *btnText = [NSString stringWithFormat:@"%@ %@", [FontIcon iconString:ICON_LINE_CHART], [FontIcon iconString:ICON_RIGHT_ARROW_2]];
+    [self.chartButton setTitle:btnText forState:UIControlStateNormal];
     [self updateUIFromSensor];
     
     [self fetchLastValue];
@@ -252,6 +254,12 @@
         // if the data we are showing is older than 2 minutes old, trigger automatically a rest call.
         [self fetchLastValue];
     }
+}
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [segue.destinationViewController setSensor:self.sensor];
 }
 
 - (void)dealloc
