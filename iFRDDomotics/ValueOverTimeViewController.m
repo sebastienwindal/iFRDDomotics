@@ -11,7 +11,7 @@
 #import "FRDDomoticsClient.h"
 #import "SensorMeasurement.h"
 #import "HourlyMeasurement.h"
-
+#import "UnitConverter.h"
 
 @interface ValueOverTimeViewController ()<TimeChartDatasource>
 
@@ -124,6 +124,13 @@
         return [self.measurement meanValues];
     else
         return [self.measurement values];
+}
+
+-(float) convertValueToLocalUnit:(float)value
+{
+    if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
+        return [UnitConverter toLocaleTemperature:value];
+    return value;
 }
 
 @end

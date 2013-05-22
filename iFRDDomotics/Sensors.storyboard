@@ -50,10 +50,47 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="locationLabel" destination="M90-rm-DGh" id="Hy0-2a-cp8"/>
-                                    <outlet property="temperatureLabel" destination="ykr-pF-Nfy" id="fUP-6m-F8i"/>
-                                    <outlet property="unitLabel" destination="mky-Ht-Mor" id="4oY-Q2-qlk"/>
-                                    <segue destination="ERT-7T-u52" kind="push" identifier="TemperatureCollectionToDetails" id="7dd-pX-h48"/>
+                                    <outlet property="locationLabel" destination="M90-rm-DGh" id="X1p-Vv-0he"/>
+                                    <outlet property="unitLabel" destination="mky-Ht-Mor" id="dbE-yn-Z3s"/>
+                                    <outlet property="valueLabel" destination="ykr-pF-Nfy" id="cco-9F-Wo6"/>
+                                    <segue destination="ERT-7T-u52" kind="push" identifier="TemperatureCollectionToTemperatureDetails" id="E3G-J4-UMT"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HumidityCollectionViewCell" id="L4x-SX-Xq0" customClass="HumidityCollectionViewCell">
+                                <rect key="frame" x="10" y="172" width="300" height="162"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="162"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="sKA-Ym-kjF">
+                                            <rect key="frame" x="20" y="16" width="260" height="126"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="128"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F6t-bo-l4W">
+                                            <rect key="frame" x="0.0" y="132" width="300" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FZ0-i4-7r1">
+                                            <rect key="frame" x="0.0" y="8" width="300" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="locationLabel" destination="FZ0-i4-7r1" id="1KG-mu-xLm"/>
+                                    <outlet property="unitLabel" destination="F6t-bo-l4W" id="eJR-qW-8GH"/>
+                                    <outlet property="valueLabel" destination="sKA-Ym-kjF" id="INL-ts-DaD"/>
+                                    <segue destination="ERT-7T-u52" kind="push" identifier="TemperatureCollectionToHumidityDetails" id="yZO-Pq-ZYz"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -322,6 +359,14 @@
         </scene>
     </scenes>
     <classes>
+        <class className="HumidityCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HumidityCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="unitLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="valueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="SensorCurrentValueDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorCurrentValueDetailViewController.h"/>
             <relationships>
@@ -353,8 +398,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TemperatureCollectionViewCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="temperatureLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="unitLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="valueLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="TemperatureCollectionViewController" superclassName="UICollectionViewController">
@@ -375,9 +420,13 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="ValueOverTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ValueOverTimeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="timeIntervalChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="historicalChart" candidateClass="TimeChart"/>
                 <relationship kind="outlet" name="timeSegmentControl" candidateClass="UISegmentedControl"/>
             </relationships>
@@ -389,6 +438,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7dd-pX-h48"/>
+        <segue reference="yZO-Pq-ZYz"/>
     </inferredMetricsTieBreakers>
 </document>

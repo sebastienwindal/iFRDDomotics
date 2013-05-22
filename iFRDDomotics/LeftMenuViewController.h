@@ -12,6 +12,7 @@ typedef enum {
     kLeftMenuItem_LOGIN,
     kLeftMenuItem_SENSORS,
     kLeftMenuItem_TEMPERATURE,
+    kLeftMenuItem_HUMIDITY,
     kLeftMenuItem_ABOUT,
     kLeftMenuItem_SETTINGS
 } kLeftMenuItem;

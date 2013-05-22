@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sensor.h"
 
 @interface TemperatureCollectionViewController : UICollectionViewController
+
+@property (nonatomic) kSensorCapabilities valueType;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "TemperatureCollectionViewController.h"
 #import "TemperatureCollectionViewCell.h"
+#import "HumidityCollectionViewCell.h"
 #import "SensorCurrentValueDetailViewController.h"
 #import "SensorMeasurement.h"
 #import "FRDDomoticsClient.h"
@@ -132,7 +133,7 @@
     self.values = nil;
     [self.collectionView reloadData];
     
-    [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:kSensorCapabilities_TEMPERATURE
+    [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:self.valueType
                                                          success:^(FRDDomoticsClient *domoClient, NSArray *values) {
                                                              self.values = values;
                                                              dispatch_async(dispatch_get_main_queue(), ^{
@@ -155,22 +156,28 @@
 
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    TemperatureCollectionViewCell *cell = [self.collectionView
-                                                dequeueReusableCellWithReuseIdentifier:@"TemperatureCollectionViewCell"
-                                                                          forIndexPath:indexPath];
-    
     SensorMeasurement *measurement = self.values[indexPath.row];
     
-    cell.temperatureLabel.text = [NSString  stringWithFormat:@"%1.1f", [[measurement.values lastObject] floatValue]];
-    cell.unitLabel.text = [UnitConverter temperatureUnitName];
-    cell.locationLabel.text = measurement.sensor.location;
+    NSString *cellID;
+    if (measurement.measurementType & kSensorCapabilities_TEMPERATURE)
+        cellID = @"TemperatureCollectionViewCell";
+    else if (measurement.measurementType & kSensorCapabilities_HUMIDITY)
+        cellID = @"HumidityCollectionViewCell";
+    
+    BaseCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellID
+                                                             forIndexPath:indexPath];
+    
+    [cell setValue:[[measurement.values lastObject] floatValue]];
+    [cell locationLabel].text = measurement.sensor.location;
     
     return cell;
 }
 
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"TemperatureCollectionToDetails"]) {
+    if ([segue.identifier isEqualToString:@"TemperatureCollectionToHumidityDetails"] ||
+        [segue.identifier isEqualToString:@"TemperatureCollectionToTemperatureDetails"]) {
         SensorCurrentValueDetailViewController *vc = (SensorCurrentValueDetailViewController *) segue.destinationViewController;
         
         NSIndexPath* pathOfTheCell = [self.collectionView indexPathForCell:sender];

@@ -23,6 +23,8 @@
 		BEC866A5174480AF00730259 /* UnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A4174480AF00730259 /* UnitConverter.m */; };
 		BED7904017448705005DB9E5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED7903F17448705005DB9E5 /* icomoon.ttf */; };
 		BED79043174487BF005DB9E5 /* FontIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* FontIcon.m */; };
+		BEE3B79B174C5F91004C9E9B /* HumidityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */; };
+		BEE3B79E174C5FD5004C9E9B /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3B79D174C5FD5004C9E9B /* BaseCollectionViewCell.m */; };
 		BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */; };
 		BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */; };
 		BEECE23917495F25006F6488 /* TimeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23817495F25006F6488 /* TimeChart.m */; };
@@ -92,6 +94,10 @@
 		BED7903F17448705005DB9E5 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		BED79041174487BF005DB9E5 /* FontIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontIcon.h; sourceTree = "<group>"; };
 		BED79042174487BF005DB9E5 /* FontIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontIcon.m; sourceTree = "<group>"; };
+		BEE3B799174C5F91004C9E9B /* HumidityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumidityCollectionViewCell.h; sourceTree = "<group>"; };
+		BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumidityCollectionViewCell.m; sourceTree = "<group>"; };
+		BEE3B79C174C5FD5004C9E9B /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
+		BEE3B79D174C5FD5004C9E9B /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		BEECE23017481601006F6488 /* TemperatureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureCollectionViewController.h; sourceTree = "<group>"; };
 		BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureCollectionViewController.m; sourceTree = "<group>"; };
 		BEECE233174817E8006F6488 /* TemperatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureCollectionViewCell.h; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 				BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */,
 				BEECE233174817E8006F6488 /* TemperatureCollectionViewCell.h */,
 				BEECE234174817E8006F6488 /* TemperatureCollectionViewCell.m */,
+				BEE3B799174C5F91004C9E9B /* HumidityCollectionViewCell.h */,
+				BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */,
+				BEE3B79C174C5FD5004C9E9B /* BaseCollectionViewCell.h */,
+				BEE3B79D174C5FD5004C9E9B /* BaseCollectionViewCell.m */,
 			);
 			name = Sensors;
 			sourceTree = "<group>";
@@ -509,6 +519,8 @@
 				BEECE23917495F25006F6488 /* TimeChart.m in Sources */,
 				BEECE243174964A4006F6488 /* ValueOverTimeViewController.m in Sources */,
 				BEECE2491749B18E006F6488 /* HourlyMeasurement.m in Sources */,
+				BEE3B79B174C5F91004C9E9B /* HumidityCollectionViewCell.m in Sources */,
+				BEE3B79E174C5FD5004C9E9B /* BaseCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

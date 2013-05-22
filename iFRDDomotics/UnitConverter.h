@@ -14,5 +14,8 @@
 +(NSString *) temperatureUnitLetter;
 +(float) toLocaleTemperature:(float) celciusTemperature;
 
++(NSString *) temperatureStringFromValue:(float) celciusTemperature;
++(NSString *) luminosityStringFromValue:(float) luxLuminosity;
++(NSString *) humidityStringFromValue:(float) percentHumidity;
 
 @end

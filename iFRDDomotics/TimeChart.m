@@ -8,6 +8,7 @@
 
 #import "TimeChart.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UnitConverter.h"
 
 @interface TimeChart()
 
@@ -130,8 +131,9 @@
     maxVal = -MAXFLOAT;
     
     for (int i=0; i<[vals count]; i++) {
+        
         timeSeries[i] = [times[i] floatValue];
-        valueSeries[i] = [vals[i] floatValue];
+        valueSeries[i] = [self.datasource convertValueToLocalUnit:[vals[i] floatValue]];
         minVal = MIN(minVal, valueSeries[i]);
         maxVal = MAX(maxVal, valueSeries[i]);
     }

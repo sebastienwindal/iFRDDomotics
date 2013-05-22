@@ -1,17 +1,16 @@
 //
-//  TemperatureCollectionViewCell.m
+//  HumidityCollectionViewCell.m
 //  iFRDDomotics
 //
-//  Created by Sebastien on 5/18/13.
+//  Created by Sebastien on 5/21/13.
 //  Copyright (c) 2013 Sebastien. All rights reserved.
 //
 
-#import "TemperatureCollectionViewCell.h"
-#import "UILabel+NUI.h"
-#import "UnitConverter.h"
+#import "HumidityCollectionViewCell.h"
 #import "UnitConverter.h"
 
-@implementation TemperatureCollectionViewCell
+
+@implementation HumidityCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,13 +33,14 @@
 -(void) layoutSubviews
 {
     [super layoutSubviews];
-    
-    self.unitLabel.text = [UnitConverter temperatureUnitName];
+ 
+    self.unitLabel.text = @"%";
 }
 
 -(void) setValue:(float)value
 {
-    self.valueLabel.text = [UnitConverter temperatureStringFromValue:value];
+    self.valueLabel.text = [UnitConverter humidityStringFromValue:value];
 }
+
 
 @end

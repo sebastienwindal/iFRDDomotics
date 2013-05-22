@@ -47,6 +47,10 @@
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_TEMPERATURE];
 }
 
+- (IBAction)humidityAction:(id)sender {
+    [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_HUMIDITY];
+}
+
 - (IBAction)aboutAction:(id)sender {
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_ABOUT];
 }

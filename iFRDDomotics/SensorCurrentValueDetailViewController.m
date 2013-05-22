@@ -184,9 +184,7 @@
     if ([self.temperature.values count] == 0) {
         self.temperatureLabel.text = @"-";
     } else {
-        
-        
-        float curTemp = [UnitConverter toLocaleTemperature:[self.temperature.values.lastObject floatValue]];
+        float curTemp = [self.temperature.values.lastObject floatValue];
         
         float aDayAgoTemp = [UnitConverter toLocaleTemperature:[self.temperature.values[0] floatValue] ];
 
@@ -197,7 +195,13 @@
             anHourAgoTemp = [UnitConverter toLocaleTemperature:[self.temperature.values[0] floatValue]];
         }
 
-        self.temperatureLabel.text = [NSString stringWithFormat:@"%1.1f", curTemp];
+        if (self.temperature.measurementType == kSensorCapabilities_TEMPERATURE)
+            self.temperatureLabel.text = [UnitConverter temperatureStringFromValue:curTemp];
+        else if (self.temperature.measurementType == kSensorCapabilities_LUMMINOSITY)
+            self.temperatureLabel.text = [UnitConverter luminosityStringFromValue:curTemp];
+        else if (self.temperature.measurementType == kSensorCapabilities_HUMIDITY)
+            self.temperatureLabel.text = [UnitConverter humidityStringFromValue:curTemp];
+        
         TTTTimeIntervalFormatter *timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         timeIntervalFormatter.futureDeicticExpression = @"ago";
         NSString *timeString = [timeIntervalFormatter stringForTimeIntervalFromDate:self.temperature.mostRecentDate

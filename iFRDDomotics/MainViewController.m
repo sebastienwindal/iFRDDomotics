@@ -13,6 +13,8 @@
 #import "LeftMenuViewController.h"
 #import "MMDrawerVisualState.h"
 #import "AboutViewController.h"
+#import "Sensor.h"
+#import "TemperatureCollectionViewController.h"
 
 @interface MainViewController ()<LeftMenuViewControllerDelegate>
 
@@ -73,11 +75,22 @@
         [self.drawerController setCenterViewController:[sensorsStoryboard instantiateInitialViewController]
                                     withCloseAnimation:YES
                                             completion:nil];
-    } else if (currentItem == kLeftMenuItem_TEMPERATURE) {
+    } else if (currentItem == kLeftMenuItem_TEMPERATURE || currentItem == kLeftMenuItem_HUMIDITY) {
         UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"Sensors"
                                                                         bundle:nil];
-        id initialTemperatureViewController = [temperatureStoryboard instantiateViewControllerWithIdentifier:@"TemperatureRoot"];
-        [self.drawerController setCenterViewController:initialTemperatureViewController
+        UINavigationController *navigationController = [temperatureStoryboard instantiateViewControllerWithIdentifier:@"TemperatureRoot"];
+        
+        TemperatureCollectionViewController *initialTemperatureViewController = navigationController.viewControllers[0];
+        
+        kSensorCapabilities capa;
+        if (currentItem == kLeftMenuItem_TEMPERATURE)
+            capa = kSensorCapabilities_TEMPERATURE;
+        else
+            capa = kSensorCapabilities_HUMIDITY;
+        
+        [initialTemperatureViewController setValueType:capa];
+        
+        [self.drawerController setCenterViewController:navigationController
                                     withCloseAnimation:YES
                                             completion:nil];
     } else if (currentItem == kLeftMenuItem_ABOUT) {

@@ -17,6 +17,7 @@
 -(NSArray *) timeChartTimeValues:(TimeChart *)chart;
 -(int) timeChartNumberLines:(TimeChart *)chart;
 -(NSArray *) timeChart:(TimeChart *)chart valuesForLine:(int)lineIndex;
+-(float) convertValueToLocalUnit:(float)value;
 
 @end
 
