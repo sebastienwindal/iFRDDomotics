@@ -176,7 +176,17 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
     [dateFormatter setTimeZone:timeZone];
     [dateFormatter setDateFormat:formatString];
     
-    NSString *url = [NSString stringWithFormat:@"temperature/raw/%d?startDate=%@&endDate=%@",
+    NSString *urlRoot;
+    
+    if (measurementType == kSensorCapabilities_TEMPERATURE)
+        urlRoot = @"temperature";
+    else if (measurementType == kSensorCapabilities_LUMMINOSITY)
+        urlRoot = @"luminosity";
+    else
+        urlRoot = @"humidity";
+    
+    NSString *url = [NSString stringWithFormat:@"%@/raw/%d?startDate=%@&endDate=%@",
+                        urlRoot,
                         sensorID,
                         [dateFormatter stringFromDate:startDate],
                         [dateFormatter stringFromDate:endDate ]];
@@ -220,7 +230,17 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
     [dateFormatter setTimeZone:timeZone];
     [dateFormatter setDateFormat:formatString];
     
-    NSString *url = [NSString stringWithFormat:@"temperature/hourly/%d?startDate=%@&endDate=%@",
+    NSString *urlRoot;
+    
+    if (measurementType == kSensorCapabilities_TEMPERATURE)
+        urlRoot = @"temperature";
+    else if (measurementType == kSensorCapabilities_LUMMINOSITY)
+        urlRoot = @"luminosity";
+    else
+        urlRoot = @"humidity";
+    
+    NSString *url = [NSString stringWithFormat:@"%@/hourly/%d?startDate=%@&endDate=%@",
+                     urlRoot,
                      sensorID,
                      [dateFormatter stringFromDate:startDate],
                      [dateFormatter stringFromDate:endDate ]];

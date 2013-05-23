@@ -62,7 +62,7 @@
          ];
     } else {
         [[FRDDomoticsClient sharedClient] getHourlyValuesForSensor:self.sensor.sensorID
-                                                   measurementtype:self.sensor.sensorID
+                                                   measurementtype:self.sensor.capabilities
                                                          startDate:startDate
                                                            endDate:endDate
                                                            success:^(FRDDomoticsClient *domoClient, HourlyMeasurement *values) {

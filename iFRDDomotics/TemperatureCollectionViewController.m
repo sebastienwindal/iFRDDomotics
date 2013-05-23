@@ -49,7 +49,13 @@
     [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchValues) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
-    
+    if (self.valueType == kSensorCapabilities_LUMMINOSITY)
+        self.navigationItem.title = @"Luminosity";
+    else if (self.valueType == kSensorCapabilities_TEMPERATURE)
+        self.navigationItem.title = @"Temperatures";
+    else
+        self.navigationItem.title = @"Humidity";
+        
     [self fetchValues];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
