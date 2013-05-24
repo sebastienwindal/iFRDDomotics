@@ -18,7 +18,7 @@
 -(int) timeChartNumberLines:(TimeChart *)chart;
 -(NSArray *) timeChart:(TimeChart *)chart valuesForLine:(int)lineIndex;
 -(float) convertValueToLocalUnit:(float)value;
-
+-(NSDate *) timeChartOldestDate:(TimeChart *) chart;
 @end
 
 @interface TimeChart : UIView

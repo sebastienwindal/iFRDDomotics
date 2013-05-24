@@ -17,6 +17,8 @@
 @property (nonatomic, strong) CAShapeLayer *lineLayer;
 @property (nonatomic, strong) CAShapeLayer *areaLayer;
 @property (nonatomic, strong) NSArray *valueTextLayers;
+@property (nonatomic, strong) NSArray *timeTextLayers;
+
 @end
 
 @implementation TimeChart
@@ -36,6 +38,8 @@
     int numberValues;
     
     int maximumNumberHorLines;
+    int maximumNumberVertLines;
+    
 }
 
 
@@ -62,6 +66,7 @@
 -(void) commonInitializer
 {
     maximumNumberHorLines = 5;
+    maximumNumberVertLines = 5;
     
     self.userInteractionEnabled = YES;
     
@@ -77,6 +82,18 @@
     [self addLineLayer];
     [self addAreaLayer];
     [self addValueLegend];
+}
+
+-(NSArray *) timeTextLayers {
+    if (_timeTextLayers == nil) {
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:maximumNumberVertLines];
+        for (int i=0; i<maximumNumberVertLines; i++) {
+            [arr addObject:[CATextLayer layer]];
+            
+            _timeTextLayers = [arr copy];
+        }
+    }
+    return _timeTextLayers;
 }
 
 
@@ -115,6 +132,9 @@
 
 -(void) computeMetrics
 {
+    if (!self.datasource)
+        return;
+    
     NSArray *times = [self.datasource timeChartTimeValues:self];
     NSArray *vals = [self.datasource timeChart:self valuesForLine:0];
     numberValues = [vals count];
@@ -131,7 +151,6 @@
     maxVal = -MAXFLOAT;
     
     for (int i=0; i<[vals count]; i++) {
-        
         timeSeries[i] = [times[i] floatValue];
         valueSeries[i] = [self.datasource convertValueToLocalUnit:[vals[i] floatValue]];
         minVal = MIN(minVal, valueSeries[i]);
@@ -146,6 +165,7 @@
         pixelPerValue = 0;
     if (numberValues > 0)
         pixelPerSecond = drawingWidth / totalDuration;
+    
 }
 
 
@@ -167,10 +187,18 @@
 
 -(CGMutablePathRef) gridPath
 {  
-    CGFloat startX = [self leftMargin];
-    CGFloat endX =  self->width - [self rightMargin];
 
     CGMutablePathRef path = CGPathCreateMutable();
+    [self addHorizontalLinesToPath:path];
+    [self addVerticalLinesToPath:path];
+    
+    return path;
+}
+
+-(void) addHorizontalLinesToPath:(CGMutablePathRef)path
+{
+    CGFloat startX = [self leftMargin];
+    CGFloat endX =  self->width - [self rightMargin];
     
     float amplitude = maxVal - minVal;
     // ideally we want between 3 and 5 horizontal lines,
@@ -187,7 +215,7 @@
     else if (delta < 200.0f) delta = 200.0f;
     else if (delta < 500.0f) delta = 500.0f;
     else if (delta < 1000.0f) delta = 1000.0f;
-
+    
     float val = ceilf(minVal / delta) * delta;
     
     int i=0;
@@ -212,8 +240,55 @@
         textLayer.string = @"";
         i++;
     }
+
+}
+
+
+-(void) addVerticalLinesToPath:(CGMutablePathRef)path
+{
+    NSDate *startDate = [self.datasource timeChartOldestDate:self];
     
-    return path;
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit;
+    NSDateComponents *components = [gregorian components:unitFlags fromDate:startDate];
+    [components setHour:[components hour] + 1];
+    NSDate *roundHourDate = [gregorian dateFromComponents:components];
+    NSTimeInterval timeInterval = [roundHourDate timeIntervalSinceDate:startDate];
+    if (timeInterval == 3600.0f) {
+        roundHourDate = startDate;
+    }
+
+    CGFloat startY = [self bottomMargin];
+    CGFloat endY =  self->height - [self topMargin];
+    
+    
+    NSTimeInterval t = [roundHourDate timeIntervalSinceDate:startDate];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = @"HH:mm";
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:formatString];
+    
+    int i=0;
+    while (t < totalDuration) {
+        float x = [self timeToPixels:t];
+        CGPathMoveToPoint(path, NULL, x, startY);
+        CGPathAddLineToPoint(path, NULL, x, endY);
+        
+        CATextLayer *textLayer = self.timeTextLayers[i];
+        NSDate *date = [startDate dateByAddingTimeInterval:t];
+        
+        textLayer.string = [dateFormatter stringFromDate:date];
+        textLayer.frame = CGRectMake(x-20,
+                                     endY,
+                                     40.0,
+                                     20.0);
+        
+        t += 3600.0f;
+        i++;
+    }
 }
 
 
@@ -242,10 +317,11 @@
     CGMutablePathRef path = CGPathCreateMutable();
     
     if(numberValues > 1) {
-        CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:valueSeries[0]]);
-        for (int i=1; i<numberValues; i++) {
+        CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:minVal]);
+        for (int i=0; i<numberValues; i++) {
             CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[i]], [self valueToPixels:valueSeries[i]]);
         }
+        CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:minVal]);
     }
     return path;
 }
@@ -255,24 +331,13 @@
     CGMutablePathRef path = CGPathCreateMutable();
     
     if(numberValues > 1) {
-        CGPathMoveToPoint(path,
-                             NULL,
-                             [self timeToPixels:0],
-                             [self valueToPixels:minVal]);
-
-        
-        for (int i=0; i<numberValues; i++) {
-            CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[i]], [self valueToPixels:valueSeries[i]]);
+        if(numberValues > 1) {
+            CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:minVal]);
+            for (int i=0; i<numberValues; i++) {
+                CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[i]], [self valueToPixels:valueSeries[i]]);
+            }
+            CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:minVal]);
         }
-        CGPathAddLineToPoint(path,
-                             NULL,
-                             [self timeToPixels:timeSeries[numberValues-1]],
-                             [self valueToPixels:minVal]);
-        CGPathAddLineToPoint(path,
-                             NULL,
-                             [self timeToPixels:0],
-                             [self valueToPixels:minVal]);
-
     }
     return path;
 }
@@ -372,6 +437,16 @@
         textLayer.contentsScale = [UIScreen mainScreen].scale;
 
 
+        [self.layer addSublayer:textLayer];
+    }
+    
+    for (CATextLayer *textLayer in [self timeTextLayers]) {
+        textLayer.foregroundColor = [UIColor colorWithWhite:0.4 alpha:1.0f].CGColor;
+        textLayer.font = (__bridge CFTypeRef)(@"GillSans");
+        textLayer.alignmentMode = kCAAlignmentCenter;
+        textLayer.fontSize = 15.0f;
+        textLayer.contentsScale = [UIScreen mainScreen].scale;
+        
         [self.layer addSublayer:textLayer];
     }
 }

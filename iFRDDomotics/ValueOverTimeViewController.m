@@ -126,6 +126,11 @@
         return [self.measurement values];
 }
 
+-(NSDate *) timeChartOldestDate:(TimeChart *)chart
+{
+    return [self.measurement oldestDate];
+}
+
 -(float) convertValueToLocalUnit:(float)value
 {
     if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
