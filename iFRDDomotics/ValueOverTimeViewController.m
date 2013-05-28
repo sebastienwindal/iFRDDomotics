@@ -107,10 +107,16 @@
 
 -(NSArray *) timeChartTimeValues:(TimeChart *)chart
 {
-    if ([self.measurement isKindOfClass:[HourlyMeasurement class]])
-        return [self.measurement hourOffsets];
-    else
+    if ([self.measurement isKindOfClass:[HourlyMeasurement class]]) {
+        NSMutableArray *convertedArray = [[self.measurement hourOffsets] mutableCopy];
+        
+        for (int i=0; i<[convertedArray count]; i++)
+            convertedArray[i] = @([convertedArray[i] floatValue] * 3600.0f);
+        
+        return [convertedArray copy];
+    } else {
         return [self.measurement dateOffsets];
+    }
 }
 
 -(int) timeChartNumberLines:(TimeChart *)chart

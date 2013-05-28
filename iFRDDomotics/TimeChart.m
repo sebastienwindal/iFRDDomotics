@@ -166,6 +166,7 @@
     if (numberValues > 0)
         pixelPerSecond = drawingWidth / totalDuration;
     
+    
 }
 
 
@@ -248,28 +249,57 @@
 {
     NSDate *startDate = [self.datasource timeChartOldestDate:self];
     
+    NSTimeInterval timeDelta;
+    BOOL roundToHour = YES;
+    BOOL roundToWeek = NO;
+    
+    if (totalDuration <= 4 * 3600.0f)
+        timeDelta = 3600.0f;
+    else if (totalDuration <= 24 * 3600.0f)
+        timeDelta = 6 * 3600.0f;
+    else if (totalDuration <= 4 * 24 * 3600.0f) {
+        timeDelta = 24 * 3600.0f;
+        roundToHour = NO;
+    } else if (totalDuration <= 7 * 24 * 3600.0f) {
+        timeDelta = 24 * 2 * 3600.0f;
+        roundToHour = NO;
+    } else if (totalDuration <= 28 * 24 * 3600.0f) {
+        timeDelta = 7 * 24 * 3600.0f;
+        roundToHour = NO;
+        roundToWeek = YES;
+    }
+    
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit;
     NSDateComponents *components = [gregorian components:unitFlags fromDate:startDate];
-    [components setHour:[components hour] + 1];
-    NSDate *roundHourDate = [gregorian dateFromComponents:components];
-    NSTimeInterval timeInterval = [roundHourDate timeIntervalSinceDate:startDate];
-    if (timeInterval == 3600.0f) {
-        roundHourDate = startDate;
+    if (roundToHour)
+        [components setHour:[components hour] + 1];
+    else {
+        // round to midnight
+        [components setDay:[components day] + 1];
+        if (roundToWeek)
+            [components setWeek:[components week] + 1];
     }
-
+    
+    NSDate *roundHourDate = [gregorian dateFromComponents:components];
+    
     CGFloat startY = [self bottomMargin];
     CGFloat endY =  self->height - [self topMargin];
-    
     
     NSTimeInterval t = [roundHourDate timeIntervalSinceDate:startDate];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSString *formatString = @"HH:mm";
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    [dateFormatter setTimeZone:timeZone];
+    NSString *formatString;
+    if (roundToHour)
+        formatString = @"HH:mm";
+    else if (roundToWeek)
+        formatString = @"MM/dd";
+    else
+        formatString = @"EE";
+    
     [dateFormatter setDateFormat:formatString];
+
     
     int i=0;
     while (t < totalDuration) {
@@ -286,8 +316,11 @@
                                      40.0,
                                      20.0);
         
-        t += 3600.0f;
+        t += timeDelta;
         i++;
+    }
+    while (i<maximumNumberVertLines) {
+        [self.timeTextLayers[i++] setString:@""];
     }
 }
 

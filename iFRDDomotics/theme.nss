@@ -15,6 +15,9 @@ TableCell:SettingsCell {
     font-color-highlighted: @primaryFontColor;
 }
 
+Table:SettingsTable {
+    background-color: #ff0000;
+}
 
 
 NavigationBar {
