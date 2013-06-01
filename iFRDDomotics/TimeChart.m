@@ -15,7 +15,8 @@
 @property (nonatomic, strong) CAShapeLayer *gridLayer;
 @property (nonatomic, strong) CAShapeLayer *outerLayer;
 @property (nonatomic, strong) CAShapeLayer *lineLayer;
-@property (nonatomic, strong) CAShapeLayer *areaLayer;
+@property (nonatomic, strong) CAGradientLayer *areaLayer;
+@property (nonatomic, strong) CAShapeLayer *areaMaskLayer;
 @property (nonatomic, strong) NSArray *valueTextLayers;
 @property (nonatomic, strong) NSArray *timeTextLayers;
 
@@ -42,7 +43,35 @@
     
 }
 
-
+-(NSDictionary *) colors {
+    
+    NSDictionary *_colorsDict = [NSDictionary dictionaryWithObjectsAndKeys:
+            [UIColor colorWithRed:40/255.0f  green:10/255.0f   blue:70/255.0f alpha:1.0f],  @-50.0f,
+            [UIColor colorWithRed:37/255.0f  green:11/255.0f   blue:100/255.0f alpha:1.0f], @-45.0f,
+            [UIColor colorWithRed:78/255.0f  green:50/255.0f   blue:134/255.0f alpha:1.0f], @-40.0f,
+            [UIColor colorWithRed:120/255.0f green:91/255.0f   blue:158/255.0f alpha:1.0f], @-35.0f,
+            [UIColor colorWithRed:160/255.0f green:130/255.0f  blue:192/255.0f alpha:1.0f], @-30.0f,
+            [UIColor colorWithRed:199/255.0f green:171/255.0f  blue:219/255.0f alpha:1.0f], @-25.0f,
+            [UIColor colorWithRed:110/255.0f green:1/255.0f    blue:69/255.0f alpha:1.0f],  @-20.0f,
+            [UIColor colorWithRed:163/255.0f green:49/255.0f   blue:136/255.0f alpha:1.0f], @-15.0f,
+            [UIColor colorWithRed:215/255.0f green:113/255.0f  blue:206/255.0f alpha:1.0f], @-10.0f,
+            [UIColor colorWithRed:167/255.0f green:227/255.0f  blue:251/255.0f alpha:1.0f], @-5.0f,
+            [UIColor colorWithRed:89/255.0f  green:118/255.0f  blue:184/255.0f alpha:1.0f], @0.0f,
+            [UIColor colorWithRed:22/255.0f  green:19/255.0f   blue:150/255.0f alpha:1.0f], @5.0f,
+            [UIColor colorWithRed:122/255.0f green:113/255.0f  blue:98/255.0f alpha:1.0f],  @10.0f,
+            [UIColor colorWithRed:216/255.0f green:215/255.0f  blue:49/255.0f alpha:1.0f],  @15.0f,
+            [UIColor colorWithRed:217/255.0f green:151/255.0f  blue:3/255.0f alpha:1.0f],   @20.0f,
+            [UIColor colorWithRed:214/255.0f green:42/255.0f   blue:6/255.0f alpha:1.0f],   @25.0f,
+            [UIColor colorWithRed:146/255.0f green:1/255.0f    blue:0/255.0f alpha:1.0f],   @30.0f,
+            [UIColor colorWithRed:245/255.0f green:125/255.0f  blue:199/255.0f alpha:1.0f], @35.0f,
+            [UIColor colorWithRed:210/255.0f green:210/255.0f  blue:210/255.0f alpha:1.0f], @40.0f,
+            [UIColor colorWithRed:244/255.0f green:0/255.0f    blue:101/255.0f alpha:1.0f], @45.0f,
+            [UIColor colorWithRed:149/255.0f green:1/255.0f    blue:51/255.0f alpha:1.0f],  @50.0f,
+            nil
+            ];
+    
+    return _colorsDict;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -81,6 +110,7 @@
     [self addGridLayer];
     [self addLineLayer];
     [self addAreaLayer];
+    [self addAreaMaskLayer];
     [self addValueLegend];
 }
 
@@ -302,6 +332,7 @@
 
     
     int i=0;
+
     while (t < totalDuration) {
         float x = [self timeToPixels:t];
         CGPathMoveToPoint(path, NULL, x, startY);
@@ -350,11 +381,11 @@
     CGMutablePathRef path = CGPathCreateMutable();
     
     if(numberValues > 1) {
-        CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:minVal]);
+        CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:valueSeries[0]]);
         for (int i=0; i<numberValues; i++) {
             CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[i]], [self valueToPixels:valueSeries[i]]);
         }
-        CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:minVal]);
+        CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:valueSeries[numberValues -1]]);
     }
     return path;
 }
@@ -365,11 +396,23 @@
     
     if(numberValues > 1) {
         if(numberValues > 1) {
-            CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:minVal]);
-            for (int i=0; i<numberValues; i++) {
+            CGPathMoveToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:minVal]);
+            CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[0]], [self valueToPixels:minVal]);
+            int i;
+            for (i=0; i<numberValues; i++) {
                 CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[i]], [self valueToPixels:valueSeries[i]]);
             }
             CGPathAddLineToPoint(path, NULL, [self timeToPixels:timeSeries[numberValues-1]], [self valueToPixels:minVal]);
+            float x = [self timeToPixels:timeSeries[numberValues-1]];
+            float y = [self valueToPixels:valueSeries[numberValues-1]];
+            // when transitioning from a filled CGPath to a filled CGPath with less points,
+            // results are not visually pleasing. Add points to make sure we have the same number
+            // of points no matter what the time selection is...
+            // highest number of points: 4 wks: 4 * 7 * 24 = 672.
+            while (i<700) {
+                CGPathAddLineToPoint(path, NULL, x, y);
+                i++;
+            }
         }
     }
     return path;
@@ -424,12 +467,12 @@
     self.lineLayer = [CAShapeLayer layer];
      
      CGMutablePathRef path = [self linePath];
-     
+    
      self.lineLayer.path = path;
      [self.lineLayer setFrame:self.bounds];
      self.lineLayer.transform = CATransform3DMakeScale(1.0f, -1.0f, 1.0f);
-     self.lineLayer.lineWidth = 1.0f;
-     self.lineLayer.strokeColor = [UIColor colorWithWhite:0.0 alpha:0.8].CGColor;
+     self.lineLayer.lineWidth = 2.0f;
+     self.lineLayer.strokeColor = [UIColor colorWithWhite:0.0 alpha:1.0].CGColor;
      self.lineLayer.fillColor = [UIColor clearColor].CGColor;
      self.lineLayer.lineCap = kCALineCapRound;
      self.lineLayer.contentsScale = [UIScreen mainScreen].scale;
@@ -439,23 +482,34 @@
      [self.layer addSublayer:self.lineLayer];
 }
 
+-(void) addAreaMaskLayer
+{
+    CGMutablePathRef path = [self areaPath];
+    self.areaMaskLayer = [CAShapeLayer layer];
+    self.areaMaskLayer.path = path;
+    self.areaMaskLayer.lineWidth = 0.0f;
+    self.areaMaskLayer.strokeColor = [UIColor blackColor].CGColor;
+    self.areaMaskLayer.fillColor = [UIColor colorWithWhite:0.0 alpha:0.8f].CGColor;
+    self.areaMaskLayer.lineCap = kCALineCapRound;
+    
+    self.areaLayer.mask = self.areaMaskLayer;
+
+    CGPathRelease(path);
+}
+
 
 -(void) addAreaLayer
 {
-    self.areaLayer = [CAShapeLayer layer];
-    
-    CGMutablePathRef path = [self areaPath];
-    
-    self.areaLayer.path = path;
+    self.areaLayer = [CAGradientLayer layer];
+
     [self.areaLayer setFrame:self.bounds];
     self.areaLayer.transform = CATransform3DMakeScale(1.0f, -1.0f, 1.0f);
-    self.areaLayer.lineWidth = 1.0f;
-    self.areaLayer.strokeColor = [UIColor clearColor].CGColor;
-    self.areaLayer.fillColor = [UIColor colorWithRed:1.0f green:0.0 blue:0.0 alpha:0.2f].CGColor;
-    self.areaLayer.lineCap = kCALineCapRound;
+    
     self.areaLayer.contentsScale = [UIScreen mainScreen].scale;
     
-    CGPathRelease(path);
+    self.areaLayer.startPoint = CGPointMake(0.5,1.0);
+    self.areaLayer.endPoint = CGPointMake(0.5,0.0);
+
     
     [self.layer addSublayer:self.areaLayer];
 }
@@ -528,6 +582,34 @@
     CGPathRelease(newPath);
 }
 
+-(void) updateGradientStopsAnimated:(BOOL)animated
+{
+    NSMutableArray *gradStops = [NSMutableArray array];
+    NSMutableArray *gradLocations = [NSMutableArray array];
+    
+    float val = minVal;
+    val = 5.0f * ceilf(minVal / 5.0f);
+    UIColor *c = [self colors][@(val)];
+
+    if (c) {
+        [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
+        [gradStops insertObject:(id)[c CGColor] atIndex:0];
+    }
+    
+    val += 5.0f;
+    while (val < maxVal) {
+        UIColor *c = [self colors][@(val)];
+        if (c) {
+            [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
+            [gradStops insertObject:(id)[c CGColor] atIndex:0];
+            
+        }
+        val +=  5.0f;
+    }
+        
+    self.areaLayer.colors = gradStops;
+    self.areaLayer.locations = gradLocations;
+}
 
 -(void) updateAreaLayerAnimated:(BOOL)animated
 {
@@ -537,12 +619,12 @@
     if (animated) {
         CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"path"];
         anim.duration = animationInterval;
-        anim.fromValue = (__bridge id)self.areaLayer.path;
+        anim.fromValue = (__bridge id)self.areaMaskLayer.path;
         anim.toValue = (__bridge id)(newPath);
         
-        [self.areaLayer addAnimation:anim forKey:@"animatePath"];
+        [self.areaMaskLayer addAnimation:anim forKey:@"animatePath"];
     }
-    self.areaLayer.path = newPath;
+    self.areaMaskLayer.path = newPath;
     CGPathRelease(newPath);
 }
 
@@ -555,8 +637,9 @@
     
     [self updateOuterLayer];
     [self updateGridLayerAnimated:YES];
-    [self updateLineLayerAnimated:YES];
     [self updateAreaLayerAnimated:YES];
+    [self updateLineLayerAnimated:YES];
+    [self updateGradientStopsAnimated:YES];
 }
 
 
