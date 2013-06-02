@@ -308,11 +308,22 @@
                                     <action selector="timeIntervalChanged:" destination="rr4-dA-PcH" eventType="valueChanged" id="otw-PS-bIY"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="reload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dHz-4P-uYd">
+                                <rect key="frame" x="102" y="112" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="BigLoadLabel"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="cXo-DW-C4e"/>
                     <connections>
+                        <outlet property="chartLoadLabel" destination="dHz-4P-uYd" id="dyH-mi-xjR"/>
                         <outlet property="historicalChart" destination="MIq-nt-bwK" id="Drb-q1-xF4"/>
                         <outlet property="timeSegmentControl" destination="hRJ-MO-Nl2" id="h22-v6-Gbf"/>
                     </connections>
@@ -426,6 +437,8 @@
         <class className="ValueOverTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ValueOverTimeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="timeIntervalChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="chartLoadLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="historicalChart" candidateClass="TimeChart"/>
                 <relationship kind="outlet" name="timeSegmentControl" candidateClass="UISegmentedControl"/>
             </relationships>

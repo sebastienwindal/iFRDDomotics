@@ -14,13 +14,26 @@
 #import "UnitConverter.h"
 #import "ColorThresholds.h"
 #import "PersistentStorage.h"
+#import "FontIcon.h"
+#import <QuartzCore/QuartzCore.h>
+
+typedef enum {
+    kChartLoadStatePending,
+    kChartLoadStateCompletedWithSuccess,
+    kChartLoadStateCompletedWithError,
+} kChartLoadStates;
 
 @interface ValueOverTimeViewController ()<TimeChartDatasource>
 
 @property (weak, nonatomic) IBOutlet TimeChart *historicalChart;
 @property (nonatomic, strong) id measurement;
 
+@property (weak, nonatomic) IBOutlet UILabel *chartLoadLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *timeSegmentControl;
+
+@property (nonatomic) kChartLoadStates loadState;
+@property (nonatomic, strong) CABasicAnimation *reloadRotationAnimation;
+
 @end
 
 @implementation ValueOverTimeViewController
@@ -45,8 +58,30 @@
     [self timeIntervalChanged:self.timeSegmentControl];
 }
 
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setLoadIconFromMeasurement];
+}
+
+-(void) setLoadIconFromMeasurement
+{
+    if (self.sensor.capabilities == kSensorCapabilities_HUMIDITY)
+        self.chartLoadLabel.text = [FontIcon iconString:ICON_WATER_4];
+    else if (self.sensor.capabilities  == kSensorCapabilities_TEMPERATURE)
+        self.chartLoadLabel.text = [FontIcon iconString:ICON_TEMPERATURE_2];
+    else if (self.sensor.capabilities  == kSensorCapabilities_LUMMINOSITY)
+        self.chartLoadLabel.text = [FontIcon iconString:ICON_SUN_7];
+    
+    else self.chartLoadLabel.text = [FontIcon iconString:ICON_RELOAD_2];
+}
+
 -(void) fetchValuesBetweenDate:(NSDate *)startDate andDate:(NSDate*)endDate
 {
+    self.loadState = kChartLoadStatePending;
+    
     NSTimeInterval duration = [endDate timeIntervalSinceDate:startDate];
     
     if (duration <= 4 * 60 * 60.0) {
@@ -57,9 +92,10 @@
                                                            success:^(FRDDomoticsClient *domoClient, SensorMeasurement *values) {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
+                                                               self.loadState = kChartLoadStateCompletedWithSuccess;
                                                            }
                                                            failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
-    
+                                                               self.loadState = kChartLoadStateCompletedWithError;
                                                            }
          ];
     } else {
@@ -70,8 +106,9 @@
                                                            success:^(FRDDomoticsClient *domoClient, HourlyMeasurement *values) {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
+                                                               self.loadState = kChartLoadStateCompletedWithSuccess;
                                                            } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
-                                                               
+                                                               self.loadState = kChartLoadStateCompletedWithError;\
                                                            }
          ];
     }
@@ -176,6 +213,38 @@
 }
 
 
+-(void) setLoadState:(kChartLoadStates)loadState
+{
+    _loadState = loadState;
+    
+    if (loadState == kChartLoadStatePending) {
+        [self startRotateReloadLabel];
+        self.chartLoadLabel.alpha = 1.0f;
+        self.historicalChart.alpha = 0.5f;
+    } else if (loadState == kChartLoadStateCompletedWithError) {
+        self.chartLoadLabel.alpha = 0.0f;
+        self.historicalChart.alpha = 1.0f;
+        [self endRotateReloadLabel];
+    } else if (loadState == kChartLoadStateCompletedWithSuccess) {
+        self.chartLoadLabel.alpha = 0.0f;
+        self.historicalChart.alpha = 1.0f;
+        [self endRotateReloadLabel];
+    }
+}
+
+
+-(void) startRotateReloadLabel
+{
+    [self.chartLoadLabel.layer addAnimation:self.reloadRotationAnimation forKey:@"rotationAnimation"];
+}
+
+-(void) endRotateReloadLabel
+{
+    [self.chartLoadLabel.layer removeAllAnimations];
+    self.reloadRotationAnimation = nil;
+}
+
+
 -(NSArray *) gratiendTempColorsBetweenValue:(float)minVal andValue:(float)maxVal
 {
     float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
@@ -210,6 +279,25 @@
     else 
         return @[@(0.0f), @(1.0f)];
 }
+
+
+-(CABasicAnimation *) reloadRotationAnimation
+{
+    if (!_reloadRotationAnimation) {
+        int repeat = 99999999;
+        NSTimeInterval duration = 0.3;
+        
+        _reloadRotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        
+        _reloadRotationAnimation.toValue = @1.5f; //[NSNumber numberWithFloat: M_PI * 2.0 * duration ];
+        _reloadRotationAnimation.duration = duration;
+        //_reloadRotationAnimation.cumulative = YES;
+        _reloadRotationAnimation.repeatCount = repeat;
+        _reloadRotationAnimation.autoreverses = YES;
+    }
+    return _reloadRotationAnimation;
+}
+
 
 -(NSArray *) gradientTempStopsBetweenValue:(float)minVal andValue:(float)maxVal
 {

@@ -101,3 +101,10 @@ Label:sensorCellName {
     font-size: 12;
     font-name: @FontName;
 }
+
+Label:BigLoadLabel {
+    font-color: @primaryFontColor;
+    font-name: icomoon;
+    font-size: 64;
+    text-align: center;
+}
