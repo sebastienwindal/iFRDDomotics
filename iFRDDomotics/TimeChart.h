@@ -19,6 +19,10 @@
 -(NSArray *) timeChart:(TimeChart *)chart valuesForLine:(int)lineIndex;
 -(float) convertValueToLocalUnit:(float)value;
 -(NSDate *) timeChartOldestDate:(TimeChart *) chart;
+
+-(NSArray *) gradientColorsBetweenValue:(float)min andValue:(float)max;
+-(NSArray *) gradientStopsBetweenValue:(float)min andValue:(float)max;
+
 @end
 
 @interface TimeChart : UIView

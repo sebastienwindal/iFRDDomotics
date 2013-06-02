@@ -12,6 +12,8 @@
 #import "SensorMeasurement.h"
 #import "HourlyMeasurement.h"
 #import "UnitConverter.h"
+#import "ColorThresholds.h"
+#import "PersistentStorage.h"
 
 @interface ValueOverTimeViewController ()<TimeChartDatasource>
 
@@ -142,6 +144,59 @@
     if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
         return [UnitConverter toLocaleTemperature:value];
     return value;
+}
+
+-(NSArray *) gradientColorsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;    
+    
+    ColorThresholds *colorThreshold = [[ColorThresholds alloc] init];
+    NSMutableArray *gradStops = [NSMutableArray array];
+    
+    float val = minVal;
+    val = interval * ceilf(minVal / interval);
+    UIColor *c = colorThreshold.colorsDict[@(val)];
+
+    if (c) {
+        [gradStops insertObject:(id)[c CGColor] atIndex:0];
+    }
+    val = interval * floorf(minVal / interval);
+    val += interval;
+    while (val < maxVal) {
+        UIColor *c = colorThreshold.colorsDict[@(val)];
+        if (c) {
+            [gradStops insertObject:(id)[c CGColor] atIndex:0];
+        }
+        val +=  interval;
+    }
+    return gradStops;
+}
+
+-(NSArray *) gradientStopsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
+
+    NSMutableArray *gradLocations = [NSMutableArray array];
+    ColorThresholds *colorThreshold = [[ColorThresholds alloc] init];
+    
+    float val = minVal;
+    val = interval * ceilf(minVal / interval);
+    UIColor *c = colorThreshold.colorsDict[@(val)];
+    
+    if (c) {
+        [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
+    }
+    val = interval * floorf(minVal / interval);
+    
+    val += interval;
+    while (val < maxVal) {
+        UIColor *c = colorThreshold.colorsDict[@(val)];
+        if (c) {
+            [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
+        }
+        val +=  interval;
+    }
+    return gradLocations;
 }
 
 @end

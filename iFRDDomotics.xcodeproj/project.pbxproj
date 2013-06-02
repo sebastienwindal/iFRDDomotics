@@ -17,6 +17,7 @@
 		BE2C358B1740409D0037FCB4 /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358A1740409D0037FCB4 /* SensorTableViewController.m */; };
 		BE2C358E174044090037FCB4 /* SensorCurrentValueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */; };
 		BE2C3591174079F20037FCB4 /* SensorMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* SensorMeasurement.m */; };
+		BE40B432175ADFB70065C0FE /* ColorThresholds.m in Sources */ = {isa = PBXBuildFile; fileRef = BE40B431175ADFB70065C0FE /* ColorThresholds.m */; };
 		BEC8669C17446F6600730259 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC8669B17446F6600730259 /* Settings.storyboard */; };
 		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
 		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
@@ -84,6 +85,8 @@
 		BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorCurrentValueDetailViewController.m; sourceTree = "<group>"; };
 		BE2C358F174079F20037FCB4 /* SensorMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMeasurement.h; sourceTree = "<group>"; };
 		BE2C3590174079F20037FCB4 /* SensorMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMeasurement.m; sourceTree = "<group>"; };
+		BE40B430175ADFB70065C0FE /* ColorThresholds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorThresholds.h; sourceTree = "<group>"; };
+		BE40B431175ADFB70065C0FE /* ColorThresholds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorThresholds.m; sourceTree = "<group>"; };
 		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BEC8669D1744715A00730259 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		BEC8669E1744715A00730259 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				BEC866A4174480AF00730259 /* UnitConverter.m */,
 				BEECE2471749B18E006F6488 /* HourlyMeasurement.h */,
 				BEECE2481749B18E006F6488 /* HourlyMeasurement.m */,
+				BE40B430175ADFB70065C0FE /* ColorThresholds.h */,
+				BE40B431175ADFB70065C0FE /* ColorThresholds.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -521,6 +526,7 @@
 				BEECE2491749B18E006F6488 /* HourlyMeasurement.m in Sources */,
 				BEE3B79B174C5F91004C9E9B /* HumidityCollectionViewCell.m in Sources */,
 				BEE3B79E174C5FD5004C9E9B /* BaseCollectionViewCell.m in Sources */,
+				BE40B432175ADFB70065C0FE /* ColorThresholds.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
