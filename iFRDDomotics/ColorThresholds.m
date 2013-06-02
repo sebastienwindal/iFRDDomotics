@@ -13,12 +13,12 @@
 @implementation ColorThresholds
 
 
--(NSDictionary *) colorsDict {
+-(NSDictionary *) temperatureColorsDict {
     
-    if (_colorsDict == nil) {
+    if (_temperatureColorsDict == nil) {
         
         if ([[PersistentStorage sharedInstance] celcius])
-            _colorsDict = [NSDictionary dictionaryWithObjectsAndKeys:
+            _temperatureColorsDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [UIColor colorWithRed:40/255.0f  green:10/255.0f   blue:70/255.0f alpha:1.0f],  @(-50.0f),
                                  [UIColor colorWithRed:37/255.0f  green:11/255.0f   blue:100/255.0f alpha:1.0f], @(-45.0f),
                                  [UIColor colorWithRed:78/255.0f  green:50/255.0f   blue:134/255.0f alpha:1.0f], @(-40.0f),
@@ -43,7 +43,7 @@
                                  nil
                                  ];
         else
-            _colorsDict = [NSDictionary dictionaryWithObjectsAndKeys:
+            _temperatureColorsDict = [NSDictionary dictionaryWithObjectsAndKeys:
                            [UIColor colorWithRed:40/255.0f  green:10/255.0f   blue:70/255.0f alpha:1.0f],  @(-70.0f),
                            [UIColor colorWithRed:37/255.0f  green:11/255.0f   blue:100/255.0f alpha:1.0f], @(-60.0f),
                            [UIColor colorWithRed:78/255.0f  green:50/255.0f   blue:134/255.0f alpha:1.0f], @(-50.0f),
@@ -69,7 +69,7 @@
                            ];
 
     }
-    return _colorsDict;
+    return _temperatureColorsDict;
 }
 
 

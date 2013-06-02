@@ -291,7 +291,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="MIq-nt-bwK" customClass="TimeChart">
-                                <rect key="frame" x="20" y="65" width="280" height="208"/>
+                                <rect key="frame" x="12" y="75" width="288" height="221"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -359,7 +359,10 @@
         </scene>
     </scenes>
     <classes>
-        <class className="HumidityCollectionViewCell" superclassName="UICollectionViewCell">
+        <class className="BaseCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseCollectionViewCell.h"/>
+        </class>
+        <class className="HumidityCollectionViewCell" superclassName="BaseCollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HumidityCollectionViewCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
@@ -394,7 +397,7 @@
         <class className="SensorTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorTableViewController.h"/>
         </class>
-        <class className="TemperatureCollectionViewCell" superclassName="UICollectionViewCell">
+        <class className="TemperatureCollectionViewCell" superclassName="BaseCollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TemperatureCollectionViewCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
@@ -420,13 +423,9 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="ValueOverTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ValueOverTimeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="timeIntervalChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="historicalChart" candidateClass="TimeChart"/>
                 <relationship kind="outlet" name="timeSegmentControl" candidateClass="UISegmentedControl"/>
             </relationships>

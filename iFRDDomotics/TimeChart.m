@@ -117,7 +117,7 @@
 
 -(CGFloat) rightMargin
 {
-    return 10.0f;
+    return 1.0f;
 }
 
 -(CGFloat) topMargin

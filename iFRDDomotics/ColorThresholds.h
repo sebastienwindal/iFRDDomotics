@@ -10,5 +10,5 @@
 
 @interface ColorThresholds : NSObject
 
-@property (nonatomic, strong) NSDictionary *colorsDict;
+@property (nonatomic, strong) NSDictionary *temperatureColorsDict;
 @end

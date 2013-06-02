@@ -148,22 +148,52 @@
 
 -(NSArray *) gradientColorsBetweenValue:(float)minVal andValue:(float)maxVal
 {
-    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;    
+    if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
+        return [self gratiendTempColorsBetweenValue:minVal andValue:maxVal];
+    else if ([self.measurement measurementType] == kSensorCapabilities_LUMMINOSITY)
+        return [self gradientLumColorsBetweenValue:minVal andValue:maxVal];
+    else
+        return [self gradiendHumidityColorsBetweenValue:minVal andValue:maxVal];
+        
+}
+
+-(NSArray *) gradientLumColorsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    return @[
+             (id) [[UIColor orangeColor] CGColor],
+             (id) [[UIColor darkGrayColor] CGColor]
+                ];
+}
+
+-(NSArray *) gradiendHumidityColorsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    NSMutableArray *arr = [@[
+             (id) [[UIColor blueColor] CGColor],
+             (id) [[UIColor orangeColor] CGColor]
+             ] mutableCopy];
+    
+    return arr;
+}
+
+
+-(NSArray *) gratiendTempColorsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
     
     ColorThresholds *colorThreshold = [[ColorThresholds alloc] init];
     NSMutableArray *gradStops = [NSMutableArray array];
     
     float val = minVal;
     val = interval * ceilf(minVal / interval);
-    UIColor *c = colorThreshold.colorsDict[@(val)];
-
+    UIColor *c = colorThreshold.temperatureColorsDict[@(val)];
+    
     if (c) {
         [gradStops insertObject:(id)[c CGColor] atIndex:0];
     }
     val = interval * floorf(minVal / interval);
     val += interval;
     while (val < maxVal) {
-        UIColor *c = colorThreshold.colorsDict[@(val)];
+        UIColor *c = colorThreshold.temperatureColorsDict[@(val)];
         if (c) {
             [gradStops insertObject:(id)[c CGColor] atIndex:0];
         }
@@ -172,16 +202,25 @@
     return gradStops;
 }
 
+
 -(NSArray *) gradientStopsBetweenValue:(float)minVal andValue:(float)maxVal
 {
-    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
+    if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
+        return [self gradientTempStopsBetweenValue:minVal andValue:maxVal];
+    else 
+        return @[@(0.0f), @(1.0f)];
+}
 
+-(NSArray *) gradientTempStopsBetweenValue:(float)minVal andValue:(float)maxVal
+{
+    float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
+    
     NSMutableArray *gradLocations = [NSMutableArray array];
     ColorThresholds *colorThreshold = [[ColorThresholds alloc] init];
     
     float val = minVal;
     val = interval * ceilf(minVal / interval);
-    UIColor *c = colorThreshold.colorsDict[@(val)];
+    UIColor *c = colorThreshold.temperatureColorsDict[@(val)];
     
     if (c) {
         [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
@@ -190,7 +229,7 @@
     
     val += interval;
     while (val < maxVal) {
-        UIColor *c = colorThreshold.colorsDict[@(val)];
+        UIColor *c = colorThreshold.temperatureColorsDict[@(val)];
         if (c) {
             [gradLocations insertObject:@(1.0f-(val-minVal)/(maxVal-minVal)) atIndex:0];
         }
