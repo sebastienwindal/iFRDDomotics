@@ -8,7 +8,7 @@
 
 #import "SensorTableViewCell.h"
 #import "UILabel+NUI.h"
-#import "FontIcon.h"
+#import "IcoMoon.h"
 #import "Sensor.h"
 #import "FRDDomoticsClient.h"
 
@@ -45,11 +45,11 @@
 -(void) setType:(kSensorCapabilities)type
 {
     if (type == kSensorCapabilities_TEMPERATURE) {
-        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_TEMPERATURE_2];
+        self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_THERMOMETER_1 ];
     } else if (type == kSensorCapabilities_HUMIDITY) {
-        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_WATER_4];
+        self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_TINT];
     } else if (type == kSensorCapabilities_LUMMINOSITY) {
-        self.sensorTypeIconLabel.text = [FontIcon iconString:ICON_SUN_7];
+        self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_SUN_3];
     }
 }
 

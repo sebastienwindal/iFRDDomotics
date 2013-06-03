@@ -14,7 +14,7 @@
 #import "UnitConverter.h"
 #import "ColorThresholds.h"
 #import "PersistentStorage.h"
-#import "FontIcon.h"
+#import "IcoMoon.h"
 #import <QuartzCore/QuartzCore.h>
 
 typedef enum {
@@ -69,13 +69,13 @@ typedef enum {
 -(void) setLoadIconFromMeasurement
 {
     if (self.sensor.capabilities == kSensorCapabilities_HUMIDITY)
-        self.chartLoadLabel.text = [FontIcon iconString:ICON_WATER_4];
+        self.chartLoadLabel.text = [IcoMoon iconString:ICOMOON_TINT];
     else if (self.sensor.capabilities  == kSensorCapabilities_TEMPERATURE)
-        self.chartLoadLabel.text = [FontIcon iconString:ICON_TEMPERATURE_2];
+        self.chartLoadLabel.text = [IcoMoon iconString:ICOMOON_THERMOMETER_1];
     else if (self.sensor.capabilities  == kSensorCapabilities_LUMMINOSITY)
-        self.chartLoadLabel.text = [FontIcon iconString:ICON_SUN_7];
+        self.chartLoadLabel.text = [IcoMoon iconString:ICOMOON_SUN_3];
     
-    else self.chartLoadLabel.text = [FontIcon iconString:ICON_RELOAD_2];
+    else self.chartLoadLabel.text = [IcoMoon iconString:ICOMOON_LOOP];
 }
 
 -(void) fetchValuesBetweenDate:(NSDate *)startDate andDate:(NSDate*)endDate

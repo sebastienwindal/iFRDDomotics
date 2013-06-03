@@ -23,7 +23,7 @@
 		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
 		BEC866A5174480AF00730259 /* UnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A4174480AF00730259 /* UnitConverter.m */; };
 		BED7904017448705005DB9E5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED7903F17448705005DB9E5 /* icomoon.ttf */; };
-		BED79043174487BF005DB9E5 /* FontIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* FontIcon.m */; };
+		BED79043174487BF005DB9E5 /* IcoMoon.m in Sources */ = {isa = PBXBuildFile; fileRef = BED79042174487BF005DB9E5 /* IcoMoon.m */; };
 		BEE3B79B174C5F91004C9E9B /* HumidityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */; };
 		BEE3B79E174C5FD5004C9E9B /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE3B79D174C5FD5004C9E9B /* BaseCollectionViewCell.m */; };
 		BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEECE23117481601006F6488 /* TemperatureCollectionViewController.m */; };
@@ -87,6 +87,8 @@
 		BE2C3590174079F20037FCB4 /* SensorMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMeasurement.m; sourceTree = "<group>"; };
 		BE40B430175ADFB70065C0FE /* ColorThresholds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorThresholds.h; sourceTree = "<group>"; };
 		BE40B431175ADFB70065C0FE /* ColorThresholds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorThresholds.m; sourceTree = "<group>"; };
+		BE40B433175C34A50065C0FE /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		BE40B434175C36880065C0FE /* IcomoonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcomoonIcons.h; sourceTree = "<group>"; };
 		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BEC8669D1744715A00730259 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		BEC8669E1744715A00730259 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -95,8 +97,8 @@
 		BEC866A3174480AF00730259 /* UnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitConverter.h; sourceTree = "<group>"; };
 		BEC866A4174480AF00730259 /* UnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitConverter.m; sourceTree = "<group>"; };
 		BED7903F17448705005DB9E5 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
-		BED79041174487BF005DB9E5 /* FontIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontIcon.h; sourceTree = "<group>"; };
-		BED79042174487BF005DB9E5 /* FontIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontIcon.m; sourceTree = "<group>"; };
+		BED79041174487BF005DB9E5 /* IcoMoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcoMoon.h; sourceTree = "<group>"; };
+		BED79042174487BF005DB9E5 /* IcoMoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcoMoon.m; sourceTree = "<group>"; };
 		BEE3B799174C5F91004C9E9B /* HumidityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumidityCollectionViewCell.h; sourceTree = "<group>"; };
 		BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumidityCollectionViewCell.m; sourceTree = "<group>"; };
 		BEE3B79C174C5FD5004C9E9B /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				BEE3B79A174C5F91004C9E9B /* HumidityCollectionViewCell.m */,
 				BEE3B79C174C5FD5004C9E9B /* BaseCollectionViewCell.h */,
 				BEE3B79D174C5FD5004C9E9B /* BaseCollectionViewCell.m */,
+				BE40B433175C34A50065C0FE /* Header.h */,
 			);
 			name = Sensors;
 			sourceTree = "<group>";
@@ -294,8 +297,9 @@
 				BEFFB7A8173DEFF50043D770 /* Supporting Files */,
 				BE018CFE1741CE7300571CDA /* UILabel+FadeInTextTransition.h */,
 				BE018CFF1741CE7300571CDA /* UILabel+FadeInTextTransition.m */,
-				BED79041174487BF005DB9E5 /* FontIcon.h */,
-				BED79042174487BF005DB9E5 /* FontIcon.m */,
+				BED79041174487BF005DB9E5 /* IcoMoon.h */,
+				BED79042174487BF005DB9E5 /* IcoMoon.m */,
+				BE40B434175C36880065C0FE /* IcomoonIcons.h */,
 			);
 			path = iFRDDomotics;
 			sourceTree = "<group>";
@@ -518,7 +522,7 @@
 				BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */,
 				BEC866A21744761400730259 /* PersistentStorage.m in Sources */,
 				BEC866A5174480AF00730259 /* UnitConverter.m in Sources */,
-				BED79043174487BF005DB9E5 /* FontIcon.m in Sources */,
+				BED79043174487BF005DB9E5 /* IcoMoon.m in Sources */,
 				BEECE23217481601006F6488 /* TemperatureCollectionViewController.m in Sources */,
 				BEECE235174817E8006F6488 /* TemperatureCollectionViewCell.m in Sources */,
 				BEECE23917495F25006F6488 /* TimeChart.m in Sources */,

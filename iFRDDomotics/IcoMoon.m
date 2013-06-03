@@ -6,16 +6,13 @@
 //  Copyright (c) 2013 Sebastien. All rights reserved.
 //
 
-#import "FontIcon.h"
+#import "IcoMoon.h"
 
 
-
-
-@implementation FontIcon
+@implementation IcoMoon
 
 +(NSString *)iconString:(char *)icon
 {
-    //char value[4] = "\ue000";
     NSString *string = [NSString stringWithUTF8String:icon];
     return string;
 }

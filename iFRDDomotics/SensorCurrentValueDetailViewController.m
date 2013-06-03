@@ -12,7 +12,7 @@
 #import "TTTTimeIntervalFormatter.h"
 #import "UILabel+FadeInTextTransition.h"
 #import "UnitConverter.h"
-#import "FontIcon.h"
+#import "IcoMoon.h"
 
 @interface SensorCurrentValueDetailViewController ()
 
@@ -69,7 +69,7 @@
     self.reloadButton.nuiClass = @"IconButton:NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
-    [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
+    [self.reloadButton setTitle:[IcoMoon iconString:ICOMOON_RELOAD] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchLastValue) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
     
@@ -83,7 +83,7 @@
     self.anHourAgoLabel.text = @"";
     self.aDayAgoLabel.text = @"";
     
-    NSString *btnText = [NSString stringWithFormat:@"%@ %@", [FontIcon iconString:ICON_LINE_CHART], [FontIcon iconString:ICON_RIGHT_ARROW_2]];
+    NSString *btnText = [NSString stringWithFormat:@"%@ %@", [IcoMoon iconString:ICOMOON_STATS], [IcoMoon iconString:ICOMOON_ARROW_RIGHT]];
     [self.chartButton setTitle:btnText forState:UIControlStateNormal];
     [self updateUIFromSensor];
     

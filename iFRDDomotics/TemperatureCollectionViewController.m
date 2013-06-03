@@ -14,7 +14,7 @@
 #import "FRDDomoticsClient.h"
 #import "UnitConverter.h"
 #import "UIButton+NUI.h"
-#import "FontIcon.h"
+#import "IcoMoon.h"
 
 
 @interface TemperatureCollectionViewController ()
@@ -46,7 +46,7 @@
     self.reloadButton.nuiClass = @"IconButton:NavIconButton";
     
     self.reloadButton.frame = CGRectMake(0,0,30,20);
-    [self.reloadButton setTitle:[FontIcon iconString:ICON_RELOAD_4] forState:UIControlStateNormal];
+    [self.reloadButton setTitle:[IcoMoon iconString:ICOMOON_RELOAD] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchValues) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
     if (self.valueType == kSensorCapabilities_LUMMINOSITY)
