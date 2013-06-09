@@ -7,11 +7,15 @@
 //
 
 #import "PersistentStorage.h"
+#import "UICKeyChainStore.h"
 
 @implementation PersistentStorage
 
 
 #define PERSISTENT_STORAGE_TEMPERATURE_UNIT @"PERSISTENT_STORAGE_TEMPERATURE_UNIT"
+#define PERSISTENT_STORAGE_USERNAME @"PERSISTENT_STORAGE_USERNAME"
+#define PERSISTENT_STORAGE_PASSWORD @"PERSISTENT_STORAGE_PASSWORD"
+
 
 -(BOOL) celcius
 {
@@ -36,6 +40,24 @@
     [userDefaults synchronize];
 }
 
+-(void) setPassword:(NSString *)password
+{
+    [UICKeyChainStore setString:password forKey:PERSISTENT_STORAGE_PASSWORD];
+}
+
+-(NSString *) password {
+    return [UICKeyChainStore stringForKey:PERSISTENT_STORAGE_PASSWORD];
+}
+
+
+-(void) setUserName:(NSString *)userName
+{
+    [UICKeyChainStore setString:userName forKey:PERSISTENT_STORAGE_USERNAME];
+}
+
+-(NSString *) userName {
+    return [UICKeyChainStore stringForKey:PERSISTENT_STORAGE_USERNAME];
+}
 
 + (PersistentStorage *)sharedInstance {
     static PersistentStorage *_sharedInstance = nil;

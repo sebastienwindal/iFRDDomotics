@@ -12,6 +12,9 @@
 @interface PersistentStorage : NSObject
 
 @property (nonatomic) BOOL celcius;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *serverAddress;
 
 + (PersistentStorage *)sharedInstance;
 

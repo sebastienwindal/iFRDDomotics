@@ -143,6 +143,7 @@
 						<string key="NSFrame">{{20, 275}, {280, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="430385509"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -171,6 +172,27 @@
 						<string key="IBUINormalTitle">Humidity</string>
 						<reference key="IBUIHighlightedTitleColor" ref="909083980"/>
 						<reference key="IBUINormalTitleColor" ref="909083980"/>
+						<reference key="IBUINormalTitleShadowColor" ref="513532677"/>
+						<reference key="IBUIFontDescription" ref="885103559"/>
+						<reference key="IBUIFont" ref="15505550"/>
+					</object>
+					<object class="IBUIButton" id="430385509">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 327}, {280, 44}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<string key="IBUINormalTitle">Logout</string>
+						<reference key="IBUIHighlightedTitleColor" ref="909083980"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC45NzgyNTg1NzUxIDAuOTc0MzEyMzgzIDEAA</bytes>
+						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="513532677"/>
 						<reference key="IBUIFontDescription" ref="885103559"/>
 						<reference key="IBUIFont" ref="15505550"/>
@@ -260,6 +282,15 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">logoutAction:</string>
+						<reference key="source" ref="430385509"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">24</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -279,6 +310,7 @@
 							<reference ref="366470579"/>
 							<reference ref="763614398"/>
 							<reference ref="912274361"/>
+							<reference ref="430385509"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -324,6 +356,11 @@
 						<reference key="object" ref="912274361"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="430385509"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -336,6 +373,7 @@
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -343,7 +381,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">24</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -353,6 +391,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="aboutAction:">id</string>
 						<string key="humidityAction:">id</string>
+						<string key="logoutAction:">id</string>
 						<string key="sensorsAction:">id</string>
 						<string key="settingsAction:">id</string>
 						<string key="temperaturesAction:">id</string>
@@ -364,6 +403,10 @@
 						</object>
 						<object class="IBActionInfo" key="humidityAction:">
 							<string key="name">humidityAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="logoutAction:">
+							<string key="name">logoutAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="sensorsAction:">

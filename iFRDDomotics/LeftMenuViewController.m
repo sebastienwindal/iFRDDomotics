@@ -43,6 +43,10 @@
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_SENSORS];
 }
 
+- (IBAction)logoutAction:(id)sender {
+    [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_LOGOUT];
+}
+
 - (IBAction)temperaturesAction:(id)sender {
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_TEMPERATURE];
 }
@@ -54,4 +58,5 @@
 - (IBAction)aboutAction:(id)sender {
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_ABOUT];
 }
+
 @end

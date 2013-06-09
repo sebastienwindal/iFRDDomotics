@@ -4,6 +4,8 @@
 @secondaryFontColor: #555555;
 @tertiaryFontColor: #888888;
 @primaryBackgroundColor: #F0F0F0;
+@secondaryBackgroundColor: #FFFFFF;
+
 
 TableCell {
     background-color-selected: #f8f8f8;
@@ -107,4 +109,34 @@ Label:BigLoadLabel {
     font-name: icomoon;
     font-size: 64;
     text-align: center;
+}
+
+Button:LoginButton {
+    background-color: #44dd33;
+    font-name: @FontName;
+    font-size: 20;
+    text-shadow-color: transparent;
+}
+
+TextField:LoginTextField {
+    corner-radius: 0;
+    border-style: line;
+    border-color: #dddddd;
+    border-width: 1;
+    padding: 5;
+    background-color: @secondaryBackgroundColor;
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+    font-size: 15;
+    height: 36;
+}
+
+Label:LoginTitleLabel {
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+    font-size: 30;
+}
+
+View:LoginView {
+    background-color: @primaryBackgroundColor;
 }

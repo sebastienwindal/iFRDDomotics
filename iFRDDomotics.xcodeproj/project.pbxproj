@@ -11,6 +11,8 @@
 		BE28CB5C1740A61E008E851E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB5A1740A61D008E851E /* AboutViewController.m */; };
 		BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE28CB5B1740A61D008E851E /* AboutViewController.xib */; };
 		BE28CB631740B29A008E851E /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE28CB621740B29A008E851E /* SensorTableViewCell.m */; };
+		BE2AEE6917618C8200FF7B12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2AEE6717618C8200FF7B12 /* LoginViewController.m */; };
+		BE2AEE6A17618C8200FF7B12 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2AEE6817618C8200FF7B12 /* LoginViewController.xib */; };
 		BE2C3584174036780037FCB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C3583174036780037FCB4 /* SystemConfiguration.framework */; };
 		BE2C35861740368D0037FCB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */; };
 		BE2C3588174040690037FCB4 /* Sensors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2C3587174040690037FCB4 /* Sensors.storyboard */; };
@@ -76,6 +78,9 @@
 		BE28CB5B1740A61D008E851E /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		BE28CB611740B29A008E851E /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
 		BE28CB621740B29A008E851E /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
+		BE2AEE6617618C8200FF7B12 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BE2AEE6717618C8200FF7B12 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BE2AEE6817618C8200FF7B12 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BE2C3583174036780037FCB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE2C35851740368D0037FCB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BE2C3587174040690037FCB4 /* Sensors.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sensors.storyboard; sourceTree = "<group>"; };
@@ -217,6 +222,16 @@
 			name = "Left Menu";
 			sourceTree = "<group>";
 		};
+		BE2AEE6517618C5200FF7B12 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BE2AEE6617618C8200FF7B12 /* LoginViewController.h */,
+				BE2AEE6717618C8200FF7B12 /* LoginViewController.m */,
+				BE2AEE6817618C8200FF7B12 /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		BEC8669A17446F4200730259 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +298,7 @@
 		BEFFB7A7173DEFF50043D770 /* iFRDDomotics */ = {
 			isa = PBXGroup;
 			children = (
+				BE2AEE6517618C5200FF7B12 /* Login */,
 				BEECE24017496478006F6488 /* HistoryViewControllers */,
 				BEECE23617495F0C006F6488 /* Chart */,
 				BEC8669A17446F4200730259 /* Settings */,
@@ -445,6 +461,7 @@
 				BE28CB5D1740A61E008E851E /* AboutViewController.xib in Resources */,
 				BEC8669C17446F6600730259 /* Settings.storyboard in Resources */,
 				BED7904017448705005DB9E5 /* icomoon.ttf in Resources */,
+				BE2AEE6A17618C8200FF7B12 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +548,7 @@
 				BEE3B79B174C5F91004C9E9B /* HumidityCollectionViewCell.m in Sources */,
 				BEE3B79E174C5FD5004C9E9B /* BaseCollectionViewCell.m in Sources */,
 				BE40B432175ADFB70065C0FE /* ColorThresholds.m in Sources */,
+				BE2AEE6917618C8200FF7B12 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

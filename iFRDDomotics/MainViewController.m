@@ -15,6 +15,8 @@
 #import "AboutViewController.h"
 #import "Sensor.h"
 #import "TemperatureCollectionViewController.h"
+#import "LoginViewController.h"
+#import "PersistentStorage.h"
 
 @interface MainViewController ()<LeftMenuViewControllerDelegate>
 
@@ -57,6 +59,22 @@
     [self.view addSubview:self.drawerController.view];
     
     self.currentItem = kLeftMenuItem_SENSORS;
+    
+    NSString *userName = [[PersistentStorage sharedInstance] userName];
+    NSString *password = [[PersistentStorage sharedInstance] password];
+    
+    if ([userName length] == 0 && [password length] == 0) {
+        [self showLogin];
+    }
+
+}
+
+-(void) showLogin
+{
+    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 
@@ -103,6 +121,8 @@
         [self.drawerController setCenterViewController:[settingsStoryboard instantiateInitialViewController]
                                     withCloseAnimation:YES
                                             completion:nil];
+    } else if (currentItem == kLeftMenuItem_LOGOUT) {
+        [self showLogin];
     }
     
     self.drawerController.centerHiddenInteractionMode = MMDrawerOpenCenterInteractionModeFull;
@@ -120,4 +140,8 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void) dealloc
+{
+    
+}
 @end

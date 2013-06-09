@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    kLeftMenuItem_LOGIN,
+    kLeftMenuItem_LOGOUT,
     kLeftMenuItem_SENSORS,
     kLeftMenuItem_TEMPERATURE,
     kLeftMenuItem_HUMIDITY,
