@@ -16,6 +16,8 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *serverAddress;
 
+-(BOOL) isLoggedIn;
+
 + (PersistentStorage *)sharedInstance;
 
 @end

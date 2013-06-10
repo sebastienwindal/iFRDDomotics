@@ -58,8 +58,9 @@
     
     [[PersistentStorage sharedInstance] setUserName:self.userNameTextField.text];
     [[PersistentStorage sharedInstance] setPassword:self.passwordTextField.text];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+    if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
+        [self.delegate loginViewController:self didLoginWithSuccess:YES];
 }
 
 #pragma mark UITextFieldDelegate implementation

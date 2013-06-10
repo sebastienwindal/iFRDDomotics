@@ -282,5 +282,4 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
 }
 
 
-
 @end

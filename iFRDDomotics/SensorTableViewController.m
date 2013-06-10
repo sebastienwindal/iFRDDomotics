@@ -68,7 +68,6 @@
     self.sensors = [[NSArray alloc] init];
     [self.tableView reloadData];
     
-    [[FRDDomoticsClient sharedClient] setUsername:@"seb" andPassword:@"password"];
     [[FRDDomoticsClient sharedClient] getSensors:kSensorCapabilities_ALL
                                          success:^(FRDDomoticsClient *domoClient, NSArray *sensors) {
                                              // perform on ui thread.

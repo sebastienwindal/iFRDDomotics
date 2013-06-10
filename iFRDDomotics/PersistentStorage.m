@@ -59,6 +59,11 @@
     return [UICKeyChainStore stringForKey:PERSISTENT_STORAGE_USERNAME];
 }
 
+-(BOOL) isLoggedIn
+{
+    return [[self password] length] > 0;
+}
+
 + (PersistentStorage *)sharedInstance {
     static PersistentStorage *_sharedInstance = nil;
     static dispatch_once_t onceToken;

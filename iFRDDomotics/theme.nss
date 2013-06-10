@@ -1,4 +1,5 @@
 @FontName: GillSans;
+@FontNameBold: GillSans-Bold;
 @primaryFontColor: #000000;
 @reversePrimaryFontColor: #ffffff;
 @secondaryFontColor: #555555;
@@ -139,4 +140,32 @@ Label:LoginTitleLabel {
 
 View:LoginView {
     background-color: @primaryBackgroundColor;
+}
+
+
+Label:AccountSettingsLabel {
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+}
+
+Button:AccountSettingsButton {
+    background-color: #3333ff;
+    font-name: @FontName;
+    font-size: 11;
+    text-align: center;
+    text-shadow-color: transparent;
+    height: 28;
+    font-color: @reversePrimaryFontColor;
+}
+
+TextField:AccountSettingsTextField {
+    corner-radius: 0;
+    border-style: line;
+    border-color: #dddddd;
+    border-width: 1;
+    padding: 5;
+    background-color: @secondaryBackgroundColor;
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+    font-size: 15;
 }

@@ -10,7 +10,8 @@
 #import "MainViewController.h"
 #import "NUIAppearance.h"
 #import "LoginViewController.h"
-
+#import "FRDDomoticsClient.h"
+#import "PersistentStorage.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,11 @@
     [NUIAppearance init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    [[FRDDomoticsClient sharedClient] setUsername:[[PersistentStorage sharedInstance] userName]
+                                      andPassword:[[PersistentStorage sharedInstance] password]];
+
     
     MainViewController *mainViewController = [[MainViewController alloc] init];
     [self.window setRootViewController:mainViewController];
