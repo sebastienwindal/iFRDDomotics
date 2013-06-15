@@ -11,6 +11,7 @@
 #import "PersistentStorage.h"
 #import "FRDDomoticsClient.h"
 #import "MBProgressHUD.h"
+#import "SIAlertView.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -73,11 +74,17 @@
             [self.delegate loginViewController:self didLoginWithSuccess:YES];
     } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
         [hud hide:YES];
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Authentication failed" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        SIAlertView *av = [[SIAlertView alloc] initWithTitle:@"Authentication failed" andMessage:errorMessage];
+        [av addButtonWithTitle:@"OK"
+                          type:SIAlertViewButtonTypeDestructive
+                       handler:^(SIAlertView *alert) {
+                           if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
+                               [self.delegate loginViewController:self didLoginWithSuccess:NO];
+                           [self.passwordTextField becomeFirstResponder];
+        }];
+        av.transitionStyle = SIAlertViewTransitionStyleBounce;
         [av show];
-        if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
-            [self.delegate loginViewController:self didLoginWithSuccess:NO];
-        [self.passwordTextField becomeFirstResponder];
+        
     }];
 }
 

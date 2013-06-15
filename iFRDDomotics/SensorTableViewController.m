@@ -13,6 +13,7 @@
 #import "UIButton+NUI.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SensorTableViewCell.h"
+#import "KGStatusBar.h"
 
 @interface SensorTableViewController ()
 
@@ -63,6 +64,8 @@
 {
     if (self.isLoading) return;
     
+    [KGStatusBar showWithStatus:@"loading..."];
+    
     self.isLoading = YES;
     
     self.sensors = [[NSArray alloc] init];
@@ -71,7 +74,7 @@
     [[FRDDomoticsClient sharedClient] getSensors:kSensorCapabilities_ALL
                                          success:^(FRDDomoticsClient *domoClient, NSArray *sensors) {
                                              // perform on ui thread.
-                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                             dispatch_async(dispatch_get_main_queue(), ^{                                                 [KGStatusBar showSuccessWithStatus:@"success"];
                                                  // in case we have a multi-sensor, separate multi-sensor in
                                                  // individual ones.
                                                  NSMutableArray *individualSensors = [[NSMutableArray alloc] init];
@@ -100,9 +103,11 @@
                                          }
                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                              dispatch_async(dispatch_get_main_queue(), ^{                                             self.isLoading = NO;
+                                                 [KGStatusBar showErrorWithStatus:@"Failed to get sensors"];
                                              });
                                          }];
 }
+
 
 - (void)didReceiveMemoryWarning
 {

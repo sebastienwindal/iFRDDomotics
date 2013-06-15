@@ -15,7 +15,7 @@
 #import "UnitConverter.h"
 #import "UIButton+NUI.h"
 #import "IcoMoon.h"
-
+#import "KGStatusBar.h"
 
 @interface TemperatureCollectionViewController ()
 
@@ -137,6 +137,7 @@
     
     self.isLoading = YES;
     self.values = nil;
+    [KGStatusBar showWithStatus:@"loading"];
     [self.collectionView reloadData];
     
     [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:self.valueType
@@ -145,11 +146,13 @@
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                  [self.collectionView reloadData];
                                                                  self.isLoading = NO;
+                                                                 [KGStatusBar showSuccessWithStatus:@"success"];
                                                              });
                                                          }
                                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                  self.isLoading = NO;
+                                                                 [KGStatusBar showErrorWithStatus:@"failed"];
                                                              });
                                                          }];
 

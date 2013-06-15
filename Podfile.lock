@@ -16,6 +16,7 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.1.2)
   - FormatterKit/UnitOfInformationFormatter (1.1.2)
   - FormatterKit/URLRequestFormatter (1.1.2)
+  - KGStatusBar (1.0)
   - libextobjc/EXTKeyPathCoding (0.2.5):
     - libextobjc/RuntimeExtensions
   - libextobjc/EXTScope (0.2.5):
@@ -35,27 +36,32 @@ PODS:
   - MMDrawerController/MMDrawerVisualStates (0.0.2):
     - MMDrawerController/Core
   - NUI (0.2.9)
+  - SIAlertView (1.1)
   - UICKeyChainStore (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - BButton
   - FormatterKit
+  - KGStatusBar
   - Mantle
   - MBProgressHUD
   - MMDrawerController (~> 0.0.2)
   - NUI
+  - SIAlertView
   - UICKeyChainStore
 
 SPEC CHECKSUMS:
   AFNetworking: e528f20d06b1b818c3571266fb5efa20031a8ace
   BButton: cb3b6dbbb7d56c646f14c406be40fbc7c950295d
   FormatterKit: bb53f3de30773e6b06f91dee1f82b46f536278d7
+  KGStatusBar: e47f19745f6aeb0fabe37e8360df26bf87b1e2ff
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   Mantle: aba2facc6ee8f97512a94768dc57c82b7802948c
   MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
   MMDrawerController: d4dd9a78d3a19600e005578e53f9b227ebc0d128
   NUI: 1304f51867d32bdc9be4283136c37958dc6c5120
+  SIAlertView: 43f1b8d23c7425fad0df866902163dcf1c1efc13
   UICKeyChainStore: 6805f49b4443cada73026e7e715950456a4f18be
 
 COCOAPODS: 0.19.1

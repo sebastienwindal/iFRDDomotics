@@ -19,6 +19,7 @@
 #import "MBProgressHUD.h"
 #import "FRDDomoticsClient.h"
 #import "LoginViewController.h"
+#import "KGStatusBar.h"
 
 @interface MainViewController ()<LeftMenuViewControllerDelegate, LoginViewControllerDelegate>
 
@@ -46,12 +47,15 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Authenticating";
+    [KGStatusBar showWithStatus:@"authenticating"];
     
     [[FRDDomoticsClient sharedClient] authenticateWithSuccess:^(FRDDomoticsClient *domoClient) {
         [hud hide:YES];
         [self successLoginLoad];
+        [KGStatusBar showSuccessWithStatus:@"success"];
     } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
         [hud hide:YES];
+        [KGStatusBar showErrorWithStatus:@"failed"];
         [self failedLoginLoad];
     }];
 }

@@ -16,6 +16,7 @@
 #import "PersistentStorage.h"
 #import "IcoMoon.h"
 #import <QuartzCore/QuartzCore.h>
+#import "KGStatusBar.h"
 
 typedef enum {
     kChartLoadStatePending,
@@ -81,6 +82,7 @@ typedef enum {
 -(void) fetchValuesBetweenDate:(NSDate *)startDate andDate:(NSDate*)endDate
 {
     self.loadState = kChartLoadStatePending;
+    [KGStatusBar showWithStatus:@"loading"];
     
     NSTimeInterval duration = [endDate timeIntervalSinceDate:startDate];
     
@@ -93,9 +95,11 @@ typedef enum {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
                                                                self.loadState = kChartLoadStateCompletedWithSuccess;
+                                                               [KGStatusBar showSuccessWithStatus:@"success"];
                                                            }
                                                            failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                                self.loadState = kChartLoadStateCompletedWithError;
+                                                               [KGStatusBar showErrorWithStatus:@"error"];
                                                            }
          ];
     } else {
@@ -107,8 +111,10 @@ typedef enum {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
                                                                self.loadState = kChartLoadStateCompletedWithSuccess;
+                                                               [KGStatusBar showSuccessWithStatus:@"success"];
                                                            } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
-                                                               self.loadState = kChartLoadStateCompletedWithError;\
+                                                               self.loadState = kChartLoadStateCompletedWithError;
+                                                               [KGStatusBar showErrorWithStatus:@"failed"];
                                                            }
          ];
     }

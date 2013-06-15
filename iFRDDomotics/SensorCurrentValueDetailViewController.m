@@ -13,6 +13,7 @@
 #import "UILabel+FadeInTextTransition.h"
 #import "UnitConverter.h"
 #import "IcoMoon.h"
+#import "KGStatusBar.h"
 
 @interface SensorCurrentValueDetailViewController ()
 
@@ -109,6 +110,8 @@
 {
     if (self.isLoading) return;
     
+    [KGStatusBar showWithStatus:@"loading..."];
+    
     self.isLoading = YES;
     
     [[FRDDomoticsClient sharedClient] getLastValueForSensor:self.sensor.sensorID
@@ -118,11 +121,13 @@
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             self.isLoading = NO;
                                                             [self updateUIFromValue];
+                                                            [KGStatusBar showSuccessWithStatus:@"success"];
                                                         });
                                                     }
                                                     failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             self.isLoading = NO;
+                                                            [KGStatusBar showErrorWithStatus:@"failed"];
                                                         });
                                                     }];
     
