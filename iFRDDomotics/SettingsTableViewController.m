@@ -104,10 +104,8 @@
 
 -(void) loginViewController:(LoginViewController *)loginViewController didLoginWithSuccess:(BOOL)success
 {
-    [loginViewController dismissViewControllerAnimated:YES completion:nil];
     if (success) {
-        [[FRDDomoticsClient sharedClient] setUsername:[[PersistentStorage sharedInstance] userName]
-                                          andPassword:[[PersistentStorage sharedInstance] password]];
+        [loginViewController dismissViewControllerAnimated:YES completion:nil];
     }
     [self updateUI];
 }

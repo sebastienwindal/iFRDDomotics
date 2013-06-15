@@ -9,7 +9,8 @@
 #import "LoginViewController.h"
 #import "BButton.h"
 #import "PersistentStorage.h"
-
+#import "FRDDomoticsClient.h"
+#import "MBProgressHUD.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -58,9 +59,26 @@
     
     [[PersistentStorage sharedInstance] setUserName:self.userNameTextField.text];
     [[PersistentStorage sharedInstance] setPassword:self.passwordTextField.text];
+    
+    [[FRDDomoticsClient sharedClient] setUsername:[[PersistentStorage sharedInstance] userName]
+                                      andPassword:[[PersistentStorage sharedInstance] password]];
 
-    if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
-        [self.delegate loginViewController:self didLoginWithSuccess:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Authenticating";
+    
+    [[FRDDomoticsClient sharedClient] authenticateWithSuccess:^(FRDDomoticsClient *domoClient) {
+        [hud hide:YES];
+        if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
+            [self.delegate loginViewController:self didLoginWithSuccess:YES];
+    } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
+        [hud hide:YES];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Authentication failed" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [av show];
+        if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithSuccess:)])
+            [self.delegate loginViewController:self didLoginWithSuccess:NO];
+        [self.passwordTextField becomeFirstResponder];
+    }];
 }
 
 #pragma mark UITextFieldDelegate implementation

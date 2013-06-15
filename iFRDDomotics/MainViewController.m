@@ -16,10 +16,13 @@
 #import "Sensor.h"
 #import "TemperatureCollectionViewController.h"
 #import "PersistentStorage.h"
+#import "MBProgressHUD.h"
+#import "FRDDomoticsClient.h"
+#import "LoginViewController.h"
 
-@interface MainViewController ()<LeftMenuViewControllerDelegate>
+@interface MainViewController ()<LeftMenuViewControllerDelegate, LoginViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *myLabel;
+
 @property (nonatomic, strong) MMDrawerController *drawerController;
 @property (nonatomic) kLeftMenuItem currentItem;
 
@@ -36,17 +39,55 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Authenticating";
+    
+    [[FRDDomoticsClient sharedClient] authenticateWithSuccess:^(FRDDomoticsClient *domoClient) {
+        [hud hide:YES];
+        [self successLoginLoad];
+    } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
+        [hud hide:YES];
+        [self failedLoginLoad];
+    }];
+}
 
+-(NSString *) nibName
+{
+    return @"Splash";
+}
+
+
+-(void) failedLoginLoad
+{
+    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    loginVC.delegate = self;
+    loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
+
+-(void) loginViewController:(LoginViewController *)loginViewController didLoginWithSuccess:(BOOL)success
+{
+    if (success) {
+        [loginViewController dismissViewControllerAnimated:YES completion:^{
+            [self successLoginLoad];
+        }];
+    }
+}
+
+-(void) successLoginLoad
+{
     LeftMenuViewController * leftSideDrawerViewController = [[LeftMenuViewController alloc] init];
     leftSideDrawerViewController.delegate = self;
     
     self.drawerController = [[MMDrawerController alloc]
-                                            initWithCenterViewController:[[UINavigationController alloc] init]
-                                            leftDrawerViewController:leftSideDrawerViewController];
+                             initWithCenterViewController:[[UINavigationController alloc] init]
+                             leftDrawerViewController:leftSideDrawerViewController];
     
     [self.drawerController setMaximumRightDrawerWidth:200.0];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -58,9 +99,7 @@
     [self.view addSubview:self.drawerController.view];
     
     self.currentItem = kLeftMenuItem_SENSORS;
-    
 }
-
 
 -(void) setCurrentItem:(kLeftMenuItem)currentItem
 {

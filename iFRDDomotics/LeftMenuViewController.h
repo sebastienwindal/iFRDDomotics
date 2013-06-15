@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    kLeftMenuItem_SENSORS,
+    kLeftMenuItem_SENSORS = 1,
     kLeftMenuItem_TEMPERATURE,
     kLeftMenuItem_HUMIDITY,
     kLeftMenuItem_ABOUT,

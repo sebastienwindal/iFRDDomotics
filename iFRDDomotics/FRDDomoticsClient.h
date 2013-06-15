@@ -42,6 +42,8 @@
                       success:(void(^)(FRDDomoticsClient *domoClient, HourlyMeasurement *values))onSuccess
                       failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
+-(void) authenticateWithSuccess:(void(^)(FRDDomoticsClient *domoClient))onSuccess
+                        failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure;
 
 -(void)setUsername:(NSString *)username andPassword:(NSString *)password;
 

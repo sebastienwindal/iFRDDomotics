@@ -20,6 +20,7 @@
 		BE2C358E174044090037FCB4 /* SensorCurrentValueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C358D174044080037FCB4 /* SensorCurrentValueDetailViewController.m */; };
 		BE2C3591174079F20037FCB4 /* SensorMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* SensorMeasurement.m */; };
 		BE40B432175ADFB70065C0FE /* ColorThresholds.m in Sources */ = {isa = PBXBuildFile; fileRef = BE40B431175ADFB70065C0FE /* ColorThresholds.m */; };
+		BE58F245176D0F7600716470 /* Splash.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE58F244176D0F7600716470 /* Splash.xib */; };
 		BEC8669C17446F6600730259 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC8669B17446F6600730259 /* Settings.storyboard */; };
 		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
 		BEC866A21744761400730259 /* PersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC866A11744761400730259 /* PersistentStorage.m */; };
@@ -94,6 +95,7 @@
 		BE40B431175ADFB70065C0FE /* ColorThresholds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorThresholds.m; sourceTree = "<group>"; };
 		BE40B433175C34A50065C0FE /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BE40B434175C36880065C0FE /* IcomoonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcomoonIcons.h; sourceTree = "<group>"; };
+		BE58F244176D0F7600716470 /* Splash.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Splash.xib; sourceTree = "<group>"; };
 		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BEC8669D1744715A00730259 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		BEC8669E1744715A00730259 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				BEFFB7B1173DEFF50043D770 /* AppDelegate.m */,
 				BEFFB7E0173F1E480043D770 /* MainViewController.h */,
 				BEFFB7E1173F1E480043D770 /* MainViewController.m */,
+				BE58F244176D0F7600716470 /* Splash.xib */,
 				BE28CB5F1740B195008E851E /* About */,
 				BE28CB601740B1A4008E851E /* Left Menu */,
 				BE28CB5E1740B17F008E851E /* Sensors */,
@@ -462,6 +465,7 @@
 				BEC8669C17446F6600730259 /* Settings.storyboard in Resources */,
 				BED7904017448705005DB9E5 /* icomoon.ttf in Resources */,
 				BE2AEE6A17618C8200FF7B12 /* LoginViewController.xib in Resources */,
+				BE58F245176D0F7600716470 /* Splash.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

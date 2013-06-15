@@ -112,6 +112,13 @@ Label:BigLoadLabel {
     text-align: center;
 }
 
+Label:SplashLabel {
+    font-color: @primaryFontColor;
+    font-size: 70;
+    text-align: center;
+    font-name: @FontName;
+}
+
 Button:LoginButton {
     background-color: #44dd33;
     font-name: @FontName;

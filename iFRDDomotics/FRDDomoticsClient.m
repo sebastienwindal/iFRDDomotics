@@ -267,8 +267,22 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
                   onFailure(self, @"Failed to get sensor");
               }
           }];
-    
 }
+
+-(void) authenticateWithSuccess:(void(^)(FRDDomoticsClient *domoClient))onSuccess
+                        failure:(void(^)(FRDDomoticsClient *domoClient, NSString *errorMessage))onFailure
+{
+    
+    [self getPath:@"about"
+       parameters:nil
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              onSuccess(self);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              onFailure(self, [error localizedDescription]);
+          }
+     ];
+}
+
 
 + (FRDDomoticsClient *)sharedClient {
     static FRDDomoticsClient *_sharedClient = nil;
