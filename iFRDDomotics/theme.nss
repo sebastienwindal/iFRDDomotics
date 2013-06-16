@@ -8,6 +8,7 @@
 @secondaryBackgroundColor: #FFFFFF;
 @topBarColor: #202020;
 
+
 TableCell {
     background-color-selected: #f8f8f8;
 }
@@ -174,4 +175,13 @@ TextField:AccountSettingsTextField {
     font-name: @FontName;
     font-color: @primaryFontColor;
     font-size: 15;
+}
+
+SegmentedControl:timeRange {
+    background-color-selected: #000000;
+    background-tint-color: #505050;
+    font-name: @FontName;
+    font-color: #d0d0d0;
+    font-color-selected: #ffffff;
+    corner-radius: 1;
 }

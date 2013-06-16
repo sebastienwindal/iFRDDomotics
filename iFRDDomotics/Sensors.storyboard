@@ -304,6 +304,9 @@
                                     <segment title="1wk"/>
                                     <segment title="4wks"/>
                                 </segments>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="timeRange"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="timeIntervalChanged:" destination="rr4-dA-PcH" eventType="valueChanged" id="otw-PS-bIY"/>
                                 </connections>
@@ -434,10 +437,12 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="ValueOverTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ValueOverTimeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="timeIntervalChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="chartLoadLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="historicalChart" candidateClass="TimeChart"/>
                 <relationship kind="outlet" name="timeSegmentControl" candidateClass="UISegmentedControl"/>
