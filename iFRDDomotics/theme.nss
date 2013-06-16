@@ -6,7 +6,7 @@
 @tertiaryFontColor: #888888;
 @primaryBackgroundColor: #F0F0F0;
 @secondaryBackgroundColor: #FFFFFF;
-
+@topBarColor: #202020;
 
 TableCell {
     background-color-selected: #f8f8f8;
@@ -24,23 +24,22 @@ Table:SettingsTable {
 
 
 NavigationBar {
-    background-tint-color: @primaryBackgroundColor;
+    background-tint-color: @topBarColor;
     font-name: @FontName;
     font-size: 21;
-    font-color: @secondaryFontColor;
-    text-shadow-color: #222222;
+    font-color: @reversePrimaryFontColor;
+    text-shadow-color: @secondaryFontColor;
     text-shadow-offset: 0.5,0;
 }
 
 BarButton {
-    font-color: #000000;
+    font-color: @reversePrimaryFontColor;
     text-shadow-offset: 0,0;
     font-name: @FontName;
-    font-color: @secondaryFontColor;
 }
 
 Button:IconButton {
-    font-color: @secondaryFontColor;
+    font-color: @reversePrimaryColor;
     font-name: icomoon;
     font-color-selected: @tertiaryFontColor;
     font-color-highlighted: @tertiaryFontColor;

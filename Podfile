@@ -1,4 +1,4 @@
-pod 'MMDrawerController', '~> 0.0.2'
+pod 'MMDrawerController'
 pod 'NUI'
 pod 'Mantle'
 pod 'AFNetworking'

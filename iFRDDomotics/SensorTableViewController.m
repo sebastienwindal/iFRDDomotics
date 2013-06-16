@@ -64,7 +64,7 @@
 {
     if (self.isLoading) return;
     
-    [KGStatusBar showWithStatus:@"loading..."];
+    [KGStatusBar showWithStatus:@"Loading..."];
     
     self.isLoading = YES;
     
@@ -74,7 +74,7 @@
     [[FRDDomoticsClient sharedClient] getSensors:kSensorCapabilities_ALL
                                          success:^(FRDDomoticsClient *domoClient, NSArray *sensors) {
                                              // perform on ui thread.
-                                             dispatch_async(dispatch_get_main_queue(), ^{                                                 [KGStatusBar showSuccessWithStatus:@"success"];
+                                             dispatch_async(dispatch_get_main_queue(), ^{                                                 [KGStatusBar dismiss];
                                                  // in case we have a multi-sensor, separate multi-sensor in
                                                  // individual ones.
                                                  NSMutableArray *individualSensors = [[NSMutableArray alloc] init];
@@ -103,7 +103,7 @@
                                          }
                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                              dispatch_async(dispatch_get_main_queue(), ^{                                             self.isLoading = NO;
-                                                 [KGStatusBar showErrorWithStatus:@"Failed to get sensors"];
+                                                 [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                              });
                                          }];
 }

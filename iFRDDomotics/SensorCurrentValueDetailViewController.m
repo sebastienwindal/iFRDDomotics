@@ -110,7 +110,7 @@
 {
     if (self.isLoading) return;
     
-    [KGStatusBar showWithStatus:@"loading..."];
+    [KGStatusBar showWithStatus:@"Loading..."];
     
     self.isLoading = YES;
     
@@ -121,13 +121,13 @@
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             self.isLoading = NO;
                                                             [self updateUIFromValue];
-                                                            [KGStatusBar showSuccessWithStatus:@"success"];
+                                                            [KGStatusBar dismiss];
                                                         });
                                                     }
                                                     failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
                                                             self.isLoading = NO;
-                                                            [KGStatusBar showErrorWithStatus:@"failed"];
+                                                            [KGStatusBar showErrorWithStatus:@"Failed."];
                                                         });
                                                     }];
     

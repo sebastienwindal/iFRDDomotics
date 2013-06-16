@@ -26,14 +26,14 @@ PODS:
     - libextobjc/EXTKeyPathCoding
     - libextobjc/EXTScope
   - MBProgressHUD (0.6)
-  - MMDrawerController (0.0.2):
+  - MMDrawerController (0.2.0):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
     - MMDrawerController/MMDrawerVisualStates
-  - MMDrawerController/Core (0.0.2)
-  - MMDrawerController/MMDrawerBarButtonItem (0.0.2):
+  - MMDrawerController/Core (0.2.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.2.0):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.0.2):
+  - MMDrawerController/MMDrawerVisualStates (0.2.0):
     - MMDrawerController/Core
   - NUI (0.2.9)
   - SIAlertView (1.1)
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - KGStatusBar
   - Mantle
   - MBProgressHUD
-  - MMDrawerController (~> 0.0.2)
+  - MMDrawerController
   - NUI
   - SIAlertView
   - UICKeyChainStore
@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   Mantle: aba2facc6ee8f97512a94768dc57c82b7802948c
   MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
-  MMDrawerController: d4dd9a78d3a19600e005578e53f9b227ebc0d128
+  MMDrawerController: afaa17c05ae7eb46ce73230173e43aa294c0af7d
   NUI: 1304f51867d32bdc9be4283136c37958dc6c5120
   SIAlertView: 43f1b8d23c7425fad0df866902163dcf1c1efc13
   UICKeyChainStore: 6805f49b4443cada73026e7e715950456a4f18be

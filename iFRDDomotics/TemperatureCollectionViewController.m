@@ -137,7 +137,7 @@
     
     self.isLoading = YES;
     self.values = nil;
-    [KGStatusBar showWithStatus:@"loading"];
+    [KGStatusBar showWithStatus:@"Loading"];
     [self.collectionView reloadData];
     
     [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:self.valueType
@@ -146,13 +146,13 @@
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                  [self.collectionView reloadData];
                                                                  self.isLoading = NO;
-                                                                 [KGStatusBar showSuccessWithStatus:@"success"];
+                                                                 [KGStatusBar dismiss];
                                                              });
                                                          }
                                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                  self.isLoading = NO;
-                                                                 [KGStatusBar showErrorWithStatus:@"failed"];
+                                                                 [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                                              });
                                                          }];
 

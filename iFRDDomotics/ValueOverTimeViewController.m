@@ -82,7 +82,7 @@ typedef enum {
 -(void) fetchValuesBetweenDate:(NSDate *)startDate andDate:(NSDate*)endDate
 {
     self.loadState = kChartLoadStatePending;
-    [KGStatusBar showWithStatus:@"loading"];
+    [KGStatusBar showWithStatus:@"Loading..."];
     
     NSTimeInterval duration = [endDate timeIntervalSinceDate:startDate];
     
@@ -95,11 +95,11 @@ typedef enum {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
                                                                self.loadState = kChartLoadStateCompletedWithSuccess;
-                                                               [KGStatusBar showSuccessWithStatus:@"success"];
+                                                               [KGStatusBar dismiss];
                                                            }
                                                            failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                                self.loadState = kChartLoadStateCompletedWithError;
-                                                               [KGStatusBar showErrorWithStatus:@"error"];
+                                                               [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                                            }
          ];
     } else {
@@ -111,10 +111,10 @@ typedef enum {
                                                                self.measurement = values;
                                                                [self.historicalChart updateChart];
                                                                self.loadState = kChartLoadStateCompletedWithSuccess;
-                                                               [KGStatusBar showSuccessWithStatus:@"success"];
+                                                               [KGStatusBar dismiss];
                                                            } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
                                                                self.loadState = kChartLoadStateCompletedWithError;
-                                                               [KGStatusBar showErrorWithStatus:@"failed"];
+                                                               [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                                            }
          ];
     }

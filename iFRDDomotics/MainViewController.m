@@ -47,15 +47,15 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Authenticating";
-    [KGStatusBar showWithStatus:@"authenticating"];
+    [KGStatusBar showWithStatus:@"Authenticating..."];
     
     [[FRDDomoticsClient sharedClient] authenticateWithSuccess:^(FRDDomoticsClient *domoClient) {
         [hud hide:YES];
         [self successLoginLoad];
-        [KGStatusBar showSuccessWithStatus:@"success"];
+        [KGStatusBar dismiss];
     } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
         [hud hide:YES];
-        [KGStatusBar showErrorWithStatus:@"failed"];
+        [KGStatusBar showErrorWithStatus:@"Failed to authenticate."];
         [self failedLoginLoad];
     }];
 }
@@ -97,6 +97,27 @@
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [self.drawerController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:4.0f]];
+    
+    [self.drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         
+         float originalWhite = 0x20 / 256.0f;
+         
+         //0      0
+         //1      1.0-originalWhite
+         
+         UIColor *bgndC = [UIColor colorWithWhite:(originalWhite + (1.0f-originalWhite)*percentVisible)
+                                            alpha:1.0f];
+
+         UIViewController *vc;
+         if ([[drawerController centerViewController] isKindOfClass:[UINavigationController class]]) {
+             [[(UINavigationController *)[drawerController centerViewController] navigationBar] setTintColor:bgndC];
+             vc = drawerController.centerViewController.childViewControllers[0];
+         } else {
+             vc = drawerController.centerViewController;
+         }
+
+     }];
     
     [self addChildViewController:self.drawerController];
     [self.drawerController.view setFrame:self.view.bounds];
