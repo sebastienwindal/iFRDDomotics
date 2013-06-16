@@ -165,8 +165,6 @@
         pixelPerValue = 0;
     if (numberValues > 0)
         pixelPerSecond = drawingWidth / totalDuration;
-    
-    
 }
 
 
@@ -195,6 +193,7 @@
     
     return path;
 }
+
 
 -(void) addHorizontalLinesToPath:(CGMutablePathRef)path
 {
@@ -360,6 +359,7 @@
     return path;
 }
 
+
 -(CGMutablePathRef) areaPath
 {
     CGMutablePathRef path = CGPathCreateMutable();
@@ -452,6 +452,7 @@
      [self.layer addSublayer:self.lineLayer];
 }
 
+
 -(void) addAreaMaskLayer
 {
     CGMutablePathRef path = [self areaPath];
@@ -484,6 +485,7 @@
     [self.layer addSublayer:self.areaLayer];
 }
 
+
 -(void) addValueLegend
 {
     for (CATextLayer *textLayer in [self valueTextLayers]) {
@@ -508,6 +510,7 @@
     }
 }
 
+
 -(void) updateGridLayerAnimated:(BOOL)animated
 {
     NSTimeInterval animationInterval = 0.5;
@@ -523,7 +526,6 @@
     }
     self.gridLayer.path = path;
     CGPathRelease(path);
-    
 }
 
 
@@ -552,11 +554,13 @@
     CGPathRelease(newPath);
 }
 
+
 -(void) updateGradientStopsAnimated:(BOOL)animated
 {
     self.areaLayer.colors = [self.datasource gradientColorsBetweenValue:minVal andValue:maxVal];
     self.areaLayer.locations = [self.datasource gradientStopsBetweenValue:minVal andValue:maxVal];
 }
+
 
 -(void) updateAreaLayerAnimated:(BOOL)animated
 {

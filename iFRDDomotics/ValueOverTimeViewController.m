@@ -192,11 +192,11 @@ typedef enum {
 -(NSArray *) gradientColorsBetweenValue:(float)minVal andValue:(float)maxVal
 {
     if ([self.measurement measurementType] == kSensorCapabilities_TEMPERATURE)
-        return [self gratiendTempColorsBetweenValue:minVal andValue:maxVal];
+        return [self gradientTempColorsBetweenValue:minVal andValue:maxVal];
     else if ([self.measurement measurementType] == kSensorCapabilities_LUMMINOSITY)
         return [self gradientLumColorsBetweenValue:minVal andValue:maxVal];
     else
-        return [self gradiendHumidityColorsBetweenValue:minVal andValue:maxVal];
+        return [self gradientHumidityColorsBetweenValue:minVal andValue:maxVal];
         
 }
 
@@ -208,7 +208,7 @@ typedef enum {
                 ];
 }
 
--(NSArray *) gradiendHumidityColorsBetweenValue:(float)minVal andValue:(float)maxVal
+-(NSArray *) gradientHumidityColorsBetweenValue:(float)minVal andValue:(float)maxVal
 {
     NSMutableArray *arr = [@[
              (id) [[UIColor blueColor] CGColor],
@@ -251,7 +251,7 @@ typedef enum {
 }
 
 
--(NSArray *) gratiendTempColorsBetweenValue:(float)minVal andValue:(float)maxVal
+-(NSArray *) gradientTempColorsBetweenValue:(float)minVal andValue:(float)maxVal
 {
     float interval = [[PersistentStorage sharedInstance] celcius] ? 5.0f : 10.0f;
     
