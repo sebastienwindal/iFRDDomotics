@@ -32,6 +32,9 @@
         if ([arr containsObject:@"humidity"]) {
             capabilities |= kSensorCapabilities_HUMIDITY;
         }
+        if ([arr containsObject:@"level"]) {
+            capabilities |= kSensorCapabilities_LEVEL;
+        }
 
         return @(capabilities);
     } reverseBlock:^(NSNumber *capabilites) {
@@ -45,6 +48,9 @@
         }
         if (capa & kSensorCapabilities_HUMIDITY) {
             [arr addObject:@"humidity"];
+        }
+        if (capa & kSensorCapabilities_LEVEL) {
+            [arr addObject:@"level"];
         }
         return arr;
     }];

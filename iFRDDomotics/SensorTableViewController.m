@@ -95,6 +95,11 @@
                                                          newSensor.capabilities = kSensorCapabilities_LUMMINOSITY;
                                                          [individualSensors addObject:newSensor];
                                                      }
+                                                     if (sensor.capabilities & kSensorCapabilities_LEVEL) {
+                                                         Sensor *newSensor = [sensor copy];
+                                                         newSensor.capabilities = kSensorCapabilities_LEVEL;
+                                                         [individualSensors addObject:newSensor];
+                                                     }
                                                  }
                                                  self.sensors = [individualSensors copy];
                                                  [self.tableView reloadData];

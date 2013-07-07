@@ -65,7 +65,6 @@ Label:SensorTypeIconLabel {
 }
 
 Button {
-    font-color: @reversePrimaryFontColor;
     font-name: @FontName;
     font-size: 18;
 }
@@ -184,4 +183,26 @@ SegmentedControl:timeRange {
     font-color: #d0d0d0;
     font-color-selected: #ffffff;
     corner-radius: 1;
+}
+
+Label:WindowDoorCellLocation {
+    font-name: @FontName;
+    font-color: @primaryFontColor;
+    font-size: 24;
+}
+Label:WindowDoorCellName {
+    font-name: @FontNameBold;
+    font-color: @primaryFontColor;
+    font-size: 30;
+}
+Label:WindowDoorCellState {
+    font-name: @FontNameBold;
+    font-color: @primaryFontColor;
+    font-size: 30;
+}
+Label:WindowDoorCellTimeInterval {
+    font-name: @FontName;
+    font-color: @secondaryFontColor;
+    font-size: 12;
+    text-align: right;
 }

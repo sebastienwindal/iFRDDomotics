@@ -45,6 +45,7 @@
 #define  ICOMOON_CLOCK_5 "\uE01B"
 #define  ICOMOON_CALENDAR "\uF073"
 #define  ICOMOON_CALENDAR_1 "\uE01C"
+#define  ICOMOON_KEY "\uE01D"
 
 
 #endif

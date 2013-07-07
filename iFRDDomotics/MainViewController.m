@@ -15,11 +15,16 @@
 #import "AboutViewController.h"
 #import "Sensor.h"
 #import "TemperatureCollectionViewController.h"
+#import "DoorsWindowsCollectionViewController.h"
 #import "PersistentStorage.h"
 #import "MBProgressHUD.h"
 #import "FRDDomoticsClient.h"
 #import "LoginViewController.h"
 #import "KGStatusBar.h"
+#import "SIAlertView.h"
+#import "AppDelegate.h"
+
+
 
 @interface MainViewController ()<LeftMenuViewControllerDelegate, LoginViewControllerDelegate>
 
@@ -43,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePushNotification:) name:kNotification_APN object:nil];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -159,6 +166,15 @@
         [self.drawerController setCenterViewController:navigationController
                                     withCloseAnimation:YES
                                             completion:nil];
+    } else if (currentItem == kLeftMenuItem_DOORSWINDOWS) {
+        UIStoryboard *temperatureStoryboard = [UIStoryboard storyboardWithName:@"Sensors"
+                                                                        bundle:nil];
+        UINavigationController *navigationController = [temperatureStoryboard instantiateViewControllerWithIdentifier:@"DoorsWindowsRoot"];
+
+        [self.drawerController setCenterViewController:navigationController
+                                    withCloseAnimation:YES
+                                            completion:nil];
+        
     } else if (currentItem == kLeftMenuItem_ABOUT) {
         AboutViewController *aboutViewController = [[AboutViewController alloc] init];
         [self.drawerController setCenterViewController:aboutViewController
@@ -183,5 +199,52 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+
+
+
+-(void) handlePushNotification:(NSNotification *) notification
+{
+    NSDictionary *dict = notification.userInfo;
+    
+    kLeftMenuItem apnItem = NSNotFound;
+    
+    int sensorID = NSNotFound;
+    if ([dict objectForKey:@"sensor_id"]) {
+        sensorID = [dict[@"sensor_id"] intValue];
+    }
+    if ([dict objectForKey:@"measurement_type"]) {
+        NSString *measurementType = dict[@"measurement_type"];
+        if ([measurementType isEqualToString:@"level"]) {
+            apnItem = kLeftMenuItem_DOORSWINDOWS;
+        }
+    }
+    
+    if (apnItem != NSNotFound && apnItem != self.currentItem) {
+        NSString *alertMsg = [dict objectForKey:@"alert"];
+        SIAlertView *av = [[SIAlertView alloc] initWithTitle:@"Event" andMessage:alertMsg];
+        [av addButtonWithTitle:@"Close"
+                          type:SIAlertViewButtonTypeCancel
+                       handler:^(SIAlertView *alertView) {
+                           [alertView dismissAnimated:YES];
+                       }];
+        [av addButtonWithTitle:@"Check"
+                          type:SIAlertViewButtonTypeDefault
+                       handler:^(SIAlertView *alertView) {
+                           [alertView dismissAnimated:NO];
+                           [self setCurrentItem:apnItem];
+                       }];
+        av.transitionStyle = SIAlertViewTransitionStyleBounce;
+        av.backgroundStyle = SIAlertViewBackgroundStyleGradient;
+        av.messageColor = [UIColor blackColor];
+        [av show];
+    }
+}
+
+-(void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:kNotification_APN];
+}
+
 
 @end

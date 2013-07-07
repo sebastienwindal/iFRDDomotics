@@ -128,6 +128,8 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
         url = @"humidity/last";
     else if (measurementType == kSensorCapabilities_LUMMINOSITY)
         url = @"luminosity/last";
+    else if (measurementType == kSensorCapabilities_LEVEL)
+        url = @"level/last";
     
     [self getPath:url
        parameters:nil
@@ -182,8 +184,10 @@ NSString *kFRDDomoticsAPIBaseURLString = @"https://98.192.11.52:8000/api";
         urlRoot = @"temperature";
     else if (measurementType == kSensorCapabilities_LUMMINOSITY)
         urlRoot = @"luminosity";
-    else
+    else if (measurementType == kSensorCapabilities_HUMIDITY)
         urlRoot = @"humidity";
+    else if (measurementType == kSensorCapabilities_LEVEL)
+        urlRoot = @"level";
     
     NSString *url = [NSString stringWithFormat:@"%@/raw/%d?startDate=%@&endDate=%@",
                         urlRoot,

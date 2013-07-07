@@ -47,6 +47,7 @@
 
 -(void)setUsername:(NSString *)username andPassword:(NSString *)password;
 
+
 + (FRDDomoticsClient *)sharedClient;
 
 

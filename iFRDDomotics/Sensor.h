@@ -15,6 +15,7 @@ typedef enum {
     kSensorCapabilities_TEMPERATURE     = 0x00000001,
     kSensorCapabilities_HUMIDITY        = 0x00000002,
     kSensorCapabilities_LUMMINOSITY     = 0x00000004,
+    kSensorCapabilities_LEVEL           = 0x00000008,
     kSensorCapabilities_ALL             = 0xFFFFFFFF
 } kSensorCapabilities;
 

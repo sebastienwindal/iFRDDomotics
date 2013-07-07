@@ -41,6 +41,8 @@
             capa = kSensorCapabilities_HUMIDITY;
         else if ([str isEqualToString:@"luminosity"])
             capa = kSensorCapabilities_LUMMINOSITY;
+        else if ([str isEqualToString:@"level"])
+            capa = kSensorCapabilities_LEVEL;
         return @(capa);
         
     } reverseBlock:^(NSNumber *capaNumber) {
@@ -51,6 +53,8 @@
             return @"humidity";
         else if (capa == kSensorCapabilities_TEMPERATURE)
             return @"temperature";
+        else if (capa == kSensorCapabilities_LEVEL)
+            return @"level";
         return @"";
         
     }];

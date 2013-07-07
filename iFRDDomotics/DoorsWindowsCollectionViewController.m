@@ -1,23 +1,25 @@
 //
-//  TemperatureCollectionViewController.m
+//  DoorsWindowsCollectionViewController.m
 //  iFRDDomotics
 //
-//  Created by Sebastien on 5/18/13.
+//  Created by Sebastien on 6/29/13.
 //  Copyright (c) 2013 Sebastien. All rights reserved.
 //
 
-#import "TemperatureCollectionViewController.h"
-#import "TemperatureCollectionViewCell.h"
-#import "HumidityCollectionViewCell.h"
-#import "SensorCurrentValueDetailViewController.h"
+#import "DoorsWindowsCollectionViewController.h"
+#import "WindowsAndDoorsCollectionViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 #import "SensorMeasurement.h"
 #import "FRDDomoticsClient.h"
 #import "UnitConverter.h"
 #import "UIButton+NUI.h"
 #import "IcoMoon.h"
 #import "KGStatusBar.h"
+#import "TTTTimeIntervalFormatter.h"
+#import "DoorWindowDetailViewController.h"
 
-@interface TemperatureCollectionViewController ()
+
+@interface DoorsWindowsCollectionViewController ()
 
 @property (nonatomic, strong) NSArray *values; // array of SensorMeasurement objects
 
@@ -27,7 +29,7 @@
 
 @end
 
-@implementation TemperatureCollectionViewController
+@implementation DoorsWindowsCollectionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,12 +51,6 @@
     [self.reloadButton setTitle:[IcoMoon iconString:ICOMOON_RELOAD] forState:UIControlStateNormal];
     [self.reloadButton addTarget:self action:@selector(fetchValues) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.reloadButton];
-    if (self.valueType == kSensorCapabilities_LUMMINOSITY)
-        self.navigationItem.title = @"Luminosity";
-    else if (self.valueType == kSensorCapabilities_TEMPERATURE)
-        self.navigationItem.title = @"Temperatures";
-    else
-        self.navigationItem.title = @"Humidity";
         
     [self fetchValues];
     
@@ -64,30 +60,12 @@
                                                object:nil];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void) applicationDidBecomeActive:(UIApplication *)application
-{
-    BOOL updateRequired = self.values.count == 0; // force an update no matter what if we don't have any values yet...
-    
-    for (SensorMeasurement *measurement in self.values) {
-        
-        if (-[measurement.mostRecentDate timeIntervalSinceNow] > 120) {
-            // if the data we are showing is older than 2 minutes old, trigger automatically a rest call.
-            updateRequired = YES;
-            break;
-        }
-    }
-    
-    if (updateRequired)
-        [self fetchValues]; // (re) fetch values.
-
-}
 
 -(void) setIsLoading:(BOOL)isLoading
 {
@@ -140,7 +118,7 @@
     [KGStatusBar showWithStatus:@"Loading"];
     [self.collectionView reloadData];
     
-    [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:self.valueType
+    [[FRDDomoticsClient sharedClient] getLastValuesForAllSensors:kSensorCapabilities_LEVEL
                                                          success:^(FRDDomoticsClient *domoClient, NSArray *values) {
                                                              self.values = values;
                                                              dispatch_async(dispatch_get_main_queue(), ^{
@@ -155,7 +133,7 @@
                                                                  [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                                              });
                                                          }];
-
+    
 }
 
 -(int) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -167,35 +145,50 @@
 {
     SensorMeasurement *measurement = self.values[indexPath.row];
     
-    NSString *cellID;
-    if (measurement.measurementType & kSensorCapabilities_TEMPERATURE)
-        cellID = @"TemperatureCollectionViewCell";
-    else if (measurement.measurementType & kSensorCapabilities_HUMIDITY)
-        cellID = @"HumidityCollectionViewCell";
+    NSString *cellID = @"DoorAndWindowCell";
     
-    BaseCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellID
-                                                             forIndexPath:indexPath];
+    WindowsAndDoorsCollectionViewCell  *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellID
+                                                                                  forIndexPath:indexPath];
     
-    [cell setValue:[[measurement.values lastObject] floatValue]];
-    [cell locationLabel].text = measurement.sensor.location;
-
+    cell.nameLabel.text = measurement.sensor.name;
+    cell.locationLabel.text = measurement.sensor.location;
+    BOOL isOpen = [[measurement.values lastObject] intValue]  != 0;
+    cell.stateLabel.text = isOpen  ? @"open" : @"closed";
+    cell.backgroundColor = isOpen ? [UIColor redColor] : [UIColor greenColor];
+    TTTTimeIntervalFormatter *timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+    timeIntervalFormatter.futureDeicticExpression = @"ago";
+    NSString *timeString = [timeIntervalFormatter stringForTimeIntervalFromDate:measurement.mostRecentDate
+                                                                         toDate:[NSDate date]];
+    cell.durationLabel.text = [NSString stringWithFormat:@"since %@", timeString];
     return cell;
+}
+
+-(void) applicationDidBecomeActive:(UIApplication *)application
+{
+    BOOL updateRequired = self.values.count == 0; // force an update no matter what if we don't have any values yet...
+    
+    for (SensorMeasurement *measurement in self.values) {
+        
+        if (-[measurement.mostRecentDate timeIntervalSinceNow] > 120) {
+            // if the data we are showing is older than 2 minutes old, trigger automatically a rest call.
+            updateRequired = YES;
+            break;
+        }
+    }
+    
+    if (updateRequired)
+        [self fetchValues]; // (re) fetch values.
+    
 }
 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"TemperatureCollectionToHumidityDetails"] ||
-        [segue.identifier isEqualToString:@"TemperatureCollectionToTemperatureDetails"]) {
-        SensorCurrentValueDetailViewController *vc = (SensorCurrentValueDetailViewController *) segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"DoorWindowDetailSegue"]) {
+        DoorWindowDetailViewController *vc = segue.destinationViewController;
         
-        NSIndexPath* pathOfTheCell = [self.collectionView indexPathForCell:sender];
-        NSInteger rowOfTheCell = [pathOfTheCell row];
-        
-        vc.temperature = self.values[rowOfTheCell];
-        vc.sensor = vc.temperature.sensor;
-        // the destination view controller only cares that we support a sepcific measrement type.
-        vc.sensor.capabilities = vc.temperature.measurementType;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        vc.sensorID = [self.values[indexPath.row] sensorID];;
     }
 }
 
@@ -203,5 +196,6 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
+
 
 @end

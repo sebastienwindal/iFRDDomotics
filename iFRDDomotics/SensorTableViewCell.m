@@ -50,6 +50,8 @@
         self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_TINT];
     } else if (type == kSensorCapabilities_LUMMINOSITY) {
         self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_SUN_3];
+    } else if (type == kSensorCapabilities_LEVEL) {
+        self.sensorTypeIconLabel.text = [IcoMoon iconString:ICOMOON_KEY];
     }
 }
 

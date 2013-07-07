@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kNotification_APN @"kNotification_APN"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

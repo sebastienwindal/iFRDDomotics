@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +49,10 @@
 
 - (IBAction)humidityAction:(id)sender {
     [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_HUMIDITY];
+}
+
+- (IBAction)doorsAndWindowsAction:(id)sender {
+    [self.delegate leftMenuViewController:self didSelectMenuItem:kLeftMenuItem_DOORSWINDOWS];
 }
 
 - (IBAction)aboutAction:(id)sender {
