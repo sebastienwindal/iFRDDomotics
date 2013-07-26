@@ -14,6 +14,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SensorTableViewCell.h"
 #import "KGStatusBar.h"
+#import "DoorWindowDetailViewController.h"
+
 
 @interface SensorTableViewController ()
 
@@ -74,7 +76,8 @@
     [[FRDDomoticsClient sharedClient] getSensors:kSensorCapabilities_ALL
                                          success:^(FRDDomoticsClient *domoClient, NSArray *sensors) {
                                              // perform on ui thread.
-                                             dispatch_async(dispatch_get_main_queue(), ^{                                                 [KGStatusBar dismiss];
+                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                 [KGStatusBar dismiss];
                                                  // in case we have a multi-sensor, separate multi-sensor in
                                                  // individual ones.
                                                  NSMutableArray *individualSensors = [[NSMutableArray alloc] init];
@@ -107,7 +110,8 @@
                                              });
                                          }
                                          failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
-                                             dispatch_async(dispatch_get_main_queue(), ^{                                             self.isLoading = NO;
+                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                 self.isLoading = NO;
                                                  [KGStatusBar showErrorWithStatus:@"Failed to get data..."];
                                              });
                                          }];
@@ -134,7 +138,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TemperatureCell";
+    static NSString *CellIdentifier;
+    
+    if ([self.sensors[indexPath.row] capabilities] & kSensorCapabilities_LEVEL)
+        CellIdentifier = @"DoorWindowCell";
+    else
+        CellIdentifier = @"TemperatureCell";
     SensorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     Sensor *sensor = [self.sensors objectAtIndex:indexPath.row];
@@ -163,6 +172,13 @@
         NSInteger rowOfTheCell = [pathOfTheCell row];
         
         vc.sensor = self.sensors[rowOfTheCell];
+    } else if ([segue.identifier isEqualToString:@"DoorWindowDetail2"]) {
+        DoorWindowDetailViewController *vc = (DoorWindowDetailViewController *) segue.destinationViewController;
+        
+        NSIndexPath *pathOfCell = [self.tableView indexPathForCell:sender];
+        NSInteger rowOfCell = [pathOfCell row];
+        
+        vc.sensorID = [self.sensors[rowOfCell] sensorID];
     }
 }
 @end
