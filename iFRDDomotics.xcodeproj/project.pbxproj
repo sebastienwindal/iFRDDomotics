@@ -24,6 +24,8 @@
 		BE2C3591174079F20037FCB4 /* SensorMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2C3590174079F20037FCB4 /* SensorMeasurement.m */; };
 		BE40B432175ADFB70065C0FE /* ColorThresholds.m in Sources */ = {isa = PBXBuildFile; fileRef = BE40B431175ADFB70065C0FE /* ColorThresholds.m */; };
 		BE58F245176D0F7600716470 /* Splash.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE58F244176D0F7600716470 /* Splash.xib */; };
+		BE6DB46417A5B8210091B127 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DB46317A5B8210091B127 /* DayCollectionViewCell.m */; };
+		BE6DB46717A5B9590091B127 /* DayChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DB46617A5B9590091B127 /* DayChart.m */; };
 		BEBB51E417866D96001D34EB /* OpenClosePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB51E317866D96001D34EB /* OpenClosePoint.m */; };
 		BEC8669C17446F6600730259 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC8669B17446F6600730259 /* Settings.storyboard */; };
 		BEC8669F1744715B00730259 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8669E1744715A00730259 /* SettingsTableViewController.m */; };
@@ -106,6 +108,10 @@
 		BE40B433175C34A50065C0FE /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BE40B434175C36880065C0FE /* IcomoonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcomoonIcons.h; sourceTree = "<group>"; };
 		BE58F244176D0F7600716470 /* Splash.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Splash.xib; sourceTree = "<group>"; };
+		BE6DB46217A5B8210091B127 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
+		BE6DB46317A5B8210091B127 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
+		BE6DB46517A5B9590091B127 /* DayChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayChart.h; sourceTree = "<group>"; };
+		BE6DB46617A5B9590091B127 /* DayChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayChart.m; sourceTree = "<group>"; };
 		BEBB51E217866D96001D34EB /* OpenClosePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenClosePoint.h; sourceTree = "<group>"; };
 		BEBB51E317866D96001D34EB /* OpenClosePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenClosePoint.m; sourceTree = "<group>"; };
 		BEC8669B17446F6600730259 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -220,6 +226,8 @@
 				BE08FEDC17851BDA009E3490 /* DoorWindowDetailViewController.m */,
 				BEBB51E217866D96001D34EB /* OpenClosePoint.h */,
 				BEBB51E317866D96001D34EB /* OpenClosePoint.m */,
+				BE6DB46217A5B8210091B127 /* DayCollectionViewCell.h */,
+				BE6DB46317A5B8210091B127 /* DayCollectionViewCell.m */,
 			);
 			name = Sensors;
 			sourceTree = "<group>";
@@ -269,6 +277,8 @@
 			children = (
 				BEECE23717495F25006F6488 /* TimeChart.h */,
 				BEECE23817495F25006F6488 /* TimeChart.m */,
+				BE6DB46517A5B9590091B127 /* DayChart.h */,
+				BE6DB46617A5B9590091B127 /* DayChart.m */,
 			);
 			name = Chart;
 			sourceTree = "<group>";
@@ -577,6 +587,8 @@
 				BE0A9B25177F4EDD00553D26 /* WindowsAndDoorsCollectionViewCell.m in Sources */,
 				BE08FEDD17851BDA009E3490 /* DoorWindowDetailViewController.m in Sources */,
 				BEBB51E417866D96001D34EB /* OpenClosePoint.m in Sources */,
+				BE6DB46417A5B8210091B127 /* DayCollectionViewCell.m in Sources */,
+				BE6DB46717A5B9590091B127 /* DayChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

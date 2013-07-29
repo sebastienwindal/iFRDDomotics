@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DoorWindowDetailViewController : UIViewController
+@interface DoorWindowDetailViewController : UICollectionViewController
 
 @property (nonatomic) int sensorID;
 

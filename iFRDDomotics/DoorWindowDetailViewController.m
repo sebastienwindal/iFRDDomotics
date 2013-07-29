@@ -9,14 +9,14 @@
 #import "DoorWindowDetailViewController.h"
 #import "FRDDomoticsClient.h"
 #import "OpenClosePoint.h"
+#import "DayCollectionViewCell.h"
 
-
-@interface DoorWindowDetailViewController () <UITableViewDataSource>
+@interface DoorWindowDetailViewController () 
 
 @property (weak, nonatomic) IBOutlet UITableView *openEventTableView;
 
 @property (nonatomic, strong) NSMutableArray *openTimesAndDuration; // array of OpenClosePoint objects.
-
+@property (nonatomic, strong) NSMutableDictionary *dayAggregates;
 
 @end
 
@@ -52,6 +52,13 @@
     return _openTimesAndDuration;
 }
 
+-(NSMutableDictionary *) dayAggregates
+{
+    if (!_dayAggregates) {
+        _dayAggregates = [[NSMutableDictionary alloc] init];
+    }
+    return _dayAggregates;
+}
 
 -(void) fetchValues
 {
@@ -102,42 +109,65 @@
                                                         
                                                         lastPoint.stateDuration = -[values.mostRecentDate timeIntervalSinceDate:[NSDate date]];
                                                         
+                                                        [self aggregateByDay];
+                                                        
                                                         [self.openEventTableView reloadData];
+                                                        [self.collectionView reloadData];
                                                         
                                                     } failure:^(FRDDomoticsClient *domoClient, NSString *errorMessage) {
     
                                                     }];
 }
 
-
-#pragma mark - UITableViewDataSource implementation
-
--(int) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void) aggregateByDay
 {
-    return [self.openTimesAndDuration count];
+    for (OpenClosePoint *point in self.openTimesAndDuration) {
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSIntegerMax fromDate:point.date];
+        components.hour = 0;
+        components.minute = 0;
+        components.second = 0;
+
+        NSDate *midnight = [[NSCalendar currentCalendar] dateFromComponents:components];
+        
+        NSMutableArray *arr = self.dayAggregates[[midnight description]];
+        if (!arr) {
+            arr = [[NSMutableArray alloc] init];
+        }
+        [arr addObject:point];
+        self.dayAggregates[[midnight description]] = arr;
+    }
 }
 
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UICollectionViewDataSource implementation
+
+-(int) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSString *cellID = @"DoorWindowOpenEvent";
+    return [self.dayAggregates count];
+}
+
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DayCollectionViewCell *cell = (DayCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenStateDayCell" forIndexPath:indexPath];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    //OpenClosePoint *point = self.openTimesAndDuration[indexPath.row];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    cell.dayLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    
+    NSArray *arr = [self.dayAggregates allKeys];
+    
+    NSMutableArray * dayEvents = self.dayAggregates[arr[indexPath.row]];
+    [cell.dayChart clear];
+    for (OpenClosePoint *point in dayEvents) {
+    
+        if (point.isOpen){
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSIntegerMax fromDate:point.date];
+    
+            float hour1 = components.hour + components.minute / 60.0f + components.second / 3600.0f;
+            float hour2 = hour1 + point.stateDuration / 3600.0f;
+        
+            [cell.dayChart highLightStateBetweenHour:hour1 andHour:hour2];
+        }
     }
-    
-    OpenClosePoint *openClosePoint = self.openTimesAndDuration[indexPath.row];
-    cell.textLabel.text = openClosePoint.isOpen ? @"open" : @"close";
-    
-    
-    NSString *localDate = [NSDateFormatter localizedStringFromDate:openClosePoint.date
-                                                         dateStyle:NSDateFormatterMediumStyle
-                                                         timeStyle:NSDateFormatterMediumStyle];
-    
-    
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", localDate];
-    
     return cell;
 }
 
